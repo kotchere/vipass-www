@@ -1,4 +1,5 @@
 import Header from "@/components/layout/Header";
+import "../legal-styles.css";
 
 export default function LegalLayout({
   children,
@@ -28,6 +29,8 @@ export default function LegalLayout({
         >
           {children}
         </div>
+        <div id="overlay" />
+        <div className="framer-1kvak31" />
       </div>
     </div>
   );
