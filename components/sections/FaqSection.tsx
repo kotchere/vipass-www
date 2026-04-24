@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import FaqItem from "@/components/ui/FaqItem";
 
 const faqs = [
@@ -10,42 +13,67 @@ const faqs = [
 ];
 
 export default function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleItem = (index: number) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
     <section className="framer-rv9o5q" data-framer-name="FAQ" id="faq">
       <div className="framer-pcuxg5" data-framer-name="Container">
         <div className="framer-1xjiuvd" data-framer-name="Heading">
-          <div className="framer-1euscwr" data-framer-component-type="RichTextContainer">
-            <h2
-              className="framer-text framer-styles-preset-1yvd34u"
-              data-styles-preset="GKtOymhXV"
+          <div className="ssr-variant hidden-f3lv8x">
+            <div
+              className="framer-1euscwr"
+              data-framer-component-type="RichTextContainer"
+              style={{ willChange: "transform", opacity: 1, transform: "none" }}
             >
-              FAQ.
-            </h2>
+              <h2
+                className="framer-text framer-styles-preset-1yvd34u"
+                data-styles-preset="GKtOymhXV"
+              >
+                FAQ.
+              </h2>
+            </div>
           </div>
           <div
             className="framer-mxm94s"
             data-framer-component-type="RichTextContainer"
+            style={{ transform: "none" }}
           >
             <p
               className="framer-text framer-styles-preset-1n1wh7h"
               data-styles-preset="gd6AWaps9"
               dir="auto"
             >
-              Got questions? We've got answers.
+              Got questions? We&apos;ve got answers.
             </p>
           </div>
         </div>
-        <div className="framer-12yhnwq-container">
-          <div style={{ width: "100%", opacity: 1 }}>
-            <div style={{ width: "100%" }}>
-              {faqs.map((faq, index) => (
-                <FaqItem
-                  key={index}
-                  question={faq.question}
-                  answer={faq.answer}
-                  defaultOpen={index === 0}
-                />
-              ))}
+        <div className="ssr-variant hidden-f3lv8x hidden-tsn51j">
+          <div
+            className="framer-12yhnwq-container"
+            style={{ willChange: "transform", opacity: 1, transform: "none" }}
+          >
+            <div
+              className="framer-sABwM framer-10950d3 framer-v-10950d3"
+              data-framer-name="Desktop"
+              style={{ width: "100%", opacity: 1 }}
+            >
+              <div className="framer-mbtw9f-container" style={{ opacity: 1 }}>
+                <div style={{ width: "100%" }}>
+                  {faqs.map((faq, i) => (
+                    <FaqItem
+                      key={i}
+                      question={faq.question}
+                      answer={faq.answer}
+                      isOpen={openIndex === i}
+                      onToggle={() => toggleItem(i)}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

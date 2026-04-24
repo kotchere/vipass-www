@@ -68,7 +68,7 @@ const extractedWhite = {
   "--framer-paragraph-spacing": "0px",
 } as React.CSSProperties;
 
-const transition = { duration: 0.5, ease: [0.96, -0.02, 0.38, 1.01] as [number, number, number, number] };
+const transition = { delay: 0, duration: 0.3, ease: [0.82, 0.11, 0.37, 0.82] as [number, number, number, number], type: "tween" as const };
 
 function FeatureItem({
   number,
@@ -226,7 +226,19 @@ function FeatureItem({
 }
 
 export default function FeaturesSection() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openItems, setOpenItems] = useState<Set<number>>(new Set([0]));
+
+  const toggleItem = (index: number) => {
+    setOpenItems((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) {
+        next.delete(index);
+      } else {
+        next.add(index);
+      }
+      return next;
+    });
+  };
 
   return (
     <section className="framer-8d5aox" data-framer-name="Features" id="features">
@@ -274,8 +286,8 @@ export default function FeaturesSection() {
                 <FeatureItem
                   key={feature.number}
                   {...feature}
-                  isOpen={openIndex === index}
-                  onClick={() => setOpenIndex(index)}
+                  isOpen={openItems.has(index)}
+                  onClick={() => toggleItem(index)}
                 />
               ))}
             </div>
