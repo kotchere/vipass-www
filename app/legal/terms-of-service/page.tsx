@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import LegalContent from "@/components/ui/LegalContent";
-import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = { title: "Terms of Service - Vipass" };
 
 export default function TermsOfServicePage() {
   return (
-    <>
-      <LegalContent
+    <LegalContent
         title="Terms of service."
         lastUpdated="Mar 4, 2025"
         lastUpdatedDatetime="2025-03-04T00:00:00.000Z"
@@ -173,8 +171,6 @@ export default function TermsOfServicePage() {
             </p>
           </>
         }
-      />
-      <Footer />
-    </>
+    />
   );
 }

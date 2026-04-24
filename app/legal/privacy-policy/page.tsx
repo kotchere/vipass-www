@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import LegalContent from "@/components/ui/LegalContent";
-import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = { title: "Privacy Policy - Vipass" };
 
 export default function PrivacyPolicyPage() {
   return (
-    <>
-      <LegalContent
+    <LegalContent
         title="Privacy policy."
         lastUpdated="Mar 5, 2025"
         lastUpdatedDatetime="2025-03-05T00:00:00.000Z"
@@ -333,8 +331,6 @@ export default function PrivacyPolicyPage() {
             </p>
           </>
         }
-      />
-      <Footer />
-    </>
+    />
   );
 }
