@@ -1,12 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-/* ------------------------------------------------------------------ */
-/*  Data arrays for DRY nav links                                      */
-/* ------------------------------------------------------------------ */
-
-/** Desktop top-bar links (small text, inside <nav class="framer-120hnkq">) */
 const desktopNavLinks = [
   { label: "Features", href: "#features", containerClass: "framer-1ubnatg-container", hasSubtext: true },
   { label: "Experiences", href: "#experiences", containerClass: "framer-1phpovz-container", hasSubtext: false },
@@ -15,7 +11,6 @@ const desktopNavLinks = [
   { label: "Download", href: "#getapp", containerClass: "framer-1l9rbhf-container", hasSubtext: false },
 ];
 
-/** Mobile drawer links (large text, inside <nav class="framer-ugu5i9">) */
 const mobileNavLinks = [
   { label: "Home", href: "./", containerClass: "framer-1l0v3f0-container", wrapperClass: "framer-6z5t2m", isCurrent: true },
   { label: "Experiences", href: "#experiences", containerClass: "framer-qy8ut1-container", wrapperClass: "framer-f7i6o0", isCurrent: false },
@@ -25,11 +20,9 @@ const mobileNavLinks = [
   { label: "Download", href: "#getapp", containerClass: "framer-11r3jwx-container", wrapperClass: "framer-16sohac", isCurrent: false },
 ];
 
-/* ------------------------------------------------------------------ */
-/*  Shared inline-style constants                                      */
-/* ------------------------------------------------------------------ */
+const staggerDelays = [0, 0.06, 0.12, 0.18, 0.24, 0.24];
 
-const desktopLinkTextStyle: React.CSSProperties = {
+const desktopLinkTextStyle = {
   "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
   "--framer-font-family": '"Inter", "Inter Placeholder", sans-serif',
   "--framer-font-weight": "600",
@@ -38,7 +31,7 @@ const desktopLinkTextStyle: React.CSSProperties = {
   "--framer-text-color": "var(--extracted-r6o4lv, rgb(9, 9, 9))",
 } as React.CSSProperties;
 
-const mobileLinkTextStyle: React.CSSProperties = {
+const mobileLinkTextStyle = {
   "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
   "--framer-font-family": '"Inter", "Inter Placeholder", sans-serif',
   "--framer-font-size": "60px",
@@ -50,83 +43,51 @@ const mobileLinkTextStyle: React.CSSProperties = {
     "var(--extracted-r6o4lv, var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10)))",
 } as React.CSSProperties;
 
-const mobileRichTextContainerStyle: React.CSSProperties = {
+const mobileRichTextContainerStyle = {
   "--extracted-r6o4lv": "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
   "--framer-paragraph-spacing": "0px",
   transform: "none",
   opacity: 1,
 } as React.CSSProperties;
 
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
+const headerTransition = { duration: 0.5, ease: [0.96, -0.02, 0.38, 1.01] as [number, number, number, number] };
+const springTransition = { type: "spring" as const, damping: 30, stiffness: 210, mass: 1 };
+const hamburgerSpring = { type: "spring" as const, bounce: 0.2, duration: 0.4 };
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header
+    <motion.header
       className="framer-e3FRw framer-0CPYn framer-m9VkI framer-bzu5mb framer-v-v89dtt"
       data-framer-name="Desktop"
+      animate={{
+        backgroundColor: isOpen ? "rgb(255, 255, 255)" : "rgb(245, 245, 245)",
+      }}
+      transition={headerTransition}
       style={{
-        backdropFilter: "blur(7px)",
-        backgroundColor: "var(--token-eea70a16-506d-4b3b-87b7-e85e653a6e7c, rgb(245, 245, 245))",
+        backdropFilter: isOpen ? "none" : "blur(7px)",
         width: "100%",
         opacity: 1,
-        ...(isOpen
-          ? {
-              height: "100vh",
-              overflow: "visible",
-              transition: "height 0.4s ease",
-            }
-          : {
-              transition: "height 0.4s ease",
-            }),
+        overflow: "hidden",
       }}
     >
-      {/* ============================================================ */}
-      {/*  Desktop top-bar nav                                         */}
-      {/* ============================================================ */}
       <nav className="framer-120hnkq" data-framer-name="Top" style={{ opacity: 1 }}>
         {/* Logo */}
-        <a
-          className="framer-iogiyt framer-1a90gm8"
-          data-framer-name="Link"
-          href="#main-1"
-          style={{ opacity: 1 }}
-        >
+        <a className="framer-iogiyt framer-1a90gm8" data-framer-name="Link" href="#main-1" style={{ opacity: 1 }}>
           <div className="framer-kxb2zt-container" style={{ opacity: 1 }}>
-            <div
-              className="framer-eKVcD framer-1ppeyn8 framer-v-1ppeyn8"
-              data-framer-name="Desktop"
-              style={{ opacity: 1 }}
-            >
+            <div className="framer-eKVcD framer-1ppeyn8 framer-v-1ppeyn8" data-framer-name="Desktop" style={{ opacity: 1 }}>
               <div className="framer-1lkcsgp" data-framer-name="Logo" style={{ opacity: 1 }}>
                 <div
-                  style={{
-                    position: "absolute",
-                    borderRadius: "inherit",
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    left: 0,
-                  }}
+                  style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }}
                   data-framer-background-image-wrapper="true"
                 >
                   <img
-                    decoding="auto"
                     width={564}
                     height={564}
                     src="/assets/images/sGlXXevC6VpCdliPiKXmmrZQEi0_0c62333e.png"
                     alt=""
-                    style={{
-                      display: "block",
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: "inherit",
-                      objectPosition: "center",
-                      objectFit: "cover",
-                    }}
+                    style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", objectPosition: "center", objectFit: "cover" }}
                   />
                 </div>
               </div>
@@ -146,75 +107,76 @@ export default function Header() {
               <div
                 className="framer-xu6ifz"
                 data-framer-component-type="RichTextContainer"
-                style={{
-                  "--extracted-r6o4lv": "rgb(9, 9, 9)",
-                  "--framer-paragraph-spacing": "0px",
-                  transform: "none",
-                  opacity: 1,
-                } as React.CSSProperties}
+                style={{ "--extracted-r6o4lv": "rgb(9, 9, 9)", "--framer-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
               >
-                <p className="framer-text" style={desktopLinkTextStyle}>
-                  {link.label}
-                </p>
+                <p className="framer-text" style={desktopLinkTextStyle}>{link.label}</p>
               </div>
               {link.hasSubtext && (
                 <div
                   className="framer-1r3wqjw"
                   data-framer-component-type="RichTextContainer"
-                  style={{
-                    "--extracted-r6o4lv": "rgb(9, 9, 9)",
-                    "--framer-paragraph-spacing": "0px",
-                    opacity: 0.6,
-                    transform: "none",
-                  } as React.CSSProperties}
+                  style={{ "--extracted-r6o4lv": "rgb(9, 9, 9)", "--framer-paragraph-spacing": "0px", opacity: 0.6, transform: "none" } as React.CSSProperties}
                 >
-                  <p
-                    className="framer-text"
-                    style={{
-                      ...desktopLinkTextStyle,
-                      "--framer-font-size": "9px",
-                      "--framer-line-height": "100%",
-                    } as React.CSSProperties}
-                  />
+                  <p className="framer-text" style={{ ...desktopLinkTextStyle, "--framer-font-size": "9px", "--framer-line-height": "100%" } as React.CSSProperties} />
                 </div>
               )}
             </a>
           </div>
         ))}
 
-        {/* Hamburger / mobile toggle button */}
+        {/* Hamburger button */}
         <div
           className="framer-ednsow"
           data-framer-name="Button container"
           data-highlight="true"
           tabIndex={0}
-          style={{ opacity: 1 }}
+          style={{ opacity: 1, cursor: "pointer" }}
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <div className="framer-eda3z9-container" style={{ opacity: 1 }}>
             <div
-              className="framer-UNjyH framer-1qd80pl framer-v-1qd80pl"
-              data-framer-name="Closed"
+              className={`framer-UNjyH ${isOpen ? "framer-v-4fzt3a" : "framer-1qd80pl"} framer-v-${isOpen ? "4fzt3a" : "1qd80pl"}`}
+              data-framer-name={isOpen ? "Open" : "Closed"}
               data-highlight="true"
               tabIndex={0}
-              style={{ opacity: 1 }}
+              style={{ opacity: 1, position: "relative", minWidth: 59, minHeight: 12 }}
             >
-              <div
+              <motion.div
                 className="framer-1jxc6iw"
+                animate={{
+                  rotate: isOpen ? 10 : 0,
+                  position: isOpen ? "absolute" as const : "relative" as const,
+                  top: isOpen ? "calc(50% - 1px)" : undefined,
+                  left: isOpen ? 0 : undefined,
+                  right: isOpen ? 0 : undefined,
+                  width: isOpen ? "auto" : 59,
+                }}
+                transition={hamburgerSpring}
                 style={{
-                  backgroundColor:
-                    "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
-                  transform: "none",
+                  backgroundColor: "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
+                  height: 2,
                   opacity: 1,
+                  originX: 0.5,
+                  originY: 0.5,
                 }}
               />
-              <div
+              <motion.div
                 className="framer-qxejnu"
+                animate={{
+                  rotate: isOpen ? -10 : 0,
+                  position: isOpen ? "absolute" as const : "relative" as const,
+                  top: isOpen ? "calc(50% - 1px)" : undefined,
+                  left: isOpen ? 0 : undefined,
+                  right: isOpen ? 0 : undefined,
+                  width: isOpen ? "auto" : 59,
+                }}
+                transition={hamburgerSpring}
                 style={{
-                  backgroundColor:
-                    "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
-                  transform: "none",
+                  backgroundColor: "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
+                  height: 2,
                   opacity: 1,
+                  originX: 0.5,
+                  originY: 0.5,
                 }}
               />
             </div>
@@ -222,92 +184,71 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* ============================================================ */}
-      {/*  Mobile drawer body                                          */}
-      {/* ============================================================ */}
-      <div
+      {/* Mobile drawer body */}
+      <motion.div
         className="framer-1rfamfy"
         data-framer-name="Body"
-        style={{
+        animate={{
           opacity: isOpen ? 1 : 0,
+        }}
+        transition={headerTransition}
+        style={{
           pointerEvents: isOpen ? "auto" : "none",
+          position: isOpen ? "relative" : undefined,
           top: isOpen ? 0 : undefined,
-          transition: "opacity 0.4s ease, top 0.4s ease",
         }}
       >
         <nav className="framer-ugu5i9" data-framer-name="Navigation" style={{ opacity: 1 }}>
-          {mobileNavLinks.map((link, index) => (
-            <div
-              key={link.href}
-              className={link.wrapperClass}
-              data-framer-name="Item container"
-              style={{
-                willChange: "transform",
-                opacity: isOpen ? 1 : 0,
-                transform: isOpen ? "translateY(0px)" : "translateY(-40px)",
-                transition: `opacity 0.4s ease ${index * 0.05}s, transform 0.4s ease ${index * 0.05}s`,
-              }}
-            >
-              <div className={link.containerClass} style={{ opacity: 1 }}>
-                <a
-                  className="framer-IFf4n framer-14ac7s4 framer-v-14ac7s4 framer-1435c2t"
-                  data-framer-name="Desktop"
-                  data-highlight="true"
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  {...(link.isCurrent ? { "data-framer-page-link-current": "true" } : {})}
-                  tabIndex={0}
-                  style={{ opacity: 1 }}
-                >
-                  <div
-                    className="framer-ggkluq"
-                    data-framer-component-type="RichTextContainer"
-                    style={mobileRichTextContainerStyle}
+          <AnimatePresence>
+            {mobileNavLinks.map((link, index) => (
+              <motion.div
+                key={link.href}
+                className={link.wrapperClass}
+                data-framer-name="Item container"
+                initial={{ opacity: 0, y: -40 }}
+                animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -40 }}
+                transition={{
+                  ...springTransition,
+                  delay: staggerDelays[index],
+                }}
+              >
+                <div className={link.containerClass} style={{ opacity: 1 }}>
+                  <a
+                    className="framer-IFf4n framer-14ac7s4 framer-v-14ac7s4 framer-1435c2t"
+                    data-framer-name="Desktop"
+                    data-highlight="true"
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    {...(link.isCurrent ? { "data-framer-page-link-current": "true" } : {})}
+                    tabIndex={0}
+                    style={{ opacity: 1 }}
                   >
-                    <p className="framer-text" style={mobileLinkTextStyle}>
-                      {link.label}
-                    </p>
-                  </div>
-                  <div
-                    className="framer-8k52a7"
-                    data-framer-component-type="RichTextContainer"
-                    style={mobileRichTextContainerStyle}
-                  >
-                    <p className="framer-text" style={mobileLinkTextStyle}>
-                      {link.label}
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          ))}
+                    <div className="framer-ggkluq" data-framer-component-type="RichTextContainer" style={mobileRichTextContainerStyle}>
+                      <p className="framer-text" style={mobileLinkTextStyle}>{link.label}</p>
+                    </div>
+                    <div className="framer-8k52a7" data-framer-component-type="RichTextContainer" style={mobileRichTextContainerStyle}>
+                      <p className="framer-text" style={mobileLinkTextStyle}>{link.label}</p>
+                    </div>
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </nav>
 
         {/* Bottom section with legal links */}
         <div className="framer-17uvimj" data-framer-name="Bottom" style={{ opacity: 1 }}>
           <div className="framer-1cfglw0" data-framer-name="Contact" style={{ opacity: 1 }} />
-          <div
-            className="framer-zauiq7"
-            data-framer-name="Legal"
-            style={{ transform: "translateX(-50%)", opacity: 1 }}
-          >
+          <div className="framer-zauiq7" data-framer-name="Legal" style={{ transform: "translateX(-50%)", opacity: 1 }}>
             <div
               className="framer-cn0hy8"
               data-highlight="true"
               data-framer-component-type="RichTextContainer"
               tabIndex={0}
-              style={{
-                "--framer-paragraph-spacing": "0px",
-                transform: "none",
-                opacity: 1,
-              } as React.CSSProperties}
+              style={{ "--framer-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
             >
               <p className="framer-text framer-styles-preset-1mf8d9g" data-styles-preset="ypR5VEWEl">
-                <a
-                  className="framer-text framer-styles-preset-1wi7vce"
-                  data-styles-preset="nCQNaN8LD"
-                  href="/legal/privacy-policy"
-                >
+                <a className="framer-text framer-styles-preset-1wi7vce" data-styles-preset="nCQNaN8LD" href="/legal/privacy-policy">
                   Privacy Policy
                 </a>
               </p>
@@ -317,25 +258,17 @@ export default function Header() {
               data-highlight="true"
               data-framer-component-type="RichTextContainer"
               tabIndex={0}
-              style={{
-                "--framer-paragraph-spacing": "0px",
-                transform: "none",
-                opacity: 1,
-              } as React.CSSProperties}
+              style={{ "--framer-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
             >
               <p className="framer-text framer-styles-preset-1mf8d9g" data-styles-preset="ypR5VEWEl">
-                <a
-                  className="framer-text framer-styles-preset-1wi7vce"
-                  data-styles-preset="nCQNaN8LD"
-                  href="/legal/terms-of-service"
-                >
+                <a className="framer-text framer-styles-preset-1wi7vce" data-styles-preset="nCQNaN8LD" href="/legal/terms-of-service">
                   Terms of Service
                 </a>
               </p>
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </motion.div>
+    </motion.header>
   );
 }
