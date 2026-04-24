@@ -1,4 +1,5 @@
 import ExperienceCard from "@/components/ui/ExperienceCard";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const experiences = [
   {
@@ -70,14 +71,15 @@ export default function ExperiencesSection() {
         </div>
         <div className="framer-aeexdy">
           {experiences.map((exp, index) => (
-            <ExperienceCard
-              key={index}
-              href={exp.href}
-              logoSrc={exp.logoSrc}
-              logoWidth={exp.logoWidth}
-              logoHeight={exp.logoHeight}
-              imageSrc={exp.imageSrc}
-            />
+            <ScrollReveal key={index} delay={index * 0.1} y={30}>
+              <ExperienceCard
+                href={exp.href}
+                logoSrc={exp.logoSrc}
+                logoWidth={exp.logoWidth}
+                logoHeight={exp.logoHeight}
+                imageSrc={exp.imageSrc}
+              />
+            </ScrollReveal>
           ))}
         </div>
       </div>

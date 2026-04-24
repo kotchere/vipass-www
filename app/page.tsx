@@ -5,6 +5,7 @@ import FeaturesSection from "@/components/sections/FeaturesSection";
 import StatsSection from "@/components/sections/StatsSection";
 import FaqSection from "@/components/sections/FaqSection";
 import GetAppSection from "@/components/sections/GetAppSection";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function Home() {
   return (
@@ -21,12 +22,24 @@ export default function Home() {
         >
           <PreLoader />
           <main className="framer-jpdxmw" data-framer-name="Main">
-            <HeroSection />
-            <ExperiencesSection />
-            <FeaturesSection />
-            <StatsSection />
-            <FaqSection />
-            <GetAppSection />
+            <ScrollReveal y={300} duration={1} delay={0.3}>
+              <HeroSection />
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <ExperiencesSection />
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <FeaturesSection />
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <StatsSection />
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <FaqSection />
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <GetAppSection />
+            </ScrollReveal>
           </main>
         </div>
       </div>
