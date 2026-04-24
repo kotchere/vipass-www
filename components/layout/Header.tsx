@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 
 const desktopNavLinks = [
   { label: "Features", href: "#features", containerClass: "framer-1ubnatg-container", hasSubtext: true },
@@ -55,96 +55,35 @@ const headerTransition = { duration: 0.5, ease: headerEase };
 const springTransition = { type: "spring" as const, damping: 30, stiffness: 210, mass: 1 };
 const hamburgerSpring = { type: "spring" as const, bounce: 0.2, duration: 0.4 };
 
-function DrawerContent({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) {
-  return (
-    <>
-      <nav className="framer-ugu5i9" data-framer-name="Navigation" style={{ opacity: 1 }}>
-        {mobileNavLinks.map((link, index) => (
-          <motion.div
-            key={link.href}
-            className={link.wrapperClass}
-            data-framer-name="Item container"
-            initial={{ opacity: 0, y: -40 }}
-            animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -40 }}
-            transition={{ ...springTransition, delay: staggerDelays[index] }}
-          >
-            <div className={link.containerClass} style={{ opacity: 1 }}>
-              <a
-                className="framer-IFf4n framer-14ac7s4 framer-v-14ac7s4 framer-1435c2t"
-                data-framer-name="Desktop"
-                data-highlight="true"
-                href={link.href}
-                onClick={onClose}
-                {...(link.isCurrent ? { "data-framer-page-link-current": "true" } : {})}
-                tabIndex={0}
-                style={{ opacity: 1 }}
-              >
-                <div className="framer-ggkluq" data-framer-component-type="RichTextContainer" style={mobileRichTextContainerStyle}>
-                  <p className="framer-text" style={mobileLinkTextStyle}>{link.label}</p>
-                </div>
-                <div className="framer-8k52a7" data-framer-component-type="RichTextContainer" style={mobileRichTextContainerStyle}>
-                  <p className="framer-text" style={mobileLinkTextStyle}>{link.label}</p>
-                </div>
-              </a>
-            </div>
-          </motion.div>
-        ))}
-      </nav>
-      <div className="framer-17uvimj" data-framer-name="Bottom" style={{ opacity: 1 }}>
-        <div className="framer-1cfglw0" data-framer-name="Contact" style={{ opacity: 1 }} />
-        <div className="framer-zauiq7" data-framer-name="Legal" style={{ transform: "translateX(-50%)", opacity: 1 }}>
-          <div
-            className="framer-cn0hy8"
-            data-highlight="true"
-            data-framer-component-type="RichTextContainer"
-            tabIndex={0}
-            style={{ "--framer-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
-          >
-            <p className="framer-text framer-styles-preset-1mf8d9g" data-styles-preset="ypR5VEWEl">
-              <a className="framer-text framer-styles-preset-1wi7vce" data-styles-preset="nCQNaN8LD" href="/legal/privacy-policy">
-                Privacy Policy
-              </a>
-            </p>
-          </div>
-          <div
-            className="framer-1dkccqr"
-            data-highlight="true"
-            data-framer-component-type="RichTextContainer"
-            tabIndex={0}
-            style={{ "--framer-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
-          >
-            <p className="framer-text framer-styles-preset-1mf8d9g" data-styles-preset="ypR5VEWEl">
-              <a className="framer-text framer-styles-preset-1wi7vce" data-styles-preset="nCQNaN8LD" href="/legal/terms-of-service">
-                Terms of Service
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
-
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const drawerRef = useRef<HTMLDivElement>(null);
-  const [drawerHeight, setDrawerHeight] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  const measureHeight = useCallback(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight);
+    }
+  }, []);
 
   useEffect(() => {
-    if (drawerRef.current) {
-      setDrawerHeight(drawerRef.current.scrollHeight);
+    measureHeight();
+    window.addEventListener("resize", measureHeight);
+    return () => window.removeEventListener("resize", measureHeight);
+  }, [measureHeight]);
+
+  // Re-measure after open state changes (content may reflow)
+  useEffect(() => {
+    if (isOpen) {
+      // Small delay to let content render before measuring
+      const t = setTimeout(measureHeight, 10);
+      return () => clearTimeout(t);
     }
-  }, [isOpen]);
+  }, [isOpen, measureHeight]);
 
   return (
     <motion.header
-      className={`framer-e3FRw framer-0CPYn framer-m9VkI framer-bzu5mb ${isOpen ? "" : "framer-v-v89dtt"}`}
+      className="framer-e3FRw framer-0CPYn framer-m9VkI framer-bzu5mb framer-v-v89dtt"
       data-framer-name="Desktop"
       animate={{
         backgroundColor: isOpen ? "rgb(255, 255, 255)" : "rgb(245, 245, 245)",
@@ -265,21 +204,96 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile drawer — visible when variant class is removed */}
+      {/*
+        Mobile drawer. The CSS variant (framer-v-v89dtt) positions .framer-1rfamfy
+        at absolute/top:-750px. We leave that class on and instead render the drawer
+        content inside a height-animated wrapper that sits in the normal document flow,
+        completely independent of the CSS variant's absolute positioning.
+      */}
       <motion.div
-        className="framer-1rfamfy"
-        data-framer-name="Body"
-        ref={drawerRef}
-        animate={{
-          opacity: isOpen ? 1 : 0,
-        }}
-        initial={{ opacity: 0 }}
+        animate={{ height: isOpen ? contentHeight : 0 }}
+        initial={{ height: 0 }}
         transition={headerTransition}
-        style={{
-          pointerEvents: isOpen ? "auto" : "none",
-        }}
+        style={{ overflow: "hidden", position: "relative", zIndex: 1 }}
       >
-        <DrawerContent isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <div
+          ref={contentRef}
+          style={{
+            display: "flex",
+            flexFlow: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 120,
+            width: "100%",
+            padding: "120px 0 0 0",
+          }}
+        >
+          <nav className="framer-ugu5i9" data-framer-name="Navigation" style={{ opacity: 1 }}>
+            {mobileNavLinks.map((link, index) => (
+              <motion.div
+                key={link.href}
+                className={link.wrapperClass}
+                data-framer-name="Item container"
+                animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -40 }}
+                initial={{ opacity: 0, y: -40 }}
+                transition={{ ...springTransition, delay: isOpen ? staggerDelays[index] : staggerDelays[index] }}
+              >
+                <div className={link.containerClass} style={{ opacity: 1 }}>
+                  <a
+                    className="framer-IFf4n framer-14ac7s4 framer-v-14ac7s4 framer-1435c2t"
+                    data-framer-name="Desktop"
+                    data-highlight="true"
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    {...(link.isCurrent ? { "data-framer-page-link-current": "true" } : {})}
+                    tabIndex={0}
+                    style={{ opacity: 1 }}
+                  >
+                    <div className="framer-ggkluq" data-framer-component-type="RichTextContainer" style={mobileRichTextContainerStyle}>
+                      <p className="framer-text" style={mobileLinkTextStyle}>{link.label}</p>
+                    </div>
+                    <div className="framer-8k52a7" data-framer-component-type="RichTextContainer" style={mobileRichTextContainerStyle}>
+                      <p className="framer-text" style={mobileLinkTextStyle}>{link.label}</p>
+                    </div>
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </nav>
+
+          {/* Bottom section with legal links */}
+          <div className="framer-17uvimj" data-framer-name="Bottom" style={{ opacity: 1, width: "100%" }}>
+            <div className="framer-1cfglw0" data-framer-name="Contact" style={{ opacity: 1 }} />
+            <div className="framer-zauiq7" data-framer-name="Legal" style={{ transform: "translateX(-50%)", opacity: 1 }}>
+              <div
+                className="framer-cn0hy8"
+                data-highlight="true"
+                data-framer-component-type="RichTextContainer"
+                tabIndex={0}
+                style={{ "--framer-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
+              >
+                <p className="framer-text framer-styles-preset-1mf8d9g" data-styles-preset="ypR5VEWEl">
+                  <a className="framer-text framer-styles-preset-1wi7vce" data-styles-preset="nCQNaN8LD" href="/legal/privacy-policy">
+                    Privacy Policy
+                  </a>
+                </p>
+              </div>
+              <div
+                className="framer-1dkccqr"
+                data-highlight="true"
+                data-framer-component-type="RichTextContainer"
+                tabIndex={0}
+                style={{ "--framer-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
+              >
+                <p className="framer-text framer-styles-preset-1mf8d9g" data-styles-preset="ypR5VEWEl">
+                  <a className="framer-text framer-styles-preset-1wi7vce" data-styles-preset="nCQNaN8LD" href="/legal/terms-of-service">
+                    Terms of Service
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.div>
     </motion.header>
   );
