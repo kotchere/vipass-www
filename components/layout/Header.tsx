@@ -4,20 +4,20 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 
 const desktopNavLinks = [
-  { label: "Features", href: "#features", containerClass: "framer-1ubnatg-container", hasSubtext: true },
-  { label: "Experiences", href: "#experiences", containerClass: "framer-1phpovz-container", hasSubtext: false },
-  { label: "Stats", href: "#stats", containerClass: "framer-1q78hcd-container", hasSubtext: false },
-  { label: "FAQ", href: "#faq", containerClass: "framer-nsvb3w-container", hasSubtext: false },
-  { label: "Download", href: "#getapp", containerClass: "framer-1l9rbhf-container", hasSubtext: false },
+  { label: "Features", href: "/#features", containerClass: "framer-1ubnatg-container", hasSubtext: true },
+  { label: "Experiences", href: "/#experiences", containerClass: "framer-1phpovz-container", hasSubtext: false },
+  { label: "Stats", href: "/#stats", containerClass: "framer-1q78hcd-container", hasSubtext: false },
+  { label: "FAQ", href: "/#faq", containerClass: "framer-nsvb3w-container", hasSubtext: false },
+  { label: "Download", href: "/#getapp", containerClass: "framer-1l9rbhf-container", hasSubtext: false },
 ];
 
 const mobileNavLinks = [
-  { label: "Home", href: "./", containerClass: "framer-1l0v3f0-container", wrapperClass: "framer-6z5t2m", isCurrent: true },
-  { label: "Experiences", href: "#experiences", containerClass: "framer-qy8ut1-container", wrapperClass: "framer-f7i6o0", isCurrent: false },
-  { label: "Features", href: "#features", containerClass: "framer-1cb9u8q-container", wrapperClass: "framer-9p1fl7", isCurrent: false },
-  { label: "Stats", href: "#stats", containerClass: "framer-dn12q8-container", wrapperClass: "framer-15pwy5", isCurrent: false },
-  { label: "FAQ", href: "#faq", containerClass: "framer-i0l900-container", wrapperClass: "framer-pem6zj", isCurrent: false },
-  { label: "Download", href: "#getapp", containerClass: "framer-11r3jwx-container", wrapperClass: "framer-16sohac", isCurrent: false },
+  { label: "Home", href: "/", containerClass: "framer-1l0v3f0-container", wrapperClass: "framer-6z5t2m", isCurrent: true },
+  { label: "Experiences", href: "/#experiences", containerClass: "framer-qy8ut1-container", wrapperClass: "framer-f7i6o0", isCurrent: false },
+  { label: "Features", href: "/#features", containerClass: "framer-1cb9u8q-container", wrapperClass: "framer-9p1fl7", isCurrent: false },
+  { label: "Stats", href: "/#stats", containerClass: "framer-dn12q8-container", wrapperClass: "framer-15pwy5", isCurrent: false },
+  { label: "FAQ", href: "/#faq", containerClass: "framer-i0l900-container", wrapperClass: "framer-pem6zj", isCurrent: false },
+  { label: "Download", href: "/#getapp", containerClass: "framer-11r3jwx-container", wrapperClass: "framer-16sohac", isCurrent: false },
 ];
 
 const staggerDelays = [0, 0.06, 0.12, 0.18, 0.24, 0.24];
@@ -98,7 +98,7 @@ export default function Header() {
     >
       <nav className="framer-120hnkq" data-framer-name="Top" style={{ opacity: 1 }}>
         {/* Logo */}
-        <a className="framer-iogiyt framer-1a90gm8" data-framer-name="Link" href="#main-1" style={{ opacity: 1 }}>
+        <a className="framer-iogiyt framer-1a90gm8" data-framer-name="Link" href="/#main-1" style={{ opacity: 1 }}>
           <div className="framer-kxb2zt-container" style={{ opacity: 1 }}>
             <div className="framer-eKVcD framer-1ppeyn8 framer-v-1ppeyn8" data-framer-name="Desktop" style={{ opacity: 1 }}>
               <div className="framer-1lkcsgp" data-framer-name="Logo" style={{ opacity: 1 }}>
