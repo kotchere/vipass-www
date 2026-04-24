@@ -144,7 +144,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className="framer-e3FRw framer-0CPYn framer-m9VkI framer-bzu5mb framer-v-v89dtt"
+      className={`framer-e3FRw framer-0CPYn framer-m9VkI framer-bzu5mb ${isOpen ? "" : "framer-v-v89dtt"}`}
       data-framer-name="Desktop"
       animate={{
         backgroundColor: isOpen ? "rgb(255, 255, 255)" : "rgb(245, 245, 245)",
@@ -265,23 +265,17 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile drawer — animated height slide */}
+      {/* Mobile drawer — visible when variant class is removed */}
       <motion.div
         className="framer-1rfamfy"
         data-framer-name="Body"
         ref={drawerRef}
         animate={{
-          height: isOpen ? "auto" : 0,
           opacity: isOpen ? 1 : 0,
         }}
-        initial={{ height: 0, opacity: 0 }}
-        transition={{
-          height: { duration: 0.5, ease: headerEase },
-          opacity: { duration: 0.3, ease: "easeInOut" },
-        }}
+        initial={{ opacity: 0 }}
+        transition={headerTransition}
         style={{
-          overflow: "hidden",
-          position: "relative",
           pointerEvents: isOpen ? "auto" : "none",
         }}
       >
