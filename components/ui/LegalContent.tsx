@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
 
 interface LegalContentProps {
   title: string;
@@ -7,6 +10,13 @@ interface LegalContentProps {
   intro: React.ReactNode;
   body: React.ReactNode;
 }
+
+const legalSpring = {
+  type: "spring" as const,
+  damping: 27,
+  mass: 0.3,
+  stiffness: 121,
+};
 
 export default function LegalContent({
   title,
@@ -20,10 +30,12 @@ export default function LegalContent({
       <section className="framer-o964q9" data-framer-name="Text">
         <div className="framer-1qio54b" data-framer-name="Container">
           <div className="ssr-variant hidden-ztf6bl">
-            <div
+            <motion.div
               className="framer-w1e0nk"
               data-framer-component-type="RichTextContainer"
-              style={{ opacity: 1, transform: "none" }}
+              initial={{ opacity: 0, y: 170 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...legalSpring, delay: 0.87 }}
             >
               <h1
                 className="framer-text framer-styles-preset-1qappj3"
@@ -31,11 +43,13 @@ export default function LegalContent({
               >
                 {title}
               </h1>
-            </div>
+            </motion.div>
           </div>
-          <div
+          <motion.div
             className="framer-ga0hfl"
-            style={{ opacity: 1, transform: "none" }}
+            initial={{ opacity: 0, y: 170 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...legalSpring, delay: 0.8 }}
           >
             <div className="framer-cdifl8" data-framer-name="Intro">
               <div
@@ -85,7 +99,7 @@ export default function LegalContent({
                 {body}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>
