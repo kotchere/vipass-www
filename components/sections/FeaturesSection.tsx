@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, LayoutGroup } from "framer-motion";
 
 const IMAGE_BOX_SHADOW =
   "rgba(0, 0, 0, 0.4) -0.800251px 0px 1.76055px -0.7px, rgba(0, 0, 0, 0.39) -2.1793px 0px 4.79445px -1.4px, rgba(0, 0, 0, 0.36) -4.78495px 0px 10.5269px -2.1px, rgba(0, 0, 0, 0.31) -10.6215px 0px 23.3673px -2.8px, rgba(0, 0, 0, 0.17) -27px 0px 59.4px -3.5px";
@@ -80,14 +80,16 @@ function FeatureItem({
   onClick,
 }: (typeof features)[number] & { isOpen: boolean; onClick: () => void }) {
   return (
-    <div className={containerClass} style={{ opacity: 1 }}>
-      <div
+    <motion.div className={containerClass} style={{ opacity: 1 }} layout transition={transition}>
+      <motion.div
         className={`framer-ssEy5 framer-PU6Rs framer-loOMQ framer-RKppn framer-1nd063s ${isOpen ? "framer-v-1nd063s" : "framer-v-1cek2le"}`}
         data-border="true"
         data-framer-name={isOpen ? "Desktop open" : "Desktop closed"}
         data-highlight="true"
         tabIndex={0}
         onClick={onClick}
+        layout
+        transition={transition}
         style={{
           "--border-bottom-width": isOpen ? "1px" : "0px",
           "--border-color": "rgba(255, 255, 255, 0.1)",
@@ -97,7 +99,6 @@ function FeatureItem({
           "--border-top-width": "0px",
           width: "100%",
           opacity: 1,
-          transform: "none",
           cursor: "pointer",
         } as React.CSSProperties}
       >
@@ -107,6 +108,7 @@ function FeatureItem({
             className="framer-vxijqi"
             data-framer-component-type="RichTextContainer"
             animate={{ opacity: isOpen ? 1 : 0.6 }}
+            initial={false}
             transition={transition}
             style={{ ...extractedWhite, transform: "none" } as React.CSSProperties}
           >
@@ -121,10 +123,11 @@ function FeatureItem({
         </div>
 
         {/* Content area */}
-        <div
+        <motion.div
           className="framer-1ox4qjh"
           data-framer-name="2"
-          data-border={!isOpen ? "true" : undefined}
+          layout
+          transition={transition}
           style={{
             "--border-bottom-width": isOpen ? "0px" : "1px",
             "--border-color": isOpen ? "rgba(0, 0, 0, 0)" : "rgba(255, 255, 255, 0.1)",
@@ -133,6 +136,7 @@ function FeatureItem({
             "--border-style": "solid",
             "--border-top-width": "0px",
             opacity: 1,
+            overflow: "hidden",
           } as React.CSSProperties}
         >
           {/* Expanded content (images + description) */}
@@ -140,11 +144,11 @@ function FeatureItem({
             className="framer-174h6l6"
             data-framer-name="Text"
             animate={{ opacity: isOpen ? 1 : 0 }}
+            initial={false}
             transition={transition}
-            style={{ opacity: isOpen ? 1 : 0 }}
+            layout
           >
             <div className="framer-1qdqpra" data-framer-name="1" style={{ opacity: 1 }}>
-              {/* Stacked images */}
               <div className="framer-1t0yt9s" data-framer-name="Images" style={{ opacity: 1 }}>
                 <div className="framer-knkn1" data-framer-name="Image" style={{ borderRadius: 12, opacity: 1 }}>
                   <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-framer-background-image-wrapper="true">
@@ -162,8 +166,6 @@ function FeatureItem({
                   </div>
                 </div>
               </div>
-
-              {/* Service info */}
               <div className="framer-14ruax2" data-framer-name="Service Info" style={{ opacity: 1 }}>
                 <div className="framer-1xsxun7" data-framer-component-type="RichTextContainer" style={{ ...extractedWhite, transform: "none", opacity: 1 } as React.CSSProperties}>
                   <p className="framer-text framer-styles-preset-1rii1wr" data-styles-preset="pAxoS1kOX" style={textColorStyle}>{title}</p>
@@ -181,6 +183,7 @@ function FeatureItem({
             data-border="true"
             data-framer-name="Button"
             animate={{ rotate: isOpen ? 0 : 270 }}
+            initial={false}
             transition={transition}
             style={{
               "--border-bottom-width": "1px",
@@ -196,6 +199,7 @@ function FeatureItem({
             <motion.div
               className="framer-1xewh8u-container"
               animate={{ rotate: isOpen ? 0 : 90 }}
+              initial={false}
               transition={transition}
               style={{ opacity: 1 }}
             >
@@ -214,14 +218,15 @@ function FeatureItem({
             data-framer-name="Service Title"
             data-framer-component-type="RichTextContainer"
             animate={{ opacity: isOpen ? 0 : 1 }}
+            initial={false}
             transition={transition}
             style={{ ...extractedWhite, transform: "none" } as React.CSSProperties}
           >
             <p className="framer-text framer-styles-preset-1oueo73" data-styles-preset="HLpRTFhim" style={textColorStyle}>{title}</p>
           </motion.div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -270,10 +275,12 @@ export default function FeaturesSection() {
         {/* Desktop feature items */}
         <div className="ssr-variant hidden-f3lv8x hidden-tsn51j">
           <div className="framer-1hh6mhy-container">
-            <div
+            <motion.div
               className="framer-hxVQG framer-x5wmst framer-v-x5wmst"
               data-framer-name="Desktop "
               style={{ width: "100%", opacity: 1 }}
+              layout
+              transition={transition}
             >
               <div
                 className="framer-o8ohx9-container"
@@ -282,15 +289,17 @@ export default function FeaturesSection() {
                 <div />
               </div>
 
-              {features.map((feature, index) => (
-                <FeatureItem
-                  key={feature.number}
-                  {...feature}
-                  isOpen={openItems.has(index)}
-                  onClick={() => toggleItem(index)}
-                />
-              ))}
-            </div>
+              <LayoutGroup>
+                {features.map((feature, index) => (
+                  <FeatureItem
+                    key={feature.number}
+                    {...feature}
+                    isOpen={openItems.has(index)}
+                    onClick={() => toggleItem(index)}
+                  />
+                ))}
+              </LayoutGroup>
+            </motion.div>
           </div>
         </div>
 
