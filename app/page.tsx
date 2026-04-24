@@ -1,3 +1,4 @@
+import Header from "@/components/layout/Header";
 import PreLoader from "@/components/sections/PreLoader";
 import HeroSection from "@/components/sections/HeroSection";
 import ExperiencesSection from "@/components/sections/ExperiencesSection";
@@ -13,8 +14,17 @@ export default function Home() {
       <div
         className="framer-D2wOp framer-128kipa"
         data-layout-template="true"
+        data-selection="true"
         style={{ minHeight: "100vh", width: "auto" }}
       >
+        <div
+          className="framer-gdzxqr-container"
+          data-framer-layout-hint-center-x="true"
+        >
+          <div className="ssr-variant hidden-1l0aw67 hidden-xwr0r7">
+            <Header />
+          </div>
+        </div>
         <div
           data-framer-root=""
           className="framer-CG7Jx framer-RKppn framer-tOAQB framer-loOMQ framer-PU6Rs framer-ofTFr framer-ZkB8p framer-Xxt6K framer-Pv7XK framer-m9VkI framer-0CPYn framer-EP1im framer-72rtr7"
