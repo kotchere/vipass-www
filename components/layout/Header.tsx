@@ -73,6 +73,15 @@ export default function Header() {
         backgroundColor: "var(--token-eea70a16-506d-4b3b-87b7-e85e653a6e7c, rgb(245, 245, 245))",
         width: "100%",
         opacity: 1,
+        ...(isOpen
+          ? {
+              height: "100vh",
+              overflow: "visible",
+              transition: "height 0.4s ease",
+            }
+          : {
+              transition: "height 0.4s ease",
+            }),
       }}
     >
       {/* ============================================================ */}
@@ -219,10 +228,15 @@ export default function Header() {
       <div
         className="framer-1rfamfy"
         data-framer-name="Body"
-        style={{ opacity: isOpen ? 1 : 0, pointerEvents: isOpen ? "auto" : "none" }}
+        style={{
+          opacity: isOpen ? 1 : 0,
+          pointerEvents: isOpen ? "auto" : "none",
+          top: isOpen ? 0 : undefined,
+          transition: "opacity 0.4s ease, top 0.4s ease",
+        }}
       >
         <nav className="framer-ugu5i9" data-framer-name="Navigation" style={{ opacity: 1 }}>
-          {mobileNavLinks.map((link) => (
+          {mobileNavLinks.map((link, index) => (
             <div
               key={link.href}
               className={link.wrapperClass}
@@ -231,6 +245,7 @@ export default function Header() {
                 willChange: "transform",
                 opacity: isOpen ? 1 : 0,
                 transform: isOpen ? "translateY(0px)" : "translateY(-40px)",
+                transition: `opacity 0.4s ease ${index * 0.05}s, transform 0.4s ease ${index * 0.05}s`,
               }}
             >
               <div className={link.containerClass} style={{ opacity: 1 }}>
@@ -239,6 +254,7 @@ export default function Header() {
                   data-framer-name="Desktop"
                   data-highlight="true"
                   href={link.href}
+                  onClick={() => setIsOpen(false)}
                   {...(link.isCurrent ? { "data-framer-page-link-current": "true" } : {})}
                   tabIndex={0}
                   style={{ opacity: 1 }}
