@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, LayoutGroup } from "framer-motion";
+import { motion } from "framer-motion";
 
 const IMAGE_BOX_SHADOW =
   "rgba(0, 0, 0, 0.4) -0.800251px 0px 1.76055px -0.7px, rgba(0, 0, 0, 0.39) -2.1793px 0px 4.79445px -1.4px, rgba(0, 0, 0, 0.36) -4.78495px 0px 10.5269px -2.1px, rgba(0, 0, 0, 0.31) -10.6215px 0px 23.3673px -2.8px, rgba(0, 0, 0, 0.17) -27px 0px 59.4px -3.5px";
@@ -80,27 +80,20 @@ function FeatureItem({
   onClick,
 }: (typeof features)[number] & { isOpen: boolean; onClick: () => void }) {
   return (
-    <motion.div className={containerClass} style={{ opacity: 1 }} layout transition={transition}>
-      <motion.div
+    <div className={containerClass} style={{ opacity: 1 }}>
+      <div
         className={`framer-ssEy5 framer-PU6Rs framer-loOMQ framer-RKppn framer-1nd063s ${isOpen ? "framer-v-1nd063s" : "framer-v-1cek2le"}`}
         data-border="true"
         data-framer-name={isOpen ? "Desktop open" : "Desktop closed"}
         data-highlight="true"
         tabIndex={0}
         onClick={onClick}
-        layout
-        transition={transition}
         style={{
-          "--border-bottom-width": isOpen ? "1px" : "0px",
-          "--border-color": "rgba(255, 255, 255, 0.1)",
-          "--border-left-width": "0px",
-          "--border-right-width": "0px",
-          "--border-style": "solid",
-          "--border-top-width": "0px",
           width: "100%",
           opacity: 1,
+          transform: "none",
           cursor: "pointer",
-        } as React.CSSProperties}
+        }}
       >
         {/* Number column */}
         <div className="framer-wos98z" data-framer-name="1" style={{ opacity: 1 }}>
@@ -122,31 +115,20 @@ function FeatureItem({
           </motion.div>
         </div>
 
-        {/* Content area */}
-        <motion.div
+        {/* Content area — CSS variant class handles border + layout */}
+        <div
           className="framer-1ox4qjh"
           data-framer-name="2"
-          layout
-          transition={transition}
-          style={{
-            "--border-bottom-width": isOpen ? "0px" : "1px",
-            "--border-color": isOpen ? "rgba(0, 0, 0, 0)" : "rgba(255, 255, 255, 0.1)",
-            "--border-left-width": "0px",
-            "--border-right-width": "0px",
-            "--border-style": "solid",
-            "--border-top-width": "0px",
-            opacity: 1,
-            overflow: "hidden",
-          } as React.CSSProperties}
+          data-border="true"
+          style={{ opacity: 1 } as React.CSSProperties}
         >
-          {/* Expanded content (images + description) */}
+          {/* Expanded content (images + description) — CSS positions it */}
           <motion.div
             className="framer-174h6l6"
             data-framer-name="Text"
             animate={{ opacity: isOpen ? 1 : 0 }}
             initial={false}
             transition={transition}
-            layout
           >
             <div className="framer-1qdqpra" data-framer-name="1" style={{ opacity: 1 }}>
               <div className="framer-1t0yt9s" data-framer-name="Images" style={{ opacity: 1 }}>
@@ -212,7 +194,7 @@ function FeatureItem({
             </motion.div>
           </motion.div>
 
-          {/* Service title (visible when closed) */}
+          {/* Service title (visible when closed, CSS positions it) */}
           <motion.div
             className="framer-1pna3mw"
             data-framer-name="Service Title"
@@ -224,9 +206,9 @@ function FeatureItem({
           >
             <p className="framer-text framer-styles-preset-1oueo73" data-styles-preset="HLpRTFhim" style={textColorStyle}>{title}</p>
           </motion.div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -275,12 +257,10 @@ export default function FeaturesSection() {
         {/* Desktop feature items */}
         <div className="ssr-variant hidden-f3lv8x hidden-tsn51j">
           <div className="framer-1hh6mhy-container">
-            <motion.div
+            <div
               className="framer-hxVQG framer-x5wmst framer-v-x5wmst"
               data-framer-name="Desktop "
               style={{ width: "100%", opacity: 1 }}
-              layout
-              transition={transition}
             >
               <div
                 className="framer-o8ohx9-container"
@@ -289,17 +269,15 @@ export default function FeaturesSection() {
                 <div />
               </div>
 
-              <LayoutGroup>
-                {features.map((feature, index) => (
-                  <FeatureItem
-                    key={feature.number}
-                    {...feature}
-                    isOpen={openItems.has(index)}
-                    onClick={() => toggleItem(index)}
-                  />
-                ))}
-              </LayoutGroup>
-            </motion.div>
+              {features.map((feature, index) => (
+                <FeatureItem
+                  key={feature.number}
+                  {...feature}
+                  isOpen={openItems.has(index)}
+                  onClick={() => toggleItem(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
