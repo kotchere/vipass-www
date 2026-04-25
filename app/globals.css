@@ -3,3 +3,24 @@
 html {
   scroll-behavior: smooth;
 }
+
+#experiences,
+#features,
+#stats,
+#faq {
+  scroll-margin-top: clamp(96px, 11vw, 140px);
+}
+
+.top-nav-link .framer-text,
+.hamburger-menu-link,
+.hamburger-menu-link .framer-text {
+  transition: color 160ms ease;
+}
+
+.top-nav-link:hover .framer-text,
+.hamburger-menu-link:hover,
+.hamburger-menu-link:hover .framer-text {
+  --framer-text-color: #ff0000 !important;
+  --framer-link-hover-text-color: #ff0000 !important;
+  color: #ff0000 !important;
+}

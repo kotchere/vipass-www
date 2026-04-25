@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { LayoutGroup, motion } from "framer-motion";
 
 const IMAGE_BOX_SHADOW =
   "rgba(0, 0, 0, 0.4) -0.800251px 0px 1.76055px -0.7px, rgba(0, 0, 0, 0.39) -2.1793px 0px 4.79445px -1.4px, rgba(0, 0, 0, 0.36) -4.78495px 0px 10.5269px -2.1px, rgba(0, 0, 0, 0.31) -10.6215px 0px 23.3673px -2.8px, rgba(0, 0, 0, 0.17) -27px 0px 59.4px -3.5px";
@@ -68,7 +68,24 @@ const extractedWhite = {
   "--framer-paragraph-spacing": "0px",
 } as React.CSSProperties;
 
-const transition = { delay: 0, duration: 0.3, ease: [0.82, 0.11, 0.37, 0.82] as [number, number, number, number], type: "tween" as const };
+const ACCORDION_TRANSITION = {
+  delay: 0,
+  duration: 0.3,
+  ease: [0.82, 0.11, 0.37, 0.82] as [number, number, number, number],
+  type: "tween" as const,
+};
+
+const DOWNLOAD_BUTTON_TRANSITION = {
+  bounce: 0.35,
+  delay: 0,
+  duration: 0.39,
+  type: "spring" as const,
+};
+
+const DESKTOP_OPEN_HEIGHT = 217;
+const DESKTOP_CLOSED_HEIGHT = 66;
+const DESKTOP_CLOSED_DETAILS_Y = -171;
+const DESKTOP_OPEN_PADDING_TOP = 30;
 
 function FeatureItem({
   number,
@@ -76,26 +93,38 @@ function FeatureItem({
   description,
   images,
   containerClass,
-  isOpen,
-  onClick,
-}: (typeof features)[number] & { isOpen: boolean; onClick: () => void }) {
+  defaultOpen,
+}: (typeof features)[number] & { defaultOpen?: boolean }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen ?? false);
+
   return (
     <div className={containerClass} style={{ opacity: 1 }}>
-      <div
+      <motion.div
         className={`framer-ssEy5 framer-PU6Rs framer-loOMQ framer-RKppn framer-1nd063s ${isOpen ? "framer-v-1nd063s" : "framer-v-1cek2le"}`}
         data-border="true"
         data-framer-name={isOpen ? "Desktop open" : "Desktop closed"}
         data-highlight="true"
         tabIndex={0}
-        onClick={onClick}
+        onTap={() => setIsOpen((prev) => !prev)}
+        animate={
+          {
+            "--border-bottom-width": isOpen ? "1px" : "0px",
+            height: isOpen ? DESKTOP_OPEN_HEIGHT : DESKTOP_CLOSED_HEIGHT,
+            paddingTop: isOpen ? DESKTOP_OPEN_PADDING_TOP : 0,
+          } as Record<string, string | number>
+        }
+        initial={false}
+        transition={ACCORDION_TRANSITION}
         style={{
-          "--border-bottom-width": isOpen ? "1px" : "0px",
+          "--border-bottom-width": "1px",
           "--border-color": "rgba(255, 255, 255, 0.1)",
           "--border-left-width": "0px",
           "--border-right-width": "0px",
           "--border-style": "solid",
           "--border-top-width": "0px",
           width: "100%",
+          height: DESKTOP_OPEN_HEIGHT,
+          paddingTop: DESKTOP_OPEN_PADDING_TOP,
           opacity: 1,
           transform: "none",
           cursor: "pointer",
@@ -108,7 +137,7 @@ function FeatureItem({
             data-framer-component-type="RichTextContainer"
             animate={{ opacity: isOpen ? 1 : 0.6 }}
             initial={false}
-            transition={transition}
+            transition={ACCORDION_TRANSITION}
             style={{ ...extractedWhite, transform: "none" } as React.CSSProperties}
           >
             <p
@@ -122,13 +151,19 @@ function FeatureItem({
         </div>
 
         {/* Content area — CSS variant class handles layout, borders via inline vars */}
-        <div
+        <motion.div
           className="framer-1ox4qjh"
           data-framer-name="2"
           data-border="true"
-          style={{
+          animate={{
             "--border-bottom-width": isOpen ? "0px" : "1px",
             "--border-color": isOpen ? "rgba(0, 0, 0, 0)" : "rgba(255, 255, 255, 0.1)",
+          } as Record<string, string>}
+          initial={false}
+          transition={ACCORDION_TRANSITION}
+          style={{
+            "--border-bottom-width": "0px",
+            "--border-color": "rgba(0, 0, 0, 0)",
             "--border-left-width": "0px",
             "--border-right-width": "0px",
             "--border-style": "solid",
@@ -140,9 +175,10 @@ function FeatureItem({
           <motion.div
             className="framer-174h6l6"
             data-framer-name="Text"
-            animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -20 }}
+            animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : DESKTOP_CLOSED_DETAILS_Y }}
             initial={false}
-            transition={transition}
+            transition={ACCORDION_TRANSITION}
+            style={{ opacity: 1 }}
           >
             <div className="framer-1qdqpra" data-framer-name="1" style={{ opacity: 1 }}>
               <div className="framer-1t0yt9s" data-framer-name="Images" style={{ opacity: 1 }}>
@@ -180,7 +216,7 @@ function FeatureItem({
             data-framer-name="Button"
             animate={{ rotate: isOpen ? 0 : 270 }}
             initial={false}
-            transition={transition}
+            transition={ACCORDION_TRANSITION}
             style={{
               "--border-bottom-width": "1px",
               "--border-color": "rgb(49, 49, 49)",
@@ -196,13 +232,18 @@ function FeatureItem({
               className="framer-1xewh8u-container"
               animate={{ rotate: isOpen ? 0 : 90 }}
               initial={false}
-              transition={transition}
+              transition={ACCORDION_TRANSITION}
               style={{ opacity: 1 }}
             >
               <div className="framer-ZPULr framer-1xcu7rj framer-v-1xcu7rj" data-framer-name="Variant 1" style={{ height: "100%", width: "100%", opacity: 1 }}>
-                {!isOpen && (
-                  <div className="framer-2rakpf" data-framer-name="V" style={{ backgroundColor: "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))", opacity: 1 }} />
-                )}
+                <motion.div
+                  className="framer-2rakpf"
+                  data-framer-name="V"
+                  animate={{ opacity: isOpen ? 0 : 1 }}
+                  initial={false}
+                  transition={ACCORDION_TRANSITION}
+                  style={{ backgroundColor: "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))", opacity: 1 }}
+                />
                 <div className="framer-48ytin" data-framer-name="H" style={{ backgroundColor: "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))", transform: "rotate(90deg)", opacity: 1 }} />
               </div>
             </motion.div>
@@ -213,33 +254,21 @@ function FeatureItem({
             className="framer-1pna3mw"
             data-framer-name="Service Title"
             data-framer-component-type="RichTextContainer"
-            animate={{ opacity: isOpen ? 0 : 1, y: isOpen ? 10 : 0 }}
+            animate={{ opacity: isOpen ? 0 : 1 }}
             initial={false}
-            transition={transition}
-            style={{ ...extractedWhite } as React.CSSProperties}
+            transition={ACCORDION_TRANSITION}
+            style={{ ...extractedWhite, opacity: 0 } as React.CSSProperties}
           >
             <p className="framer-text framer-styles-preset-1oueo73" data-styles-preset="HLpRTFhim" style={textColorStyle}>{title}</p>
           </motion.div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
 
 export default function FeaturesSection() {
-  const [openItems, setOpenItems] = useState<Set<number>>(new Set([0]));
-
-  const toggleItem = (index: number) => {
-    setOpenItems((prev) => {
-      const next = new Set(prev);
-      if (next.has(index)) {
-        next.delete(index);
-      } else {
-        next.add(index);
-      }
-      return next;
-    });
-  };
+  const [isDownloadHovered, setIsDownloadHovered] = useState(false);
 
   return (
     <section className="framer-8d5aox" data-framer-name="Features" id="features">
@@ -283,14 +312,15 @@ export default function FeaturesSection() {
                 <div />
               </div>
 
-              {features.map((feature, index) => (
-                <FeatureItem
-                  key={feature.number}
-                  {...feature}
-                  isOpen={openItems.has(index)}
-                  onClick={() => toggleItem(index)}
-                />
-              ))}
+              <LayoutGroup id="features-accordion">
+                {features.map((feature, index) => (
+                  <FeatureItem
+                    key={feature.number}
+                    {...feature}
+                    defaultOpen={index === 0}
+                  />
+                ))}
+              </LayoutGroup>
             </div>
           </div>
         </div>
@@ -301,11 +331,21 @@ export default function FeaturesSection() {
           <div className="framer-o105nz" data-framer-name="Container">
             <div className="ssr-variant hidden-f3lv8x">
               <div className="framer-r9wof4-container">
-                <a
-                  className="framer-vJRT3 framer-rbw179 framer-v-rbw179 framer-1qniyoc"
+                <motion.a
+                  className={`framer-vJRT3 framer-rbw179 framer-v-rbw179 framer-1qniyoc${isDownloadHovered ? " hover" : ""}`}
                   data-framer-name="Default"
                   data-reset="button"
                   href="/#getapp"
+                  onHoverStart={() => setIsDownloadHovered(true)}
+                  onHoverEnd={() => setIsDownloadHovered(false)}
+                  layout
+                  animate={{
+                    backgroundColor: isDownloadHovered
+                      ? "rgb(235, 235, 235)"
+                      : "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
+                  }}
+                  initial={false}
+                  transition={DOWNLOAD_BUTTON_TRANSITION}
                   style={{
                     backgroundColor:
                       "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
@@ -313,10 +353,17 @@ export default function FeaturesSection() {
                     opacity: 1,
                   }}
                 >
-                  <div
+                  <motion.div
                     className="framer-1mhfyus"
                     data-framer-name="Submit 1"
                     data-framer-component-type="RichTextContainer"
+                    layout
+                    animate={{
+                      opacity: isDownloadHovered ? 1 : 0,
+                      x: isDownloadHovered ? 0 : "-50%",
+                    }}
+                    initial={false}
+                    transition={DOWNLOAD_BUTTON_TRANSITION}
                     style={{
                       "--extracted-r6o4lv": "var(--variable-reference-iyuXB1N8q-eDUVCTTXq)",
                       "--framer-link-text-color": "rgb(0, 153, 255)",
@@ -325,8 +372,7 @@ export default function FeaturesSection() {
                         "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                       "--variable-reference-R8iwJ2h7U-eDUVCTTXq":
                         "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
-                      opacity: 1,
-                      transform: "translateX(-50%)",
+                      opacity: 0,
                     } as React.CSSProperties}
                   >
                     <p
@@ -338,16 +384,25 @@ export default function FeaturesSection() {
                         "--framer-font-weight": "600",
                         "--framer-letter-spacing": "-0.04em",
                         "--framer-text-color":
-                          "var(--extracted-r6o4lv, var(--variable-reference-iyuXB1N8q-eDUVCTTXq))",
+                          isDownloadHovered
+                            ? "var(--extracted-r6o4lv, var(--variable-reference-R8iwJ2h7U-eDUVCTTXq))"
+                            : "var(--extracted-r6o4lv, var(--variable-reference-iyuXB1N8q-eDUVCTTXq))",
                       } as React.CSSProperties}
                     >
                       Download
                     </p>
-                  </div>
-                  <div
+                  </motion.div>
+                  <motion.div
                     className="framer-meoha7"
                     data-framer-name="Submit 2"
                     data-framer-component-type="RichTextContainer"
+                    layout
+                    animate={{
+                      opacity: isDownloadHovered ? 0 : 1,
+                      x: isDownloadHovered ? "-50%" : 0,
+                    }}
+                    initial={false}
+                    transition={DOWNLOAD_BUTTON_TRANSITION}
                     style={{
                       "--extracted-r6o4lv": "var(--variable-reference-iyuXB1N8q-eDUVCTTXq)",
                       "--framer-link-text-color": "rgb(0, 153, 255)",
@@ -357,7 +412,6 @@ export default function FeaturesSection() {
                       "--variable-reference-R8iwJ2h7U-eDUVCTTXq":
                         "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                       opacity: 1,
-                      transform: "none",
                     } as React.CSSProperties}
                   >
                     <p
@@ -369,13 +423,15 @@ export default function FeaturesSection() {
                         "--framer-font-weight": "600",
                         "--framer-letter-spacing": "-0.04em",
                         "--framer-text-color":
-                          "var(--extracted-r6o4lv, var(--variable-reference-iyuXB1N8q-eDUVCTTXq))",
+                          isDownloadHovered
+                            ? "var(--extracted-r6o4lv, var(--variable-reference-R8iwJ2h7U-eDUVCTTXq))"
+                            : "var(--extracted-r6o4lv, var(--variable-reference-iyuXB1N8q-eDUVCTTXq))",
                       } as React.CSSProperties}
                     >
                       Download
                     </p>
-                  </div>
-                </a>
+                  </motion.div>
+                </motion.a>
               </div>
             </div>
           </div>

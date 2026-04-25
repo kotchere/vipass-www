@@ -11,10 +11,10 @@ interface FaqItemProps {
 }
 
 const faqTransition = {
+  bounce: 0.2,
   delay: 0,
-  duration: 0.3,
-  ease: [0.68, 0, 0.16, 0.97] as [number, number, number, number],
-  type: "tween" as const,
+  duration: 0.4,
+  type: "spring" as const,
 };
 
 export default function FaqItem({
@@ -88,7 +88,7 @@ export default function FaqItem({
       <motion.div
         animate={{ height: isOpen ? measuredHeight : 0 }}
         initial={false}
-        transition={{ height: faqTransition }}
+        transition={faqTransition}
         style={{
           overflow: "hidden",
           willChange: "height",

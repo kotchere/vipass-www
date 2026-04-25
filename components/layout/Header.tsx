@@ -12,7 +12,7 @@ const desktopNavLinks = [
 ];
 
 const mobileNavLinks = [
-  { label: "Home", href: "/", containerClass: "framer-1l0v3f0-container", wrapperClass: "framer-6z5t2m", isCurrent: true },
+  { label: "Home", href: "/#home", containerClass: "framer-1l0v3f0-container", wrapperClass: "framer-6z5t2m", isCurrent: true },
   { label: "Experiences", href: "/#experiences", containerClass: "framer-qy8ut1-container", wrapperClass: "framer-f7i6o0", isCurrent: false },
   { label: "Features", href: "/#features", containerClass: "framer-1cb9u8q-container", wrapperClass: "framer-9p1fl7", isCurrent: false },
   { label: "Stats", href: "/#stats", containerClass: "framer-dn12q8-container", wrapperClass: "framer-15pwy5", isCurrent: false },
@@ -98,7 +98,7 @@ export default function Header() {
     >
       <nav className="framer-120hnkq" data-framer-name="Top" style={{ opacity: 1 }}>
         {/* Logo */}
-        <a className="framer-iogiyt framer-1a90gm8" data-framer-name="Link" href="/#main-1" style={{ opacity: 1 }}>
+        <a className="framer-iogiyt framer-1a90gm8" data-framer-name="Link" href="/#home" style={{ opacity: 1 }}>
           <div className="framer-kxb2zt-container" style={{ opacity: 1 }}>
             <div className="framer-eKVcD framer-1ppeyn8 framer-v-1ppeyn8" data-framer-name="Desktop" style={{ opacity: 1 }}>
               <div className="framer-1lkcsgp" data-framer-name="Logo" style={{ opacity: 1 }}>
@@ -123,7 +123,7 @@ export default function Header() {
         {desktopNavLinks.map((link) => (
           <div key={link.href} className={link.containerClass} style={{ opacity: 1 }}>
             <a
-              className="framer-pPkX6 framer-7g0p1o framer-v-7g0p1o framer-1ljdjoh"
+              className="framer-pPkX6 framer-7g0p1o framer-v-7g0p1o framer-1ljdjoh top-nav-link"
               data-framer-name="Default"
               href={link.href}
               style={{ opacity: 1 }}
@@ -240,7 +240,7 @@ export default function Header() {
               >
                 <div className={link.containerClass} style={{ opacity: 1 }}>
                   <a
-                    className="framer-IFf4n framer-14ac7s4 framer-v-14ac7s4 framer-1435c2t"
+                    className="framer-IFf4n framer-14ac7s4 framer-v-14ac7s4 framer-1435c2t hamburger-menu-link"
                     data-framer-name="Desktop"
                     data-highlight="true"
                     href={link.href}
@@ -273,7 +273,7 @@ export default function Header() {
                 style={{ "--framer-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
               >
                 <p className="framer-text framer-styles-preset-1mf8d9g" data-styles-preset="ypR5VEWEl">
-                  <a className="framer-text framer-styles-preset-1wi7vce" data-styles-preset="nCQNaN8LD" href="/legal/privacy-policy">
+                  <a className="framer-text framer-styles-preset-1wi7vce hamburger-menu-link" data-styles-preset="nCQNaN8LD" href="/legal/privacy-policy">
                     Privacy Policy
                   </a>
                 </p>
@@ -286,7 +286,7 @@ export default function Header() {
                 style={{ "--framer-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
               >
                 <p className="framer-text framer-styles-preset-1mf8d9g" data-styles-preset="ypR5VEWEl">
-                  <a className="framer-text framer-styles-preset-1wi7vce" data-styles-preset="nCQNaN8LD" href="/legal/terms-of-service">
+                  <a className="framer-text framer-styles-preset-1wi7vce hamburger-menu-link" data-styles-preset="nCQNaN8LD" href="/legal/terms-of-service">
                     Terms of Service
                   </a>
                 </p>

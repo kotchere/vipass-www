@@ -2,7 +2,7 @@ import GrainOverlay from "@/components/ui/GrainOverlay";
 
 export default function HeroSection() {
   return (
-    <section className="framer-ykgwn3" data-framer-name="Hero" id="hero">
+    <section className="framer-ykgwn3" data-framer-name="Hero" id="home">
       <div className="framer-19j2lei" data-framer-name="First screen">
         <div className="ssr-variant hidden-f3lv8x">
           <div
@@ -11,7 +11,7 @@ export default function HeroSection() {
             data-framer-name="Container"
             style={{ opacity: 1, transform: "none", willChange: "transform" }}
           >
-            <div className="framer-1kxwov3" data-framer-name="Content" id="main-1">
+            <div className="framer-1kxwov3" data-framer-name="Content">
               <div className="framer-13u7xh5" data-framer-name="Top">
                 <div className="framer-1spzsp8" data-framer-name="Company">
                   <div className="framer-al5dzj" data-framer-name="Title">
