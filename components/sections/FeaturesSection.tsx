@@ -89,11 +89,17 @@ function FeatureItem({
         tabIndex={0}
         onClick={onClick}
         style={{
+          "--border-bottom-width": isOpen ? "1px" : "0px",
+          "--border-color": "rgba(255, 255, 255, 0.1)",
+          "--border-left-width": "0px",
+          "--border-right-width": "0px",
+          "--border-style": "solid",
+          "--border-top-width": "0px",
           width: "100%",
           opacity: 1,
           transform: "none",
           cursor: "pointer",
-        }}
+        } as React.CSSProperties}
       >
         {/* Number column */}
         <div className="framer-wos98z" data-framer-name="1" style={{ opacity: 1 }}>
@@ -115,18 +121,26 @@ function FeatureItem({
           </motion.div>
         </div>
 
-        {/* Content area — CSS variant class handles border + layout */}
+        {/* Content area — CSS variant class handles layout, borders via inline vars */}
         <div
           className="framer-1ox4qjh"
           data-framer-name="2"
           data-border="true"
-          style={{ opacity: 1 } as React.CSSProperties}
+          style={{
+            "--border-bottom-width": isOpen ? "0px" : "1px",
+            "--border-color": isOpen ? "rgba(0, 0, 0, 0)" : "rgba(255, 255, 255, 0.1)",
+            "--border-left-width": "0px",
+            "--border-right-width": "0px",
+            "--border-style": "solid",
+            "--border-top-width": "0px",
+            opacity: 1,
+          } as React.CSSProperties}
         >
           {/* Expanded content (images + description) — CSS positions it */}
           <motion.div
             className="framer-174h6l6"
             data-framer-name="Text"
-            animate={{ opacity: isOpen ? 1 : 0 }}
+            animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -20 }}
             initial={false}
             transition={transition}
           >
@@ -199,10 +213,10 @@ function FeatureItem({
             className="framer-1pna3mw"
             data-framer-name="Service Title"
             data-framer-component-type="RichTextContainer"
-            animate={{ opacity: isOpen ? 0 : 1 }}
+            animate={{ opacity: isOpen ? 0 : 1, y: isOpen ? 10 : 0 }}
             initial={false}
             transition={transition}
-            style={{ ...extractedWhite, transform: "none" } as React.CSSProperties}
+            style={{ ...extractedWhite } as React.CSSProperties}
           >
             <p className="framer-text framer-styles-preset-1oueo73" data-styles-preset="HLpRTFhim" style={textColorStyle}>{title}</p>
           </motion.div>
