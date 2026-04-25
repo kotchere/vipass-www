@@ -1,4 +1,15 @@
+"use client";
+
+import { useState } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
+
+const HOVER_TRANSITION = {
+  delay: 0,
+  duration: 0.45,
+  ease: [0.82, 0.11, 0.37, 0.82] as [number, number, number, number],
+  type: "tween" as const,
+};
 
 interface ExperienceCardProps {
   href: string;
@@ -15,13 +26,19 @@ export default function ExperienceCard({
   logoHeight,
   imageSrc,
 }: ExperienceCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div className="ssr-variant hidden-f3lv8x">
       <div className="framer-g46orm-container">
-        <a
-          className="framer-tEL27 framer-1of3use framer-v-1of3use framer-1pxbyww"
+        <motion.a
+          className={`framer-tEL27 framer-1of3use framer-v-1of3use framer-1pxbyww${isHovered ? " hover" : ""}`}
           data-framer-name="Desktop"
           href={href}
+          onBlur={() => setIsHovered(false)}
+          onFocus={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+          onHoverStart={() => setIsHovered(true)}
           style={{
             width: "100%",
             willChange: "transform",
@@ -43,10 +60,13 @@ export default function ExperienceCard({
               opacity: 1,
             }}
           >
-            <div
+            <motion.div
               className="framer-jem6dr"
               data-framer-name="Logo"
-              style={{ transform: "none", opacity: 1 }}
+              animate={{ scale: isHovered ? 0.8 : 1 }}
+              initial={false}
+              transition={HOVER_TRANSITION}
+              style={{ opacity: 1 }}
             >
               <div
                 style={{
@@ -76,25 +96,38 @@ export default function ExperienceCard({
                   }}
                 />
               </div>
-            </div>
-            <div
+            </motion.div>
+            <motion.div
               className="framer-ybsvxe"
               data-framer-name="Image container"
+              animate={{ inset: isHovered ? 0 : 4 }}
+              initial={false}
+              transition={HOVER_TRANSITION}
               style={{ borderRadius: 16, opacity: 1 }}
             >
-              <div
+              <motion.div
                 className="framer-16bbbzt"
                 data-framer-name="blackout"
+                animate={{ opacity: isHovered ? 0.2 : 0.15 }}
+                initial={false}
+                transition={HOVER_TRANSITION}
                 style={{
                   backgroundColor:
                     "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                   opacity: 0.15,
                 }}
               />
-              <div
+              <motion.div
                 className="framer-jh1lcx"
                 data-framer-name="Image"
-                style={{ filter: "none", transform: "none", opacity: 1 }}
+                animate={{
+                  filter: isHovered ? "blur(7px)" : "none",
+                  scale: isHovered ? 1.13 : 1,
+                  WebkitFilter: isHovered ? "blur(7px)" : "none",
+                } as Record<string, string | number>}
+                initial={false}
+                transition={HOVER_TRANSITION}
+                style={{ filter: "none", opacity: 1, WebkitFilter: "none" }}
               >
                 <div
                   style={{
@@ -123,10 +156,10 @@ export default function ExperienceCard({
                     }}
                   />
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </a>
+        </motion.a>
       </div>
     </div>
   );
