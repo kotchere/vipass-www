@@ -7,17 +7,16 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalContent
         title="Privacy policy."
-        lastUpdated="Mar 5, 2025"
-        lastUpdatedDatetime="2025-03-05T00:00:00.000Z"
+        lastUpdated="Feb 27, 2026"
+        lastUpdatedDatetime="2026-02-27T00:00:00.000Z"
         intro={
           <p
             className="f-text f-styles-preset-1rii1wr"
             data-styles-preset="pAxoS1kOX"
           >
-            Fabrica&reg; Studio (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or
-            &ldquo;us&rdquo;) values your privacy. This Privacy Policy explains
-            how we collect, use, and share information about you when you visit
-            our website, fabrica.com (the &ldquo;Site&rdquo;).
+            Vipass values your privacy. This Privacy Policy explains how we
+            collect, use, store, and protect your personal information when you
+            use the Vipass mobile application.
           </p>
         }
         body={
@@ -25,308 +24,207 @@ export default function PrivacyPolicyPage() {
             <h2 className="f-text f-styles-preset-rmf37p">
               1. Information We Collect
             </h2>
-            <h3 className="f-text f-styles-preset-ffkok6">
-              1.1 Personal Information
-            </h3>
             <p className="f-text f-styles-preset-69h8uc">
-              When you interact with our Site, we may collect personal
-              information that you voluntarily provide to us, including:
+              We collect information you provide directly, such as your name,
+              email address, phone number, and payment details when you create an
+              account or purchase tickets. We also collect usage data
+              automatically, including device information, IP address, app
+              interactions, and location data (with your permission) to improve
+              our services.
             </p>
-            <ul className="f-text">
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">Name</p>
-              </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  Email address
-                </p>
-              </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  Phone number
-                </p>
-              </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  Company name
-                </p>
-              </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  Any other information you provide when contacting us or
-                  signing up for our services
-                </p>
-              </li>
-            </ul>
-            <h3 className="f-text f-styles-preset-ffkok6">
-              1.2 Non-Personal Information
-            </h3>
-            <p className="f-text f-styles-preset-69h8uc">
-              We automatically collect non-personal information when you visit
-              our Site, including:
-            </p>
-            <ul className="f-text">
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  IP address
-                </p>
-              </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  Browser type and version
-                </p>
-              </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  Device type
-                </p>
-              </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  Referring URL
-                </p>
-              </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  Pages visited and time spent on the Site
-                </p>
-              </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
-                <p className="f-text f-styles-preset-69h8uc">
-                  Cookies and similar tracking technologies
-                </p>
-              </li>
-            </ul>
 
             <h2 className="f-text f-styles-preset-rmf37p">
               2. How We Use Your Information
             </h2>
             <p className="f-text f-styles-preset-69h8uc">
-              We use the collected information to:
+              We use your information to:
             </p>
             <ul className="f-text">
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Provide, operate, and improve our services
+                  Provide and maintain the App and its features
                 </p>
               </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Communicate with you about inquiries or services
+                  Process ticket purchases and payments
                 </p>
               </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Personalize user experience
+                  Send order confirmations and event updates
                 </p>
               </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Monitor and analyze Site usage to enhance functionality
+                  Personalise your experience and recommend events
                 </p>
               </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Ensure security and prevent fraudulent activities
+                  Communicate with you about your account or support requests
+                </p>
+              </li>
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
+                <p className="f-text f-styles-preset-69h8uc">
+                  Analyse usage patterns to improve the App
+                </p>
+              </li>
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
+                <p className="f-text f-styles-preset-69h8uc">
+                  Prevent fraud and ensure platform security
                 </p>
               </li>
             </ul>
 
             <h2 className="f-text f-styles-preset-rmf37p">
-              3. How We Share Your Information
+              3. Sharing Your Information
             </h2>
             <p className="f-text f-styles-preset-69h8uc">
-              We do not sell your personal information. However, we may share it
-              in the following circumstances:
+              We do not sell your personal information. We may share your data
+              with:
             </p>
             <ul className="f-text">
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Service Providers:&nbsp;We may share information with
-                  third-party vendors who assist us in website hosting,
-                  analytics, and customer service.
+                  Event organisers, to fulfil ticket purchases and manage event
+                  entry
                 </p>
               </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Legal Compliance:&nbsp;If required by law, we may disclose
-                  information to comply with legal obligations, enforce
-                  agreements, or protect our rights.
+                  Payment processors, to complete transactions securely
                 </p>
               </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Business Transfers:&nbsp;In case of a merger, acquisition, or
-                  sale of assets, your information may be transferred to a
-                  successor entity.
+                  Analytics providers, to help us understand App usage
+                </p>
+              </li>
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
+                <p className="f-text f-styles-preset-69h8uc">
+                  Law enforcement, when required by law or to protect our rights
                 </p>
               </li>
             </ul>
-
-            <h2 className="f-text f-styles-preset-rmf37p">
-              4. Cookies and Tracking Technologies
-            </h2>
             <p className="f-text f-styles-preset-69h8uc">
-              We use cookies and similar tracking technologies to enhance user
-              experience and collect analytical data. You can disable cookies in
-              your browser settings, but some features of the Site may not
-              function properly.
+              All third parties are required to handle your data in accordance
+              with applicable privacy laws.
             </p>
 
             <h2 className="f-text f-styles-preset-rmf37p">
-              5. Data Retention
+              4. Data Storage and Security
             </h2>
             <p className="f-text f-styles-preset-69h8uc">
-              We retain personal information for as long as necessary to fulfill
-              the purposes outlined in this Privacy Policy, unless a longer
-              retention period is required by law.
+              Your data is stored securely using industry-standard encryption and
+              security measures. We use Supabase for database services and Stripe
+              for payment processing, both of which maintain rigorous security
+              standards. While we take reasonable precautions to protect your
+              information, no method of electronic storage is completely secure.
             </p>
 
             <h2 className="f-text f-styles-preset-rmf37p">
-              6. Security
+              5. Cookies and Tracking
             </h2>
             <p className="f-text f-styles-preset-69h8uc">
-              We take reasonable precautions to protect your information.
-              However, no data transmission over the internet is 100% secure.
-              You acknowledge that you provide your information at your own risk.
+              The App may use analytics tools and tracking technologies to
+              collect usage data. This helps us understand how the App is used
+              and improve our services. You can manage tracking preferences
+              through your device settings.
             </p>
 
             <h2 className="f-text f-styles-preset-rmf37p">
-              7. Third-Party Links
+              6. Your Rights
             </h2>
             <p className="f-text f-styles-preset-69h8uc">
-              Our Site may contain links to third-party websites. We are not
-              responsible for the privacy practices of these external sites.
-              Please review their policies before providing personal information.
-            </p>
-
-            <h2 className="f-text f-styles-preset-rmf37p">
-              8. Your Rights and Choices
-            </h2>
-            <p className="f-text f-styles-preset-69h8uc">
-              Depending on your jurisdiction, you may have the right to:
+              Depending on your location, you may have the right to:
             </p>
             <ul className="f-text">
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Access the personal information we hold about you
+                  Access the personal data we hold about you
                 </p>
               </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Request correction or deletion of your information
+                  Request correction of inaccurate information
                 </p>
               </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Opt out of marketing communications
+                  Request deletion of your personal data
                 </p>
               </li>
-              <li
-                data-preset-tag="p"
-                className="f-text f-styles-preset-69h8uc"
-              >
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
                 <p className="f-text f-styles-preset-69h8uc">
-                  Withdraw consent for data processing To exercise these rights,
-                  contact us at&nbsp;
-                  <span className="f-text f-styles-preset-1wi7vce">
-                    hello@fabrica.com
-                  </span>
-                  .
+                  Withdraw consent for data processing
+                </p>
+              </li>
+              <li data-preset-tag="p" className="f-text f-styles-preset-69h8uc">
+                <p className="f-text f-styles-preset-69h8uc">
+                  Request a copy of your data in a portable format
                 </p>
               </li>
             </ul>
-
-            <h2 className="f-text f-styles-preset-rmf37p">
-              9. Changes to This Privacy Policy
-            </h2>
             <p className="f-text f-styles-preset-69h8uc">
-              We may update this Privacy Policy from time to time. Any changes
-              will be posted on this page with a revised effective date. Your
-              continued use of the Site constitutes acceptance of the updated
-              policy.
-            </p>
-
-            <h2 className="f-text f-styles-preset-rmf37p">
-              10. Contact Us
-            </h2>
-            <p className="f-text f-styles-preset-69h8uc">
-              If you have any questions about this Privacy Policy, you can reach
-              us at:
-            </p>
-            <p className="f-text f-styles-preset-69h8uc">
-              Fabrica&reg; Studio
-              <br className="f-text" />
-              (312) 555-2468
-              <br className="f-text" />
+              To exercise any of these rights, please contact us at{" "}
               <span className="f-text f-styles-preset-1wi7vce">
-                hello@fabrica.com
+                support@vipass.app
+              </span>
+              .
+            </p>
+
+            <h2 className="f-text f-styles-preset-rmf37p">
+              7. Data Retention
+            </h2>
+            <p className="f-text f-styles-preset-69h8uc">
+              We retain your personal information for as long as your account is
+              active or as needed to provide services, comply with legal
+              obligations, resolve disputes, and enforce our agreements. When data
+              is no longer needed, it is securely deleted or anonymised.
+            </p>
+
+            <h2 className="f-text f-styles-preset-rmf37p">
+              8. Children&apos;s Privacy
+            </h2>
+            <p className="f-text f-styles-preset-69h8uc">
+              The App is not intended for children under 13. We do not knowingly
+              collect personal information from children under 13. If we become
+              aware that we have collected data from a child under 13, we will
+              take steps to delete it promptly.
+            </p>
+
+            <h2 className="f-text f-styles-preset-rmf37p">
+              9. Third-Party Services
+            </h2>
+            <p className="f-text f-styles-preset-69h8uc">
+              The App may contain links to or integrations with third-party
+              services (such as payment processors, mapping services, and
+              analytics tools). These services have their own privacy policies,
+              and we encourage you to review them. Vipass is not responsible for
+              the privacy practices of third parties.
+            </p>
+
+            <h2 className="f-text f-styles-preset-rmf37p">
+              10. Changes to This Policy
+            </h2>
+            <p className="f-text f-styles-preset-69h8uc">
+              We may update this Privacy Policy from time to time. Changes will
+              be posted within the App with a revised date. Your continued use of
+              the App after changes are posted constitutes acceptance of the
+              updated policy.
+            </p>
+
+            <h2 className="f-text f-styles-preset-rmf37p">
+              11. Contact Us
+            </h2>
+            <p className="f-text f-styles-preset-69h8uc">
+              If you have questions or concerns about this Privacy Policy or how
+              your data is handled, please contact us at:
+            </p>
+            <p className="f-text f-styles-preset-69h8uc">
+              <span className="f-text f-styles-preset-1wi7vce">
+                support@vipass.app
               </span>
             </p>
           </>

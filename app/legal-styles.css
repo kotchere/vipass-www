@@ -685,7 +685,7 @@ navigationcontainer [data-f-component-type="NavigationContainer"] > *, [data-f-c
 
 .f-PyYLC.f-4fll0k { background-color: rgb(255, 255, 255); flex-flow: column; place-content: center flex-start; align-items: center; gap: 160px; width: 1200px; height: min-content; padding: 140px 20px; display: flex; position: relative; overflow: hidden; }
 
-.f-PyYLC .f-1tf2day { background-color: var(--token-eea70a16-506d-4b3b-87b7-e85e653a6e7c,#f5f5f5); flex-flow: column; flex: 0 0 auto; place-content: center flex-start; align-items: center; gap: 220px; width: 100%; height: min-content; padding: 200px 0px 100px; display: flex; position: relative; overflow: hidden; }
+.f-PyYLC .f-1tf2day { background-color: var(--token-eea70a16-506d-4b3b-87b7-e85e653a6e7c,#f5f5f5); flex-flow: column; flex: 0 0 auto; place-content: center flex-start; align-items: center; gap: 220px; width: 100%; height: min-content; padding: 140px 0px 100px; display: flex; position: relative; overflow: hidden; }
 
 .f-PyYLC .f-o964q9 { flex-flow: row; flex: 0 0 auto; place-content: center; align-items: center; gap: 4px; width: 100%; height: min-content; padding: 0px 36px; display: flex; position: relative; overflow: visible; }
 
