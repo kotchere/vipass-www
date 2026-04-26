@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "f-motion";
 
 interface FaqItemProps {
   question: string;

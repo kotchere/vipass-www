@@ -11,16 +11,16 @@ html {
   scroll-margin-top: clamp(96px, 11vw, 140px);
 }
 
-.top-nav-link .framer-text,
+.top-nav-link .f-text,
 .hamburger-menu-link,
-.hamburger-menu-link .framer-text {
+.hamburger-menu-link .f-text {
   transition: color 160ms ease;
 }
 
-.top-nav-link:hover .framer-text,
+.top-nav-link:hover .f-text,
 .hamburger-menu-link:hover,
-.hamburger-menu-link:hover .framer-text {
-  --framer-text-color: #ff0000 !important;
-  --framer-link-hover-text-color: #ff0000 !important;
+.hamburger-menu-link:hover .f-text {
+  --f-text-color: #ff0000 !important;
+  --f-link-hover-text-color: #ff0000 !important;
   color: #ff0000 !important;
 }

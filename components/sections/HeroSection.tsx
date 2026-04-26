@@ -2,44 +2,44 @@ import GrainOverlay from "@/components/ui/GrainOverlay";
 
 export default function HeroSection() {
   return (
-    <section className="framer-ykgwn3" data-framer-name="Hero" id="home">
-      <div className="framer-19j2lei" data-framer-name="First screen">
+    <section className="f-ykgwn3" data-f-name="Hero" id="home">
+      <div className="f-19j2lei" data-f-name="First screen">
         <div className="ssr-variant hidden-f3lv8x">
           <div
-            className="framer-n6szvs"
-            data-framer-appear-id="n6szvs"
-            data-framer-name="Container"
+            className="f-n6szvs"
+            data-f-appear-id="n6szvs"
+            data-f-name="Container"
             style={{ opacity: 1, transform: "none", willChange: "transform" }}
           >
-            <div className="framer-1kxwov3" data-framer-name="Content">
-              <div className="framer-13u7xh5" data-framer-name="Top">
-                <div className="framer-1spzsp8" data-framer-name="Company">
-                  <div className="framer-al5dzj" data-framer-name="Title">
-                    <div className="framer-13yua5i" data-framer-name="Container">
+            <div className="f-1kxwov3" data-f-name="Content">
+              <div className="f-13u7xh5" data-f-name="Top">
+                <div className="f-1spzsp8" data-f-name="Company">
+                  <div className="f-al5dzj" data-f-name="Title">
+                    <div className="f-13yua5i" data-f-name="Container">
                       <svg
-                        className="framer-1no2xs1"
-                        data-framer-component-type="RichTextContainer"
+                        className="f-1no2xs1"
+                        data-f-component-type="RichTextContainer"
                         viewBox="0 0 604.9312835641938 165"
                         style={{ transform: "none" }}
                       >
                         <foreignObject
                           width="100%"
                           height="100%"
-                          className="framer-fit-text"
+                          className="f-fit-text"
                           transform="scale(1)"
                           style={{ overflow: "visible", transformOrigin: "center center" }}
                         >
                           <p
                             style={{
                               "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                              "--framer-font-family": '"Inter", "Inter Placeholder", sans-serif',
-                              "--framer-font-size": "198.85472606989646px",
-                              "--framer-font-weight": "600",
-                              "--framer-letter-spacing": "-0.06em",
-                              "--framer-line-height": "83%",
-                              "--framer-text-color": "rgb(255, 255, 255)",
+                              "--f-font-family": '"Inter", "Inter Placeholder", sans-serif',
+                              "--f-font-size": "198.85472606989646px",
+                              "--f-font-weight": "600",
+                              "--f-letter-spacing": "-0.06em",
+                              "--f-line-height": "83%",
+                              "--f-text-color": "rgb(255, 255, 255)",
                             } as React.CSSProperties}
-                            className="framer-text"
+                            className="f-text"
                           >
                             fabrica
                           </p>
@@ -47,36 +47,36 @@ export default function HeroSection() {
                       </svg>
                     </div>
                   </div>
-                  <div className="framer-gxz29i" data-framer-name="Studio">
+                  <div className="f-gxz29i" data-f-name="Studio">
                     <div
-                      className="framer-112dz82 hidden-f3lv8x"
-                      data-framer-name="filler"
+                      className="f-112dz82 hidden-f3lv8x"
+                      data-f-name="filler"
                     ></div>
                   </div>
                 </div>
               </div>
 
-              <div className="framer-hsxobt" data-framer-name="Bottom">
-                <div className="framer-qj2zoe" data-framer-name="Text">
+              <div className="f-hsxobt" data-f-name="Bottom">
+                <div className="f-qj2zoe" data-f-name="Text">
                   <div
-                    className="framer-1h9hge5"
-                    data-framer-component-type="RichTextContainer"
+                    className="f-1h9hge5"
+                    data-f-component-type="RichTextContainer"
                     style={{ transform: "none" }}
                   >
                     <h1
-                      className="framer-text framer-styles-preset-1oueo73"
+                      className="f-text f-styles-preset-1oueo73"
                       data-styles-preset="HLpRTFhim"
                       dir="auto"
                     >
                       The best nights out start here.{" "}
-                      <br className="framer-text" />
+                      <br className="f-text" />
                       <span
                         style={
                           {
-                            "--framer-text-color": "rgba(255, 255, 255, 0.7)",
+                            "--f-text-color": "rgba(255, 255, 255, 0.7)",
                           } as React.CSSProperties
                         }
-                        className="framer-text"
+                        className="f-text"
                       >
                         Find events, get tickets, and stay in the loop without the hassle.
                       </span>
@@ -86,16 +86,16 @@ export default function HeroSection() {
 
                 {/* CTA Card */}
                 <div className="ssr-variant">
-                  <div className="framer-1vjzos2-container">
+                  <div className="f-1vjzos2-container">
                     <a
-                      className="framer-FqnGk framer-1wwdfxz framer-v-1wwdfxz framer-1hc3jpa"
-                      data-framer-name="Desktop"
+                      className="f-FqnGk f-1wwdfxz f-v-1wwdfxz f-1hc3jpa"
+                      data-f-name="Desktop"
                       href="#getapp"
                       style={{ width: "100%", opacity: 1 }}
                     >
                       <div
-                        className="framer-gcir4z"
-                        data-framer-name="Image"
+                        className="f-gcir4z"
+                        data-f-name="Image"
                         style={{
                           backgroundColor: "rgb(255, 255, 255)",
                           borderBottomLeftRadius: 16,
@@ -104,8 +104,8 @@ export default function HeroSection() {
                         }}
                       >
                         <div
-                          className="framer-bhhpli"
-                          data-framer-name="Team Member Image"
+                          className="f-bhhpli"
+                          data-f-name="Team Member Image"
                           style={{ borderRadius: 12, opacity: 1 }}
                         >
                           <div
@@ -117,7 +117,7 @@ export default function HeroSection() {
                               bottom: 0,
                               left: 0,
                             }}
-                            data-framer-background-image-wrapper="true"
+                            data-f-background-image-wrapper="true"
                           >
                             <img
                               decoding="auto"
@@ -139,8 +139,8 @@ export default function HeroSection() {
                       </div>
 
                       <div
-                        className="framer-f4gtfg"
-                        data-framer-name="Card"
+                        className="f-f4gtfg"
+                        data-f-name="Card"
                         style={{
                           backgroundColor: "rgb(255, 255, 255)",
                           borderBottomRightRadius: 16,
@@ -148,34 +148,34 @@ export default function HeroSection() {
                           opacity: 1,
                         }}
                       >
-                        <div className="framer-ilxhip" data-framer-name="Text" style={{ opacity: 1 }}>
+                        <div className="f-ilxhip" data-f-name="Text" style={{ opacity: 1 }}>
                           <div
-                            className="framer-1o4mrbe"
-                            data-framer-name="Team Member Info"
+                            className="f-1o4mrbe"
+                            data-f-name="Team Member Info"
                             style={{ opacity: 1 }}
                           >
                             <div
-                              className="framer-7iz30i"
-                              data-framer-name="Team Member Role"
-                              data-framer-component-type="RichTextContainer"
+                              className="f-7iz30i"
+                              data-f-name="Team Member Role"
+                              data-f-component-type="RichTextContainer"
                               style={{
                                 "--extracted-r6o4lv":
                                   "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
-                                "--framer-paragraph-spacing": "0px",
+                                "--f-paragraph-spacing": "0px",
                                 transform: "none",
                                 opacity: 1,
                               } as React.CSSProperties}
                             >
                               <p
-                                className="framer-text"
+                                className="f-text"
                                 style={{
                                   "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                                  "--framer-font-family": '"Inter", "Inter Placeholder", sans-serif',
-                                  "--framer-font-size": "14px",
-                                  "--framer-font-weight": "600",
-                                  "--framer-letter-spacing": "-0.04em",
-                                  "--framer-line-height": "100%",
-                                  "--framer-text-color":
+                                  "--f-font-family": '"Inter", "Inter Placeholder", sans-serif',
+                                  "--f-font-size": "14px",
+                                  "--f-font-weight": "600",
+                                  "--f-letter-spacing": "-0.04em",
+                                  "--f-line-height": "100%",
+                                  "--f-text-color":
                                     "var(--extracted-r6o4lv, var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10)))",
                                 } as React.CSSProperties}
                               >
@@ -183,26 +183,26 @@ export default function HeroSection() {
                               </p>
                             </div>
                             <div
-                              className="framer-1dkoxx"
-                              data-framer-name="Team Member Company"
-                              data-framer-component-type="RichTextContainer"
+                              className="f-1dkoxx"
+                              data-f-name="Team Member Company"
+                              data-f-component-type="RichTextContainer"
                               style={{
                                 "--extracted-r6o4lv": "rgb(9, 9, 9)",
-                                "--framer-paragraph-spacing": "0px",
+                                "--f-paragraph-spacing": "0px",
                                 opacity: 0.6,
                                 transform: "none",
                               } as React.CSSProperties}
                             >
                               <p
-                                className="framer-text"
+                                className="f-text"
                                 style={{
                                   "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                                  "--framer-font-family": '"Inter", "Inter Placeholder", sans-serif',
-                                  "--framer-font-size": "12px",
-                                  "--framer-font-weight": "600",
-                                  "--framer-letter-spacing": "-0.04em",
-                                  "--framer-line-height": "110%",
-                                  "--framer-text-color":
+                                  "--f-font-family": '"Inter", "Inter Placeholder", sans-serif',
+                                  "--f-font-size": "12px",
+                                  "--f-font-weight": "600",
+                                  "--f-letter-spacing": "-0.04em",
+                                  "--f-line-height": "110%",
+                                  "--f-text-color":
                                     "var(--extracted-r6o4lv, rgb(9, 9, 9))",
                                 } as React.CSSProperties}
                               >
@@ -211,26 +211,26 @@ export default function HeroSection() {
                             </div>
                           </div>
                           <div
-                            className="framer-3w6c98"
-                            data-framer-name="Team Member Name"
-                            data-framer-component-type="RichTextContainer"
+                            className="f-3w6c98"
+                            data-f-name="Team Member Name"
+                            data-f-component-type="RichTextContainer"
                             style={{
                               "--extracted-r6o4lv": "rgb(9, 9, 9)",
-                              "--framer-paragraph-spacing": "0px",
+                              "--f-paragraph-spacing": "0px",
                               transform: "none",
                               opacity: 1,
                             } as React.CSSProperties}
                           >
                             <p
-                              className="framer-text"
+                              className="f-text"
                               style={{
                                 "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                                "--framer-font-family": '"Inter", "Inter Placeholder", sans-serif',
-                                "--framer-font-size": "22px",
-                                "--framer-font-weight": "600",
-                                "--framer-letter-spacing": "-0.04em",
-                                "--framer-line-height": "115%",
-                                "--framer-text-color":
+                                "--f-font-family": '"Inter", "Inter Placeholder", sans-serif',
+                                "--f-font-size": "22px",
+                                "--f-font-weight": "600",
+                                "--f-letter-spacing": "-0.04em",
+                                "--f-line-height": "115%",
+                                "--f-text-color":
                                   "var(--extracted-r6o4lv, rgb(9, 9, 9))",
                               } as React.CSSProperties}
                             >
@@ -240,10 +240,10 @@ export default function HeroSection() {
                         </div>
 
                         {/* "Let's talk" button */}
-                        <div className="framer-izvzao-container" style={{ opacity: 1 }}>
+                        <div className="f-izvzao-container" style={{ opacity: 1 }}>
                           <div
-                            className="framer-X7cbd framer-hhh5z2 framer-v-hhh5z2"
-                            data-framer-name="Default"
+                            className="f-X7cbd f-hhh5z2 f-v-hhh5z2"
+                            data-f-name="Default"
                             style={{
                               backgroundColor:
                                 "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
@@ -252,26 +252,26 @@ export default function HeroSection() {
                             }}
                           >
                             <div
-                              className="framer-k1jn4i"
-                              data-framer-name="Text 1"
-                              data-framer-component-type="RichTextContainer"
+                              className="f-k1jn4i"
+                              data-f-name="Text 1"
+                              data-f-component-type="RichTextContainer"
                               style={{
                                 "--extracted-r6o4lv":
                                   "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
-                                "--framer-paragraph-spacing": "0px",
+                                "--f-paragraph-spacing": "0px",
                                 opacity: 0,
                                 transform: "none",
                               } as React.CSSProperties}
                             >
                               <p
-                                className="framer-text"
+                                className="f-text"
                                 style={{
                                   "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                                  "--framer-font-size": "12px",
-                                  "--framer-font-weight": "600",
-                                  "--framer-letter-spacing": "-0.04em",
-                                  "--framer-line-height": "100%",
-                                  "--framer-text-color":
+                                  "--f-font-size": "12px",
+                                  "--f-font-weight": "600",
+                                  "--f-letter-spacing": "-0.04em",
+                                  "--f-line-height": "100%",
+                                  "--f-text-color":
                                     "var(--extracted-r6o4lv, var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255)))",
                                 } as React.CSSProperties}
                               >
@@ -279,26 +279,26 @@ export default function HeroSection() {
                               </p>
                             </div>
                             <div
-                              className="framer-1hbq2a0"
-                              data-framer-name="Text 2"
-                              data-framer-component-type="RichTextContainer"
+                              className="f-1hbq2a0"
+                              data-f-name="Text 2"
+                              data-f-component-type="RichTextContainer"
                               style={{
                                 "--extracted-r6o4lv":
                                   "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
-                                "--framer-paragraph-spacing": "0px",
+                                "--f-paragraph-spacing": "0px",
                                 transform: "none",
                                 opacity: 1,
                               } as React.CSSProperties}
                             >
                               <p
-                                className="framer-text"
+                                className="f-text"
                                 style={{
                                   "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                                  "--framer-font-size": "12px",
-                                  "--framer-font-weight": "600",
-                                  "--framer-letter-spacing": "-0.04em",
-                                  "--framer-line-height": "100%",
-                                  "--framer-text-color":
+                                  "--f-font-size": "12px",
+                                  "--f-font-weight": "600",
+                                  "--f-letter-spacing": "-0.04em",
+                                  "--f-line-height": "100%",
+                                  "--f-text-color":
                                     "var(--extracted-r6o4lv, var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255)))",
                                 } as React.CSSProperties}
                               >
@@ -306,8 +306,8 @@ export default function HeroSection() {
                               </p>
                             </div>
                             <div
-                              className="framer-mgfs4t"
-                              data-framer-name="Circle 1"
+                              className="f-mgfs4t"
+                              data-f-name="Circle 1"
                               style={{
                                 backgroundColor:
                                   "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
@@ -316,8 +316,8 @@ export default function HeroSection() {
                               }}
                             ></div>
                             <div
-                              className="framer-g1ulnv"
-                              data-framer-name="Circle 2"
+                              className="f-g1ulnv"
+                              data-f-name="Circle 2"
                               style={{
                                 backgroundColor:
                                   "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
@@ -336,12 +336,12 @@ export default function HeroSection() {
             </div>
 
             {/* Background */}
-            <div className="framer-1b8ph4g" data-framer-name="BG">
+            <div className="f-1b8ph4g" data-f-name="BG">
               <div className="ssr-variant">
-                <div className="framer-oldnw2-container">
+                <div className="f-oldnw2-container">
                   <div
-                    className="framer-Tl0Oq framer-lahi66 framer-v-lahi66"
-                    data-framer-name="Desktop"
+                    className="f-Tl0Oq f-lahi66 f-v-lahi66"
+                    data-f-name="Desktop"
                     style={{
                       backgroundColor:
                         "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
@@ -352,7 +352,7 @@ export default function HeroSection() {
                     }}
                   >
                     <div
-                      className="framer-143hdec-container"
+                      className="f-143hdec-container"
                       style={{
                         filter: "grayscale(1)",
                         WebkitFilter: "grayscale(1)",
@@ -380,13 +380,13 @@ export default function HeroSection() {
                         }}
                       />
                     </div>
-                    <div className="framer-1on14o5-container" style={{ opacity: 1 }}>
+                    <div className="f-1on14o5-container" style={{ opacity: 1 }}>
                       <GrainOverlay />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="framer-1nah8ke-container">
+              <div className="f-1nah8ke-container">
                 <GrainOverlay />
               </div>
             </div>

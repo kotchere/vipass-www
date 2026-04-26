@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "f-motion";
 
 export default function PreLoader() {
   const [visible, setVisible] = useState(true);
@@ -15,7 +15,7 @@ export default function PreLoader() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="framer-143iyx0-container"
+          className="f-143iyx0-container"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -45,13 +45,13 @@ export default function PreLoader() {
             }}
           >
             <div
-              className="framer-iakDo framer-1xyp36d framer-v-1xyp36d"
-              data-framer-name="1"
+              className="f-iakDo f-1xyp36d f-v-1xyp36d"
+              data-f-name="1"
               style={{ height: "100%", width: "100%", opacity: 1 }}
             >
               <motion.div
-                className="framer-18jnpzj"
-                data-framer-name="Logo"
+                className="f-18jnpzj"
+                data-f-name="Logo"
                 initial={{ opacity: 0, scale: 0.8, x: "-50%", y: "-50%" }}
                 animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
@@ -68,7 +68,7 @@ export default function PreLoader() {
                     bottom: 0,
                     left: 0,
                   }}
-                  data-framer-background-image-wrapper="true"
+                  data-f-background-image-wrapper="true"
                 >
                   <img
                     width={564}
@@ -87,8 +87,8 @@ export default function PreLoader() {
                 </div>
               </motion.div>
               <div
-                className="framer-1g084ze"
-                data-framer-name="BG"
+                className="f-1g084ze"
+                data-f-name="BG"
                 style={{
                   backgroundColor:
                     "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",

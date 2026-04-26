@@ -1,17 +1,17 @@
 export default function StatsSection() {
   return (
-    <section className="framer-15o920v" data-framer-name="Stats" id="stats">
-      <section className="framer-15uz38f" data-framer-name="More info">
-        <div className="framer-sl8twl" data-framer-name="Container">
-          <div className="framer-1lmgcpb" data-framer-name="2">
-            <div className="framer-15zrzua" data-framer-name="Intro">
+    <section className="f-15o920v" data-f-name="Stats" id="stats">
+      <section className="f-15uz38f" data-f-name="More info">
+        <div className="f-sl8twl" data-f-name="Container">
+          <div className="f-1lmgcpb" data-f-name="2">
+            <div className="f-15zrzua" data-f-name="Intro">
               <div
-                className="framer-18jo1an"
-                data-framer-component-type="RichTextContainer"
+                className="f-18jo1an"
+                data-f-component-type="RichTextContainer"
                 style={{ transform: "none" }}
               >
                 <h2
-                  className="framer-text framer-styles-preset-1yvd34u"
+                  className="f-text f-styles-preset-1yvd34u"
                   data-styles-preset="GKtOymhXV"
                   dir="auto"
                 >
@@ -19,26 +19,26 @@ export default function StatsSection() {
                 </h2>
               </div>
             </div>
-            <div className="framer-1f1bftd" data-framer-name="Container">
-              <div className="framer-3wctl5" data-framer-name="Text">
+            <div className="f-1f1bftd" data-f-name="Container">
+              <div className="f-3wctl5" data-f-name="Text">
                 <div className="ssr-variant hidden-f3lv8x">
                   <div
-                    className="framer-1vd8r3h"
-                    data-framer-component-type="RichTextContainer"
+                    className="f-1vd8r3h"
+                    data-f-component-type="RichTextContainer"
                     style={{ transform: "none" }}
                   >
                     <p
-                      className="framer-text framer-styles-preset-1rii1wr"
+                      className="f-text f-styles-preset-1rii1wr"
                       data-styles-preset="pAxoS1kOX"
                       dir="auto"
                     >
                       <span
                         style={
                           {
-                            "--framer-text-color": "rgba(10, 10, 10, 0.6)",
+                            "--f-text-color": "rgba(10, 10, 10, 0.6)",
                           } as React.CSSProperties
                         }
-                        className="framer-text"
+                        className="f-text"
                       >
                         <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
                           See
@@ -105,26 +105,26 @@ export default function StatsSection() {
       </section>
 
       {/* Case study + Performance metrics row */}
-      <div className="framer-9mot1k" data-framer-name="2">
+      <div className="f-9mot1k" data-f-name="2">
         {/* Case study card (dark bg) */}
         <div
-          className="framer-9vdeef"
-          data-framer-name="1"
+          className="f-9vdeef"
+          data-f-name="1"
           style={{ opacity: 1, transform: "none" }}
         >
-          <div className="framer-1vubmvd" data-framer-name="Top">
-            <div className="framer-qxd9hc" data-framer-name="Top">
+          <div className="f-1vubmvd" data-f-name="Top">
+            <div className="f-qxd9hc" data-f-name="Top">
               <div
-                className="framer-11c473u"
-                data-framer-component-type="RichTextContainer"
+                className="f-11c473u"
+                data-f-component-type="RichTextContainer"
                 style={{ transform: "none" }}
               >
                 <p
-                  className="framer-text framer-styles-preset-1n1wh7h"
+                  className="f-text f-styles-preset-1n1wh7h"
                   data-styles-preset="gd6AWaps9"
                   style={
                     {
-                      "--framer-text-color":
+                      "--f-text-color":
                         "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
                     } as React.CSSProperties
                   }
@@ -133,16 +133,16 @@ export default function StatsSection() {
                 </p>
               </div>
               <div
-                className="framer-3bo2hv"
-                data-framer-component-type="RichTextContainer"
+                className="f-3bo2hv"
+                data-f-component-type="RichTextContainer"
                 style={{ transform: "none" }}
               >
                 <p
-                  className="framer-text framer-styles-preset-2s58fc"
+                  className="f-text f-styles-preset-2s58fc"
                   data-styles-preset="svYtzYwMA"
                   style={
                     {
-                      "--framer-text-color":
+                      "--f-text-color":
                         "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
                     } as React.CSSProperties
                   }
@@ -152,20 +152,20 @@ export default function StatsSection() {
               </div>
             </div>
             <div className="ssr-variant">
-              <div className="framer-1c0x965-container">
+              <div className="f-1c0x965-container">
                 <div
-                  className="framer-ZPULr framer-1xcu7rj framer-v-1xcu7rj"
-                  data-framer-name="Variant 1"
+                  className="f-ZPULr f-1xcu7rj f-v-1xcu7rj"
+                  data-f-name="Variant 1"
                   style={{ height: "100%", width: "100%", opacity: 1 }}
                 >
                   <div
-                    className="framer-2rakpf"
-                    data-framer-name="V"
+                    className="f-2rakpf"
+                    data-f-name="V"
                     style={{ backgroundColor: "rgb(255, 255, 255)", opacity: 1 }}
                   />
                   <div
-                    className="framer-48ytin"
-                    data-framer-name="H"
+                    className="f-48ytin"
+                    data-f-name="H"
                     style={{
                       backgroundColor: "rgb(255, 255, 255)",
                       transform: "rotate(90deg)",
@@ -177,41 +177,41 @@ export default function StatsSection() {
             </div>
           </div>
 
-          <div className="framer-93takc" data-framer-name="Bottom">
+          <div className="f-93takc" data-f-name="Bottom">
             <div className="ssr-variant hidden-f3lv8x">
-              <div className="framer-15l45ch-container">
+              <div className="f-15l45ch-container">
                 <a
-                  className="framer-2efz1 framer-RKppn framer-ofTFr framer-afx6zd framer-v-19pclpi framer-1fiqcwx"
-                  data-framer-name="Desktop light small"
+                  className="f-2efz1 f-RKppn f-ofTFr f-afx6zd f-v-19pclpi f-1fiqcwx"
+                  data-f-name="Desktop light small"
                   href="https://templifica.com/"
                   target="_blank"
                   rel="noopener"
                   style={{ opacity: 1 }}
                 >
                   <div
-                    className="framer-1r4klrj"
-                    data-framer-name="Container"
+                    className="f-1r4klrj"
+                    data-f-name="Container"
                     style={{ opacity: 1 }}
                   >
                     <div
-                      className="framer-fxpu9w"
-                      data-framer-component-type="RichTextContainer"
+                      className="f-fxpu9w"
+                      data-f-component-type="RichTextContainer"
                       style={
                         {
                           "--extracted-r6o4lv":
                             "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
-                          "--framer-paragraph-spacing": "0px",
+                          "--f-paragraph-spacing": "0px",
                           transform: "none",
                           opacity: 1,
                         } as React.CSSProperties
                       }
                     >
                       <p
-                        className="framer-text framer-styles-preset-2s58fc"
+                        className="f-text f-styles-preset-2s58fc"
                         data-styles-preset="svYtzYwMA"
                         style={
                           {
-                            "--framer-text-color":
+                            "--f-text-color":
                               "var(--extracted-r6o4lv, var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255)))",
                           } as React.CSSProperties
                         }
@@ -219,12 +219,12 @@ export default function StatsSection() {
                         Live website
                       </p>
                     </div>
-                    <div className="framer-70k9fe" data-framer-name="Arrow" style={{ opacity: 1 }}>
-                      <div className="framer-fp9yoz" data-framer-name="1" style={{ opacity: 1 }}>
+                    <div className="f-70k9fe" data-f-name="Arrow" style={{ opacity: 1 }}>
+                      <div className="f-fp9yoz" data-f-name="1" style={{ opacity: 1 }}>
                         <div
-                          data-framer-component-type="SVG"
-                          data-framer-name="Vector"
-                          className="framer-hms4jt"
+                          data-f-component-type="SVG"
+                          data-f-name="Vector"
+                          className="f-hms4jt"
                           aria-hidden="true"
                           style={{
                             imageRendering: "pixelated",
@@ -236,11 +236,11 @@ export default function StatsSection() {
                           }}
                         />
                       </div>
-                      <div className="framer-hhjdwv" data-framer-name="2" style={{ opacity: 1 }}>
+                      <div className="f-hhjdwv" data-f-name="2" style={{ opacity: 1 }}>
                         <div
-                          data-framer-component-type="SVG"
-                          data-framer-name="Vector"
-                          className="framer-fpn24s"
+                          data-f-component-type="SVG"
+                          data-f-name="Vector"
+                          className="f-fpn24s"
                           aria-hidden="true"
                           style={{
                             imageRendering: "pixelated",
@@ -264,19 +264,19 @@ export default function StatsSection() {
               </div>
             </div>
 
-            <div className="framer-s1piw9" data-framer-name="Text">
+            <div className="f-s1piw9" data-f-name="Text">
               <div className="ssr-variant hidden-f3lv8x">
                 <div
-                  className="framer-vjmar9"
-                  data-framer-name="Description"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-vjmar9"
+                  data-f-name="Description"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
-                    className="framer-text framer-styles-preset-1oueo73"
+                    className="f-text f-styles-preset-1oueo73"
                     data-styles-preset="HLpRTFhim"
                     style={
-                      { "--framer-text-alignment": "right" } as React.CSSProperties
+                      { "--f-text-alignment": "right" } as React.CSSProperties
                     }
                   >
                     From branding to web development and marketing
@@ -285,18 +285,18 @@ export default function StatsSection() {
               </div>
               <div className="ssr-variant hidden-f3lv8x">
                 <div
-                  className="framer-1c8bw98"
-                  data-framer-name="Tagline"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-1c8bw98"
+                  data-f-name="Tagline"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
-                    className="framer-text framer-styles-preset-txwsq6"
+                    className="f-text f-styles-preset-txwsq6"
                     data-styles-preset="fDRzSjw63"
                     style={
                       {
-                        "--framer-text-alignment": "right",
-                        "--framer-text-color":
+                        "--f-text-alignment": "right",
+                        "--f-text-color":
                           "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
                       } as React.CSSProperties
                     }
@@ -311,8 +311,8 @@ export default function StatsSection() {
           {/* Portrait image */}
           <div className="ssr-variant hidden-f3lv8x">
             <div
-              className="framer-6ptzzp"
-              data-framer-name="Portrait"
+              className="f-6ptzzp"
+              data-f-name="Portrait"
               style={{ opacity: 1, transform: "none" }}
             >
               <div
@@ -324,7 +324,7 @@ export default function StatsSection() {
                   bottom: 0,
                   left: 0,
                 }}
-                data-framer-background-image-wrapper="true"
+                data-f-background-image-wrapper="true"
               >
                 <img
                   decoding="auto"
@@ -346,9 +346,9 @@ export default function StatsSection() {
           </div>
 
           {/* Background image */}
-          <div className="framer-tkpp4e" data-framer-name="BG">
+          <div className="f-tkpp4e" data-f-name="BG">
             <div className="ssr-variant hidden-f3lv8x">
-              <div className="framer-pxhkb5" data-framer-name="Image">
+              <div className="f-pxhkb5" data-f-name="Image">
                 <div
                   style={{
                     position: "absolute",
@@ -358,7 +358,7 @@ export default function StatsSection() {
                     bottom: 0,
                     left: 0,
                   }}
-                  data-framer-background-image-wrapper="true"
+                  data-f-background-image-wrapper="true"
                 >
                   <img
                     decoding="auto"
@@ -382,26 +382,26 @@ export default function StatsSection() {
         </div>
 
         {/* Performance metrics + Score/Chart column */}
-        <div className="framer-q0il7y" data-framer-name="2">
+        <div className="f-q0il7y" data-f-name="2">
           {/* Performance metrics card (light bg) */}
           <div
-            className="framer-1ob8ifv"
-            data-framer-name="1"
+            className="f-1ob8ifv"
+            data-f-name="1"
             style={{ opacity: 1, transform: "none" }}
           >
-            <div className="framer-lcst9n" data-framer-name="Top">
-              <div className="framer-1be9egi" data-framer-name="1">
+            <div className="f-lcst9n" data-f-name="Top">
+              <div className="f-1be9egi" data-f-name="1">
                 <div
-                  className="framer-19zavte"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-19zavte"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
-                    className="framer-text framer-styles-preset-txwsq6"
+                    className="f-text f-styles-preset-txwsq6"
                     data-styles-preset="fDRzSjw63"
                     style={
                       {
-                        "--framer-text-color":
+                        "--f-text-color":
                           "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                       } as React.CSSProperties
                     }
@@ -410,36 +410,36 @@ export default function StatsSection() {
                   </p>
                 </div>
                 <div
-                  className="framer-1c818rs"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-1c818rs"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
-                    className="framer-text framer-styles-preset-xgn84q"
+                    className="f-text f-styles-preset-xgn84q"
                     data-styles-preset="LyKOtaXoC"
                   >
                     Page speed +48%,
                   </p>
                   <p
-                    className="framer-text framer-styles-preset-xgn84q"
+                    className="f-text f-styles-preset-xgn84q"
                     data-styles-preset="LyKOtaXoC"
                   >
                     Bounce rate -23%
                   </p>
                 </div>
               </div>
-              <div className="framer-1iqpkiq" data-framer-name="2">
+              <div className="f-1iqpkiq" data-f-name="2">
                 <div
-                  className="framer-1gflp2z"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-1gflp2z"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
-                    className="framer-text framer-styles-preset-txwsq6"
+                    className="f-text f-styles-preset-txwsq6"
                     data-styles-preset="fDRzSjw63"
                     style={
                       {
-                        "--framer-text-color":
+                        "--f-text-color":
                           "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                       } as React.CSSProperties
                     }
@@ -448,12 +448,12 @@ export default function StatsSection() {
                   </p>
                 </div>
                 <div
-                  className="framer-j7qkzc"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-j7qkzc"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
-                    className="framer-text framer-styles-preset-xgn84q"
+                    className="f-text f-styles-preset-xgn84q"
                     data-styles-preset="LyKOtaXoC"
                   >
                     4.2% → 5.9%
@@ -463,19 +463,19 @@ export default function StatsSection() {
             </div>
 
             {/* Testimonial with star rating */}
-            <div className="framer-33ldiv" data-framer-name="Bottom">
-              <div className="framer-uwkvjg" data-framer-name="Star Rating">
+            <div className="f-33ldiv" data-f-name="Bottom">
+              <div className="f-uwkvjg" data-f-name="Star Rating">
                 <div className="ssr-variant">
-                  <div className="framer-yb2z9t-container">
+                  <div className="f-yb2z9t-container">
                     <div
-                      className="framer-oFNEt framer-1ku8kgp framer-v-1ku8kgp"
-                      data-framer-name="Variant 1"
+                      className="f-oFNEt f-1ku8kgp f-v-1ku8kgp"
+                      data-f-name="Variant 1"
                       style={{ height: "100%", width: "100%", opacity: 1 }}
                     >
                       <div
-                        data-framer-component-type="SVG"
-                        data-framer-name="Star Rating"
-                        className="framer-1pptfs4"
+                        data-f-component-type="SVG"
+                        data-f-name="Star Rating"
+                        className="f-1pptfs4"
                         aria-hidden="true"
                         style={{
                           imageRendering: "pixelated",
@@ -490,16 +490,16 @@ export default function StatsSection() {
                   </div>
                 </div>
                 <div
-                  className="framer-x5lie"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-x5lie"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
-                    className="framer-text framer-styles-preset-txwsq6"
+                    className="f-text f-styles-preset-txwsq6"
                     data-styles-preset="fDRzSjw63"
                     style={
                       {
-                        "--framer-text-color":
+                        "--f-text-color":
                           "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                       } as React.CSSProperties
                     }
@@ -512,9 +512,9 @@ export default function StatsSection() {
               </div>
 
               {/* Reviewer */}
-              <div className="framer-o74yuc" data-framer-name="Container">
+              <div className="f-o74yuc" data-f-name="Container">
                 <div className="ssr-variant hidden-f3lv8x">
-                  <div className="framer-p033hv" data-framer-name="Ellipse 24">
+                  <div className="f-p033hv" data-f-name="Ellipse 24">
                     <div
                       style={{
                         position: "absolute",
@@ -524,7 +524,7 @@ export default function StatsSection() {
                         bottom: 0,
                         left: 0,
                       }}
-                      data-framer-background-image-wrapper="true"
+                      data-f-background-image-wrapper="true"
                     >
                       <img
                         decoding="async"
@@ -546,8 +546,8 @@ export default function StatsSection() {
                   </div>
                 </div>
                 <div
-                  className="framer-r20a3m"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-r20a3m"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
@@ -560,7 +560,7 @@ export default function StatsSection() {
                       textAlign: "left" as const,
                       color: "rgb(9, 9, 9)",
                     }}
-                    className="framer-text"
+                    className="f-text"
                   >
                     Angela Smith
                   </p>
@@ -570,9 +570,9 @@ export default function StatsSection() {
 
             {/* Circles SVG */}
             <div
-              data-framer-component-type="SVG"
-              data-framer-name="Circles"
-              className="framer-11mwazn"
+              data-f-component-type="SVG"
+              data-f-name="Circles"
+              className="f-11mwazn"
               aria-hidden="true"
               style={{
                 imageRendering: "pixelated",
@@ -599,17 +599,17 @@ export default function StatsSection() {
           </div>
 
           {/* Score + Chart column */}
-          <div className="framer-1fczhuh" data-framer-name="2">
+          <div className="f-1fczhuh" data-f-name="2">
             <div
-              className="framer-1quoedf"
-              data-framer-name="1"
+              className="f-1quoedf"
+              data-f-name="1"
               style={{ opacity: 1, transform: "none" }}
             >
               {/* Pagespeed score */}
-              <div className="framer-lwzawp" data-border="true" data-framer-name="Score">
+              <div className="f-lwzawp" data-border="true" data-f-name="Score">
                 <div
-                  className="framer-tnf03y"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-tnf03y"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
@@ -621,18 +621,18 @@ export default function StatsSection() {
                       textAlign: "center" as const,
                       color: "rgb(9, 9, 9)",
                     }}
-                    className="framer-text"
+                    className="f-text"
                   >
                     100
                   </p>
                 </div>
               </div>
 
-              <div className="framer-1txh2k1" data-framer-name="Container">
+              <div className="f-1txh2k1" data-f-name="Container">
                 <div
-                  className="framer-ri6i99"
-                  data-framer-name="Score title"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-ri6i99"
+                  data-f-name="Score title"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
@@ -644,24 +644,24 @@ export default function StatsSection() {
                       textAlign: "center" as const,
                       color: "rgb(9, 9, 9)",
                     }}
-                    className="framer-text"
+                    className="f-text"
                   >
                     Pagespeed score
                   </p>
                 </div>
                 <div
-                  className="framer-1x14x67"
-                  data-framer-name="Score description"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-1x14x67"
+                  data-f-name="Score description"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
-                    className="framer-text framer-styles-preset-txwsq6"
+                    className="f-text f-styles-preset-txwsq6"
                     data-styles-preset="fDRzSjw63"
                     style={
                       {
-                        "--framer-text-alignment": "center",
-                        "--framer-text-color":
+                        "--f-text-alignment": "center",
+                        "--f-text-color":
                           "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                       } as React.CSSProperties
                     }
@@ -674,14 +674,14 @@ export default function StatsSection() {
 
             {/* Bar chart */}
             <div
-              className="framer-ugwdk1"
-              data-framer-name="2"
+              className="f-ugwdk1"
+              data-f-name="2"
               style={{ opacity: 1, transform: "none" }}
             >
               {/* Quarterly visits header */}
-              <div className="framer-ez5qvn" data-framer-name="Numbers">
-                <div className="framer-ktwiph">
-                  <div className="framer-15shvg9-container">
+              <div className="f-ez5qvn" data-f-name="Numbers">
+                <div className="f-ktwiph">
+                  <div className="f-15shvg9-container">
                     <div className="ssr-variant hidden-f3lv8x hidden-tsn51j">
                       <div
                         style={{
@@ -707,12 +707,12 @@ export default function StatsSection() {
                       </div>
                     </div>
                   </div>
-                  <div className="framer-wzxm55" data-framer-name="Growth">
+                  <div className="f-wzxm55" data-f-name="Growth">
                     <div className="ssr-variant hidden-f3lv8x">
                       <div
-                        className="framer-1cxrwub"
-                        data-framer-name="Testimonial"
-                        data-framer-component-type="RichTextContainer"
+                        className="f-1cxrwub"
+                        data-f-name="Testimonial"
+                        data-f-component-type="RichTextContainer"
                         style={{ transform: "none" }}
                       >
                         <p
@@ -724,7 +724,7 @@ export default function StatsSection() {
                             lineHeight: "140%",
                             color: "rgb(9, 9, 9)",
                           }}
-                          className="framer-text"
+                          className="f-text"
                         >
                           +30%
                         </p>
@@ -733,12 +733,12 @@ export default function StatsSection() {
                   </div>
                 </div>
                 <div
-                  className="framer-1l1s9q3"
-                  data-framer-component-type="RichTextContainer"
+                  className="f-1l1s9q3"
+                  data-f-component-type="RichTextContainer"
                   style={{ transform: "none" }}
                 >
                   <p
-                    className="framer-text framer-styles-preset-2s58fc"
+                    className="f-text f-styles-preset-2s58fc"
                     data-styles-preset="svYtzYwMA"
                   >
                     Quarterly visits
@@ -747,45 +747,45 @@ export default function StatsSection() {
               </div>
 
               {/* Graph bars */}
-              <div className="framer-oooxhu" data-framer-name="Graph">
+              <div className="f-oooxhu" data-f-name="Graph">
                 {/* Bar: Dec +1k */}
                 <div className="ssr-variant">
-                  <div className="framer-96diir-container">
+                  <div className="f-96diir-container">
                     <BarColumn value="+1k" month="Dec" padding="12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
                   </div>
                 </div>
 
                 {/* Bar: Jan +1.3k */}
                 <div className="ssr-variant">
-                  <div className="framer-kymsxw-container">
+                  <div className="f-kymsxw-container">
                     <BarColumn value="+1.3k" month="Jan" padding="12px 12px 18px 12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
                   </div>
                 </div>
 
                 {/* Bar: Feb +1.1k */}
                 <div className="ssr-variant">
-                  <div className="framer-yio7w0-container">
+                  <div className="f-yio7w0-container">
                     <BarColumn value="+1.1k" month="Feb" padding="12px 12px 15px 12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
                   </div>
                 </div>
 
                 {/* Bar: Feb +1.5k */}
                 <div className="ssr-variant">
-                  <div className="framer-1r9aqvp-container">
+                  <div className="f-1r9aqvp-container">
                     <BarColumn value="+1.5k" month="Feb" padding="12px 12px 17px 12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
                   </div>
                 </div>
 
                 {/* Bar: Feb +2.3k */}
                 <div className="ssr-variant">
-                  <div className="framer-gdetl6-container">
+                  <div className="f-gdetl6-container">
                     <BarColumn value="+2.3k" month="Feb" padding="12px 12px 19px 12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
                   </div>
                 </div>
 
                 {/* Bar: Mar +5.9k (dark/highlighted) */}
                 <div className="ssr-variant">
-                  <div className="framer-1urc8g4-container">
+                  <div className="f-1urc8g4-container">
                     <BarColumn
                       value="+5.9k"
                       month="Mar"
@@ -823,13 +823,13 @@ function BarColumn({
 }) {
   return (
     <div
-      className="framer-Ov1cH framer-ofTFr framer-ffqcbv framer-v-ffqcbv"
-      data-framer-name="Desktop"
+      className="f-Ov1cH f-ofTFr f-ffqcbv f-v-ffqcbv"
+      data-f-name="Desktop"
       style={{ height: "100%", width: "100%", opacity: 1 }}
     >
       <div
-        className="framer-1b4g2os"
-        data-framer-name="Container"
+        className="f-1b4g2os"
+        data-f-name="Container"
         style={
           {
             "--q1of9l": padding,
@@ -840,13 +840,13 @@ function BarColumn({
         }
       >
         <div
-          className="framer-qublri"
-          data-framer-name="Budget"
-          data-framer-component-type="RichTextContainer"
+          className="f-qublri"
+          data-f-name="Budget"
+          data-f-component-type="RichTextContainer"
           style={
             {
               "--extracted-r6o4lv": `var(--variable-reference-K5SPn14EC-KEzuQXrOe)`,
-              "--framer-paragraph-spacing": "0px",
+              "--f-paragraph-spacing": "0px",
               "--variable-reference-K5SPn14EC-KEzuQXrOe": textColor,
               transform: "rotate(-90deg)",
               opacity: 1,
@@ -854,17 +854,17 @@ function BarColumn({
           }
         >
           <p
-            className="framer-text"
+            className="f-text"
             style={
               {
                 "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                "--framer-font-family": '"Inter", "Inter Placeholder", sans-serif',
-                "--framer-font-size": "13px",
-                "--framer-font-weight": "600",
-                "--framer-letter-spacing": "-0.04em",
-                "--framer-line-height": "130%",
-                "--framer-text-alignment": "left",
-                "--framer-text-color":
+                "--f-font-family": '"Inter", "Inter Placeholder", sans-serif',
+                "--f-font-size": "13px",
+                "--f-font-weight": "600",
+                "--f-letter-spacing": "-0.04em",
+                "--f-line-height": "130%",
+                "--f-text-alignment": "left",
+                "--f-text-color":
                   "var(--extracted-r6o4lv, var(--variable-reference-K5SPn14EC-KEzuQXrOe))",
               } as React.CSSProperties
             }
@@ -874,27 +874,27 @@ function BarColumn({
         </div>
       </div>
       <div
-        className="framer-1sl7csi"
-        data-framer-name="Budget"
-        data-framer-component-type="RichTextContainer"
+        className="f-1sl7csi"
+        data-f-name="Budget"
+        data-f-component-type="RichTextContainer"
         style={
           {
             "--extracted-r6o4lv":
               monthTextColor ??
               "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
-            "--framer-paragraph-spacing": "0px",
+            "--f-paragraph-spacing": "0px",
             opacity: 0.6,
             transform: "none",
           } as React.CSSProperties
         }
       >
         <p
-          className="framer-text framer-styles-preset-2s58fc"
+          className="f-text f-styles-preset-2s58fc"
           data-styles-preset="svYtzYwMA"
           style={
             {
-              "--framer-text-alignment": "center",
-              "--framer-text-color":
+              "--f-text-alignment": "center",
+              "--f-text-color":
                 "var(--extracted-r6o4lv, var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10)))",
             } as React.CSSProperties
           }

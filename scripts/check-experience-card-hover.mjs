@@ -9,8 +9,8 @@ const expectations = [
     pattern: /^"use client";/,
   },
   {
-    label: "ExperienceCard imports motion from framer-motion",
-    pattern: /import\s+\{\s*motion\s*\}\s+from\s+"framer-motion";/,
+    label: "ExperienceCard imports motion from f-motion",
+    pattern: /import\s+\{\s*motion\s*\}\s+from\s+"f-motion";/,
   },
   {
     label: "ExperienceCard tracks hover state",

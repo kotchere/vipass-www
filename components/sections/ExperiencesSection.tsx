@@ -48,18 +48,18 @@ const experiences = [
 
 export default function ExperiencesSection() {
   return (
-    <section className="framer-hv8rku" data-framer-name="Experiences" id="experiences">
-      <div className="framer-4olikp" data-framer-name="Container">
-        <div className="framer-1hxsd0l" data-framer-name="Top">
-          <div className="framer-7l5kym" data-framer-name="Heading">
+    <section className="f-hv8rku" data-f-name="Experiences" id="experiences">
+      <div className="f-4olikp" data-f-name="Container">
+        <div className="f-1hxsd0l" data-f-name="Top">
+          <div className="f-7l5kym" data-f-name="Heading">
             <div className="ssr-variant hidden-f3lv8x">
               <div
-                className="framer-1vc39i"
-                data-framer-component-type="RichTextContainer"
+                className="f-1vc39i"
+                data-f-component-type="RichTextContainer"
                 style={{ willChange: "transform", opacity: 1, transform: "none" }}
               >
                 <h2
-                  className="framer-text framer-styles-preset-1yvd34u"
+                  className="f-text f-styles-preset-1yvd34u"
                   data-styles-preset="GKtOymhXV"
                   dir="auto"
                 >
@@ -69,7 +69,7 @@ export default function ExperiencesSection() {
             </div>
           </div>
         </div>
-        <div className="framer-aeexdy">
+        <div className="f-aeexdy">
           {experiences.map((exp, index) => (
             <ScrollReveal key={index} delay={index * 0.1} y={30}>
               <ExperienceCard

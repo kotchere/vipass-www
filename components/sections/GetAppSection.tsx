@@ -13,17 +13,17 @@ export default function GetAppSection() {
   };
 
   return (
-    <div className="framer-1o7ubga" data-framer-name="Get App" id="getapp">
-      <div className="framer-4nlwkr">
-        <div className="framer-nonbaj">
-          <div className="framer-1ozc41g" data-framer-name="Container">
+    <div className="f-1o7ubga" data-f-name="Get App" id="getapp">
+      <div className="f-4nlwkr">
+        <div className="f-nonbaj">
+          <div className="f-1ozc41g" data-f-name="Container">
             {/* LEFT: Contact Form */}
             <div
-              className="framer-eu98t"
-              data-framer-name="Form"
+              className="f-eu98t"
+              data-f-name="Form"
               style={{ opacity: 1, transform: "none" }}
             >
-              <div className="framer-85f0w8" data-framer-name="Container">
+              <div className="f-85f0w8" data-f-name="Container">
                 {submitted ? (
                   <div
                     style={{
@@ -37,13 +37,13 @@ export default function GetAppSection() {
                   >
                     <div>
                       <h3
-                        className="framer-text framer-styles-preset-hik9eh"
+                        className="f-text f-styles-preset-hik9eh"
                         data-styles-preset="zgy6bak25"
                       >
                         Thank you!
                       </h3>
                       <p
-                        className="framer-text framer-styles-preset-2s58fc"
+                        className="f-text f-styles-preset-2s58fc"
                         data-styles-preset="svYtzYwMA"
                         style={{ marginTop: "16px" }}
                       >
@@ -53,16 +53,16 @@ export default function GetAppSection() {
                     </div>
                   </div>
                 ) : (
-                  <form className="framer-1jgjsc0" onSubmit={handleSubmit}>
-                    <div className="framer-10kx5zv" data-framer-name="Heading">
+                  <form className="f-1jgjsc0" onSubmit={handleSubmit}>
+                    <div className="f-10kx5zv" data-f-name="Heading">
                       <div
-                        className="framer-6pcljh"
-                        data-framer-name="Form Title"
-                        data-framer-component-type="RichTextContainer"
+                        className="f-6pcljh"
+                        data-f-name="Form Title"
+                        data-f-component-type="RichTextContainer"
                         style={{ transform: "none" }}
                       >
                         <p
-                          className="framer-text framer-styles-preset-hik9eh"
+                          className="f-text f-styles-preset-hik9eh"
                           data-styles-preset="zgy6bak25"
                           dir="auto"
                         >
@@ -70,10 +70,10 @@ export default function GetAppSection() {
                           <span
                             style={
                               {
-                                "--framer-text-color": "rgba(10, 10, 10, 0.6)",
+                                "--f-text-color": "rgba(10, 10, 10, 0.6)",
                               } as React.CSSProperties
                             }
-                            className="framer-text"
+                            className="f-text"
                           >
                             in mind?
                           </span>
@@ -82,83 +82,83 @@ export default function GetAppSection() {
                     </div>
 
                     <div
-                      className="framer-196j8ry"
-                      data-framer-name="Inputs"
+                      className="f-196j8ry"
+                      data-f-name="Inputs"
                     >
-                      <label className="framer-erbiyd">
+                      <label className="f-erbiyd">
                         <div
-                          className="framer-vjzsr1"
-                          data-framer-name="Name Label"
-                          data-framer-component-type="RichTextContainer"
+                          className="f-vjzsr1"
+                          data-f-name="Name Label"
+                          data-f-component-type="RichTextContainer"
                           style={{ transform: "none" }}
                         >
                           <p
-                            className="framer-text framer-styles-preset-2s58fc"
+                            className="f-text f-styles-preset-2s58fc"
                             data-styles-preset="svYtzYwMA"
                             dir="auto"
                           >
                             Your name*
                           </p>
                         </div>
-                        <div className="framer-form-text-input framer-form-input-wrapper framer-5iy7ol framer-form-text-input-type">
+                        <div className="f-form-text-input f-form-input-wrapper f-5iy7ol f-form-text-input-type">
                           <input
                             type="text"
                             required
                             name="Name"
                             placeholder="John Doe"
-                            className="framer-form-input framer-form-input-empty"
+                            className="f-form-input f-form-input-empty"
                           />
                         </div>
                       </label>
 
-                      <label className="framer-1an6z9p">
+                      <label className="f-1an6z9p">
                         <div
-                          className="framer-n8v7pc"
-                          data-framer-name="Name Label"
-                          data-framer-component-type="RichTextContainer"
+                          className="f-n8v7pc"
+                          data-f-name="Name Label"
+                          data-f-component-type="RichTextContainer"
                           style={{ transform: "none" }}
                         >
                           <p
-                            className="framer-text framer-styles-preset-2s58fc"
+                            className="f-text f-styles-preset-2s58fc"
                             data-styles-preset="svYtzYwMA"
                             dir="auto"
                           >
                             E-mail*
                           </p>
                         </div>
-                        <div className="framer-form-text-input framer-form-input-wrapper framer-5rqycq">
+                        <div className="f-form-text-input f-form-input-wrapper f-5rqycq">
                           <input
                             type="email"
                             required
                             name="E-mail"
                             placeholder="hello@site.com"
-                            className="framer-form-input framer-form-input-empty"
+                            className="f-form-input f-form-input-empty"
                           />
                         </div>
                       </label>
 
-                      <label className="framer-1i4wi2g">
+                      <label className="f-1i4wi2g">
                         <div
-                          className="framer-2sqwk2"
-                          data-framer-name="Name Label"
-                          data-framer-component-type="RichTextContainer"
+                          className="f-2sqwk2"
+                          data-f-name="Name Label"
+                          data-f-component-type="RichTextContainer"
                           style={{ transform: "none" }}
                         >
                           <p
-                            className="framer-text framer-styles-preset-2s58fc"
+                            className="f-text f-styles-preset-2s58fc"
                             data-styles-preset="svYtzYwMA"
                             dir="auto"
                           >
                             Message
                           </p>
                         </div>
-                        <div className="framer-form-text-input framer-form-input-wrapper framer-102j1h0 framer-form-text-input-type">
+                        <div className="f-form-text-input f-form-input-wrapper f-102j1h0 f-form-text-input-type">
                           <input
                             type="text"
                             required
                             name="Message"
                             placeholder="Your message"
-                            className="framer-form-input framer-form-input-empty"
+                            className="f-form-input f-form-input-empty"
                           />
                         </div>
                       </label>
@@ -166,11 +166,11 @@ export default function GetAppSection() {
 
                     {/* Submit Button */}
                     <div className="ssr-variant">
-                      <div className="framer-wcxm05-container">
+                      <div className="f-wcxm05-container">
                         <button
                           type="submit"
-                          className="framer-GdT3P framer-4lucl9 framer-v-4lucl9"
-                          data-framer-name="Default"
+                          className="f-GdT3P f-4lucl9 f-v-4lucl9"
+                          data-f-name="Default"
                           data-reset="button"
                           style={
                             {
@@ -186,15 +186,15 @@ export default function GetAppSection() {
                           }
                         >
                           <div
-                            className="framer-o38np2"
-                            data-framer-name="Submit 1"
-                            data-framer-component-type="RichTextContainer"
+                            className="f-o38np2"
+                            data-f-name="Submit 1"
+                            data-f-component-type="RichTextContainer"
                             style={
                               {
                                 "--extracted-r6o4lv":
                                   "var(--variable-reference-GNYtni0Of-ZsPpcvZL7)",
-                                "--framer-link-text-color": "rgb(0, 153, 255)",
-                                "--framer-link-text-decoration": "underline",
+                                "--f-link-text-color": "rgb(0, 153, 255)",
+                                "--f-link-text-decoration": "underline",
                                 "--variable-reference-GNYtni0Of-ZsPpcvZL7":
                                   "rgb(255, 255, 255)",
                                 "--variable-reference-xKHL3eyCS-ZsPpcvZL7":
@@ -205,16 +205,16 @@ export default function GetAppSection() {
                             }
                           >
                             <p
-                              className="framer-text"
+                              className="f-text"
                               style={
                                 {
                                   "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                                  "--framer-font-family":
+                                  "--f-font-family":
                                     '"Inter", "Inter Placeholder", sans-serif',
-                                  "--framer-font-size": "18px",
-                                  "--framer-font-weight": "600",
-                                  "--framer-letter-spacing": "-0.04em",
-                                  "--framer-text-color":
+                                  "--f-font-size": "18px",
+                                  "--f-font-weight": "600",
+                                  "--f-letter-spacing": "-0.04em",
+                                  "--f-text-color":
                                     "var(--extracted-r6o4lv, var(--variable-reference-GNYtni0Of-ZsPpcvZL7))",
                                 } as React.CSSProperties
                               }
@@ -223,15 +223,15 @@ export default function GetAppSection() {
                             </p>
                           </div>
                           <div
-                            className="framer-1zgpu1"
-                            data-framer-name="Submit 2"
-                            data-framer-component-type="RichTextContainer"
+                            className="f-1zgpu1"
+                            data-f-name="Submit 2"
+                            data-f-component-type="RichTextContainer"
                             style={
                               {
                                 "--extracted-r6o4lv":
                                   "var(--variable-reference-GNYtni0Of-ZsPpcvZL7)",
-                                "--framer-link-text-color": "rgb(0, 153, 255)",
-                                "--framer-link-text-decoration": "underline",
+                                "--f-link-text-color": "rgb(0, 153, 255)",
+                                "--f-link-text-decoration": "underline",
                                 "--variable-reference-GNYtni0Of-ZsPpcvZL7":
                                   "rgb(255, 255, 255)",
                                 "--variable-reference-xKHL3eyCS-ZsPpcvZL7":
@@ -242,16 +242,16 @@ export default function GetAppSection() {
                             }
                           >
                             <p
-                              className="framer-text"
+                              className="f-text"
                               style={
                                 {
                                   "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                                  "--framer-font-family":
+                                  "--f-font-family":
                                     '"Inter", "Inter Placeholder", sans-serif',
-                                  "--framer-font-size": "18px",
-                                  "--framer-font-weight": "600",
-                                  "--framer-letter-spacing": "-0.04em",
-                                  "--framer-text-color":
+                                  "--f-font-size": "18px",
+                                  "--f-font-weight": "600",
+                                  "--f-letter-spacing": "-0.04em",
+                                  "--f-text-color":
                                     "var(--extracted-r6o4lv, var(--variable-reference-GNYtni0Of-ZsPpcvZL7))",
                                 } as React.CSSProperties
                               }
@@ -265,38 +265,38 @@ export default function GetAppSection() {
 
                     {/* Terms and Privacy */}
                     <div
-                      className="framer-1lqx3gx"
-                      data-framer-name="Terms and Privacy Policy"
-                      data-framer-component-type="RichTextContainer"
+                      className="f-1lqx3gx"
+                      data-f-name="Terms and Privacy Policy"
+                      data-f-component-type="RichTextContainer"
                       style={{ transform: "none" }}
                     >
                       <p
-                        className="framer-text framer-styles-preset-2s58fc"
+                        className="f-text f-styles-preset-2s58fc"
                         data-styles-preset="svYtzYwMA"
                         dir="auto"
                       >
                         <span
                           style={
                             {
-                              "--framer-text-color": "rgba(10, 10, 10, 0.6)",
+                              "--f-text-color": "rgba(10, 10, 10, 0.6)",
                             } as React.CSSProperties
                           }
-                          className="framer-text"
+                          className="f-text"
                         >
                           By submitting, you agree to our
                         </span>
                         <span
                           style={
                             {
-                              "--framer-text-color": "rgba(0, 0, 0, 0.6)",
+                              "--f-text-color": "rgba(0, 0, 0, 0.6)",
                             } as React.CSSProperties
                           }
-                          className="framer-text"
+                          className="f-text"
                         >
                           {" "}
                         </span>
                         <Link
-                          className="framer-text framer-styles-preset-1wi7vce"
+                          className="f-text f-styles-preset-1wi7vce"
                           data-styles-preset="nCQNaN8LD"
                           href="/legal/terms-of-service"
                         >
@@ -305,15 +305,15 @@ export default function GetAppSection() {
                         <span
                           style={
                             {
-                              "--framer-text-color": "rgba(10, 10, 10, 0.6)",
+                              "--f-text-color": "rgba(10, 10, 10, 0.6)",
                             } as React.CSSProperties
                           }
-                          className="framer-text"
+                          className="f-text"
                         >
                           and
                         </span>{" "}
                         <Link
-                          className="framer-text framer-styles-preset-1wi7vce"
+                          className="f-text f-styles-preset-1wi7vce"
                           data-styles-preset="nCQNaN8LD"
                           href="/legal/privacy-policy"
                         >
@@ -462,19 +462,19 @@ export default function GetAppSection() {
             </div>
 
             {/* RIGHT: Get the app content */}
-            <div className="framer-nkouq" data-framer-name="Content">
+            <div className="f-nkouq" data-f-name="Content">
               <div
-                className="framer-1n4c633"
-                data-framer-component-type="RichTextContainer"
+                className="f-1n4c633"
+                data-f-component-type="RichTextContainer"
                 style={{ opacity: 1, transform: "none" }}
               >
                 <h2
-                  className="framer-text framer-styles-preset-1yvd34u"
+                  className="f-text f-styles-preset-1yvd34u"
                   data-styles-preset="GKtOymhXV"
                   dir="auto"
                   style={
                     {
-                      "--framer-text-color":
+                      "--f-text-color":
                         "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
                     } as React.CSSProperties
                   }
@@ -485,31 +485,31 @@ export default function GetAppSection() {
                 </h2>
               </div>
 
-              <div className="framer-1ds7la7" data-framer-name="Text">
-                <div className="framer-bcl97z" data-framer-name="Description">
+              <div className="f-1ds7la7" data-f-name="Text">
+                <div className="f-bcl97z" data-f-name="Description">
                   <div
-                    className="framer-eat9pp"
-                    data-framer-component-type="RichTextContainer"
+                    className="f-eat9pp"
+                    data-f-component-type="RichTextContainer"
                     style={{ opacity: 1, transform: "none" }}
                   >
                     <p
-                      className="framer-text framer-styles-preset-1rii1wr"
+                      className="f-text f-styles-preset-1rii1wr"
                       data-styles-preset="pAxoS1kOX"
                       dir="auto"
                       style={
                         {
-                          "--framer-text-color": "rgba(255, 255, 255, 0.7)",
+                          "--f-text-color": "rgba(255, 255, 255, 0.7)",
                         } as React.CSSProperties
                       }
                     >
                       <span
                         style={
                           {
-                            "--framer-text-color":
+                            "--f-text-color":
                               "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
                           } as React.CSSProperties
                         }
-                        className="framer-text"
+                        className="f-text"
                       >
                         Tell us about your project
                       </span>
@@ -519,14 +519,14 @@ export default function GetAppSection() {
 
                   {/* Separator line */}
                   <div className="ssr-variant">
-                    <div className="framer-1jq32c0-container">
+                    <div className="f-1jq32c0-container">
                       <div
-                        className="framer-Sd69O framer-1usovu framer-v-1usovu"
-                        data-framer-name="Start"
+                        className="f-Sd69O f-1usovu f-v-1usovu"
+                        data-f-name="Start"
                         style={{ width: "100%", opacity: 1 }}
                       >
                         <div
-                          className="framer-14cnlj3"
+                          className="f-14cnlj3"
                           style={{
                             backgroundColor:
                               "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
@@ -538,42 +538,42 @@ export default function GetAppSection() {
                   </div>
 
                   {/* Quick response info block */}
-                  <div className="framer-v29o3c" data-framer-name="Items">
+                  <div className="f-v29o3c" data-f-name="Items">
                     <div className="ssr-variant">
                       <div
-                        className="framer-omss02-container"
+                        className="f-omss02-container"
                         style={{ opacity: 1, transform: "none" }}
                       >
                         <div
-                          className="framer-W6vuO framer-WyC4r framer-0CPYn framer-75j668 framer-v-75j668"
-                          data-framer-name="Desktop"
+                          className="f-W6vuO f-WyC4r f-0CPYn f-75j668 f-v-75j668"
+                          data-f-name="Desktop"
                           style={{ width: "100%", opacity: 1 }}
                         >
                           <div
-                            className="framer-tx0xy4"
-                            data-framer-name="Quick Response Info"
+                            className="f-tx0xy4"
+                            data-f-name="Quick Response Info"
                             style={{ opacity: 1 }}
                           >
                             <div
-                              className="framer-1g7f53"
-                              data-framer-name="Quick Response Title"
-                              data-framer-component-type="RichTextContainer"
+                              className="f-1g7f53"
+                              data-f-name="Quick Response Title"
+                              data-f-component-type="RichTextContainer"
                               style={
                                 {
                                   "--extracted-r6o4lv":
                                     "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
-                                  "--framer-paragraph-spacing": "0px",
+                                  "--f-paragraph-spacing": "0px",
                                   transform: "none",
                                   opacity: 1,
                                 } as React.CSSProperties
                               }
                             >
                               <p
-                                className="framer-text framer-styles-preset-9v8dhs"
+                                className="f-text f-styles-preset-9v8dhs"
                                 data-styles-preset="oFAZmwcVJ"
                                 style={
                                   {
-                                    "--framer-text-color":
+                                    "--f-text-color":
                                       "var(--extracted-r6o4lv, var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255)))",
                                   } as React.CSSProperties
                                 }
@@ -583,25 +583,25 @@ export default function GetAppSection() {
                             </div>
                           </div>
                           <div
-                            className="framer-r0ha9m"
-                            data-framer-name="Join Us Description"
-                            data-framer-component-type="RichTextContainer"
+                            className="f-r0ha9m"
+                            data-f-name="Join Us Description"
+                            data-f-component-type="RichTextContainer"
                             style={
                               {
                                 "--extracted-r6o4lv":
                                   "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
-                                "--framer-paragraph-spacing": "0px",
+                                "--f-paragraph-spacing": "0px",
                                 opacity: 0.6,
                                 transform: "none",
                               } as React.CSSProperties
                             }
                           >
                             <p
-                              className="framer-text framer-styles-preset-1mf8d9g"
+                              className="f-text f-styles-preset-1mf8d9g"
                               data-styles-preset="ypR5VEWEl"
                               style={
                                 {
-                                  "--framer-text-color":
+                                  "--f-text-color":
                                     "var(--extracted-r6o4lv, var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255)))",
                                 } as React.CSSProperties
                               }

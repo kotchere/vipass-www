@@ -20,17 +20,17 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="framer-rv9o5q" data-framer-name="FAQ" id="faq">
-      <div className="framer-pcuxg5" data-framer-name="Container">
-        <div className="framer-1xjiuvd" data-framer-name="Heading">
+    <section className="f-rv9o5q" data-f-name="FAQ" id="faq">
+      <div className="f-pcuxg5" data-f-name="Container">
+        <div className="f-1xjiuvd" data-f-name="Heading">
           <div className="ssr-variant hidden-f3lv8x">
             <div
-              className="framer-1euscwr"
-              data-framer-component-type="RichTextContainer"
+              className="f-1euscwr"
+              data-f-component-type="RichTextContainer"
               style={{ willChange: "transform", opacity: 1, transform: "none" }}
             >
               <h2
-                className="framer-text framer-styles-preset-1yvd34u"
+                className="f-text f-styles-preset-1yvd34u"
                 data-styles-preset="GKtOymhXV"
               >
                 FAQ.
@@ -38,12 +38,12 @@ export default function FaqSection() {
             </div>
           </div>
           <div
-            className="framer-mxm94s"
-            data-framer-component-type="RichTextContainer"
+            className="f-mxm94s"
+            data-f-component-type="RichTextContainer"
             style={{ transform: "none" }}
           >
             <p
-              className="framer-text framer-styles-preset-1n1wh7h"
+              className="f-text f-styles-preset-1n1wh7h"
               data-styles-preset="gd6AWaps9"
               dir="auto"
             >
@@ -53,15 +53,15 @@ export default function FaqSection() {
         </div>
         <div className="ssr-variant hidden-f3lv8x hidden-tsn51j">
           <div
-            className="framer-12yhnwq-container"
+            className="f-12yhnwq-container"
             style={{ willChange: "transform", opacity: 1, transform: "none" }}
           >
             <div
-              className="framer-sABwM framer-10950d3 framer-v-10950d3"
-              data-framer-name="Desktop"
+              className="f-sABwM f-10950d3 f-v-10950d3"
+              data-f-name="Desktop"
               style={{ width: "100%", opacity: 1 }}
             >
-              <div className="framer-mbtw9f-container" style={{ opacity: 1 }}>
+              <div className="f-mbtw9f-container" style={{ opacity: 1 }}>
                 <div style={{ width: "100%" }}>
                   {faqs.map((faq, i) => (
                     <FaqItem

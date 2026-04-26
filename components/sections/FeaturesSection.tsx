@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { LayoutGroup, motion } from "framer-motion";
+import { LayoutGroup, motion } from "f-motion";
 
 const IMAGE_BOX_SHADOW =
   "rgba(0, 0, 0, 0.4) -0.800251px 0px 1.76055px -0.7px, rgba(0, 0, 0, 0.39) -2.1793px 0px 4.79445px -1.4px, rgba(0, 0, 0, 0.36) -4.78495px 0px 10.5269px -2.1px, rgba(0, 0, 0, 0.31) -10.6215px 0px 23.3673px -2.8px, rgba(0, 0, 0, 0.17) -27px 0px 59.4px -3.5px";
@@ -17,7 +17,7 @@ const features = [
       "/assets/images/6xxZ3D6rnu26P86nUVvj2eanCY_ef1bbb6e.jpg",
       "/assets/images/6girwIRKdg1doDEWAHr4oDIbroU_47c04159.jpg",
     ],
-    containerClass: "framer-1rzj7xg-container",
+    containerClass: "f-1rzj7xg-container",
   },
   {
     number: "(002)",
@@ -29,7 +29,7 @@ const features = [
       "/assets/images/PTZo29JDyFUqhP5lmoOwf726M_a226a504.jpg",
       "/assets/images/OvxlgM3dgsl1n9Hl1FAnutk3YQ_25760d5b.jpg",
     ],
-    containerClass: "framer-1bfpaot-container",
+    containerClass: "f-1bfpaot-container",
   },
   {
     number: "(003)",
@@ -41,7 +41,7 @@ const features = [
       "/assets/images/2BxeG0o2qWf8AOHmXP5mvB7fXo_398b9d36.jpg",
       "/assets/images/PzUf5VcgXOfitprgtvScN6spik_bf934ca8.jpg",
     ],
-    containerClass: "framer-1sy2cyp-container",
+    containerClass: "f-1sy2cyp-container",
   },
   {
     number: "(004)",
@@ -53,19 +53,19 @@ const features = [
       "/assets/images/qQlR5lTiRYzT2lPzSWLLVkcgH6Y_9ec6cd36.jpg",
       "/assets/images/7HAgaIAjq6jlYJoi8ME87oXs6w_78d15953.jpg",
     ],
-    containerClass: "framer-1sy2cyp-container",
+    containerClass: "f-1sy2cyp-container",
   },
 ];
 
 const textColorStyle = {
-  "--framer-text-color":
+  "--f-text-color":
     "var(--extracted-r6o4lv, var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255)))",
 } as React.CSSProperties;
 
 const extractedWhite = {
   "--extracted-r6o4lv":
     "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
-  "--framer-paragraph-spacing": "0px",
+  "--f-paragraph-spacing": "0px",
 } as React.CSSProperties;
 
 const ACCORDION_TRANSITION = {
@@ -100,9 +100,9 @@ function FeatureItem({
   return (
     <div className={containerClass} style={{ opacity: 1 }}>
       <motion.div
-        className={`framer-ssEy5 framer-PU6Rs framer-loOMQ framer-RKppn framer-1nd063s ${isOpen ? "framer-v-1nd063s" : "framer-v-1cek2le"}`}
+        className={`f-ssEy5 f-PU6Rs f-loOMQ f-RKppn f-1nd063s ${isOpen ? "f-v-1nd063s" : "f-v-1cek2le"}`}
         data-border="true"
-        data-framer-name={isOpen ? "Desktop open" : "Desktop closed"}
+        data-f-name={isOpen ? "Desktop open" : "Desktop closed"}
         data-highlight="true"
         tabIndex={0}
         onTap={() => setIsOpen((prev) => !prev)}
@@ -131,17 +131,17 @@ function FeatureItem({
         } as React.CSSProperties}
       >
         {/* Number column */}
-        <div className="framer-wos98z" data-framer-name="1" style={{ opacity: 1 }}>
+        <div className="f-wos98z" data-f-name="1" style={{ opacity: 1 }}>
           <motion.div
-            className="framer-vxijqi"
-            data-framer-component-type="RichTextContainer"
+            className="f-vxijqi"
+            data-f-component-type="RichTextContainer"
             animate={{ opacity: isOpen ? 1 : 0.6 }}
             initial={false}
             transition={ACCORDION_TRANSITION}
             style={{ ...extractedWhite, transform: "none" } as React.CSSProperties}
           >
             <p
-              className="framer-text framer-styles-preset-1n1wh7h"
+              className="f-text f-styles-preset-1n1wh7h"
               data-styles-preset="gd6AWaps9"
               style={textColorStyle}
             >
@@ -152,8 +152,8 @@ function FeatureItem({
 
         {/* Content area — CSS variant class handles layout, borders via inline vars */}
         <motion.div
-          className="framer-1ox4qjh"
-          data-framer-name="2"
+          className="f-1ox4qjh"
+          data-f-name="2"
           data-border="true"
           animate={{
             "--border-bottom-width": isOpen ? "0px" : "1px",
@@ -173,37 +173,37 @@ function FeatureItem({
         >
           {/* Expanded content (images + description) — CSS positions it */}
           <motion.div
-            className="framer-174h6l6"
-            data-framer-name="Text"
+            className="f-174h6l6"
+            data-f-name="Text"
             animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : DESKTOP_CLOSED_DETAILS_Y }}
             initial={false}
             transition={ACCORDION_TRANSITION}
             style={{ opacity: 1 }}
           >
-            <div className="framer-1qdqpra" data-framer-name="1" style={{ opacity: 1 }}>
-              <div className="framer-1t0yt9s" data-framer-name="Images" style={{ opacity: 1 }}>
-                <div className="framer-knkn1" data-framer-name="Image" style={{ borderRadius: 12, opacity: 1 }}>
-                  <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-framer-background-image-wrapper="true">
+            <div className="f-1qdqpra" data-f-name="1" style={{ opacity: 1 }}>
+              <div className="f-1t0yt9s" data-f-name="Images" style={{ opacity: 1 }}>
+                <div className="f-knkn1" data-f-name="Image" style={{ borderRadius: 12, opacity: 1 }}>
+                  <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-f-background-image-wrapper="true">
                     <img loading="lazy" width={140} height={140} src={images[0]} alt="" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", objectPosition: "center", objectFit: "cover" }} />
                   </div>
                 </div>
-                <div className="framer-rbfec2" data-framer-name="Image-1" style={{ borderRadius: 14, boxShadow: IMAGE_BOX_SHADOW, opacity: 1 }}>
-                  <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-framer-background-image-wrapper="true">
+                <div className="f-rbfec2" data-f-name="Image-1" style={{ borderRadius: 14, boxShadow: IMAGE_BOX_SHADOW, opacity: 1 }}>
+                  <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-f-background-image-wrapper="true">
                     <img loading="lazy" width={140} height={140} src={images[1]} alt="" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", objectPosition: "center", objectFit: "cover" }} />
                   </div>
                 </div>
-                <div className="framer-38v78q" data-framer-name="Image-2" style={{ borderRadius: 14, boxShadow: IMAGE_BOX_SHADOW, opacity: 1 }}>
-                  <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-framer-background-image-wrapper="true">
+                <div className="f-38v78q" data-f-name="Image-2" style={{ borderRadius: 14, boxShadow: IMAGE_BOX_SHADOW, opacity: 1 }}>
+                  <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-f-background-image-wrapper="true">
                     <img loading="lazy" width={140} height={140} src={images[2]} alt="" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", objectPosition: "center", objectFit: "cover" }} />
                   </div>
                 </div>
               </div>
-              <div className="framer-14ruax2" data-framer-name="Service Info" style={{ opacity: 1 }}>
-                <div className="framer-1xsxun7" data-framer-component-type="RichTextContainer" style={{ ...extractedWhite, transform: "none", opacity: 1 } as React.CSSProperties}>
-                  <p className="framer-text framer-styles-preset-1rii1wr" data-styles-preset="pAxoS1kOX" style={textColorStyle}>{title}</p>
+              <div className="f-14ruax2" data-f-name="Service Info" style={{ opacity: 1 }}>
+                <div className="f-1xsxun7" data-f-component-type="RichTextContainer" style={{ ...extractedWhite, transform: "none", opacity: 1 } as React.CSSProperties}>
+                  <p className="f-text f-styles-preset-1rii1wr" data-styles-preset="pAxoS1kOX" style={textColorStyle}>{title}</p>
                 </div>
-                <div className="framer-vli817" data-framer-component-type="RichTextContainer" style={{ ...extractedWhite, opacity: 0.6, transform: "none" } as React.CSSProperties}>
-                  <p className="framer-text framer-styles-preset-1n1wh7h" data-styles-preset="gd6AWaps9" style={textColorStyle}>{description}</p>
+                <div className="f-vli817" data-f-component-type="RichTextContainer" style={{ ...extractedWhite, opacity: 0.6, transform: "none" } as React.CSSProperties}>
+                  <p className="f-text f-styles-preset-1n1wh7h" data-styles-preset="gd6AWaps9" style={textColorStyle}>{description}</p>
                 </div>
               </div>
             </div>
@@ -211,9 +211,9 @@ function FeatureItem({
 
           {/* Arrow button */}
           <motion.div
-            className="framer-koycop"
+            className="f-koycop"
             data-border="true"
-            data-framer-name="Button"
+            data-f-name="Button"
             animate={{ rotate: isOpen ? 0 : 270 }}
             initial={false}
             transition={ACCORDION_TRANSITION}
@@ -229,37 +229,37 @@ function FeatureItem({
             } as React.CSSProperties}
           >
             <motion.div
-              className="framer-1xewh8u-container"
+              className="f-1xewh8u-container"
               animate={{ rotate: isOpen ? 0 : 90 }}
               initial={false}
               transition={ACCORDION_TRANSITION}
               style={{ opacity: 1 }}
             >
-              <div className="framer-ZPULr framer-1xcu7rj framer-v-1xcu7rj" data-framer-name="Variant 1" style={{ height: "100%", width: "100%", opacity: 1 }}>
+              <div className="f-ZPULr f-1xcu7rj f-v-1xcu7rj" data-f-name="Variant 1" style={{ height: "100%", width: "100%", opacity: 1 }}>
                 <motion.div
-                  className="framer-2rakpf"
-                  data-framer-name="V"
+                  className="f-2rakpf"
+                  data-f-name="V"
                   animate={{ opacity: isOpen ? 0 : 1 }}
                   initial={false}
                   transition={ACCORDION_TRANSITION}
                   style={{ backgroundColor: "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))", opacity: 1 }}
                 />
-                <div className="framer-48ytin" data-framer-name="H" style={{ backgroundColor: "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))", transform: "rotate(90deg)", opacity: 1 }} />
+                <div className="f-48ytin" data-f-name="H" style={{ backgroundColor: "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))", transform: "rotate(90deg)", opacity: 1 }} />
               </div>
             </motion.div>
           </motion.div>
 
           {/* Service title (visible when closed, CSS positions it) */}
           <motion.div
-            className="framer-1pna3mw"
-            data-framer-name="Service Title"
-            data-framer-component-type="RichTextContainer"
+            className="f-1pna3mw"
+            data-f-name="Service Title"
+            data-f-component-type="RichTextContainer"
             animate={{ opacity: isOpen ? 0 : 1 }}
             initial={false}
             transition={ACCORDION_TRANSITION}
             style={{ ...extractedWhite, opacity: 0 } as React.CSSProperties}
           >
-            <p className="framer-text framer-styles-preset-1oueo73" data-styles-preset="HLpRTFhim" style={textColorStyle}>{title}</p>
+            <p className="f-text f-styles-preset-1oueo73" data-styles-preset="HLpRTFhim" style={textColorStyle}>{title}</p>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -271,22 +271,22 @@ export default function FeaturesSection() {
   const [isDownloadHovered, setIsDownloadHovered] = useState(false);
 
   return (
-    <section className="framer-8d5aox" data-framer-name="Features" id="features">
-      <div className="framer-o7lid4" data-framer-name="Container">
-        <div className="framer-104r01y" data-framer-name="Top">
-          <div className="framer-1xt25lo" data-framer-name="Heading">
+    <section className="f-8d5aox" data-f-name="Features" id="features">
+      <div className="f-o7lid4" data-f-name="Container">
+        <div className="f-104r01y" data-f-name="Top">
+          <div className="f-1xt25lo" data-f-name="Heading">
             <div className="ssr-variant hidden-f3lv8x">
               <div
-                className="framer-1ampza"
-                data-framer-component-type="RichTextContainer"
+                className="f-1ampza"
+                data-f-component-type="RichTextContainer"
                 style={{ willChange: "transform", opacity: 1, transform: "none" }}
               >
                 <h2
-                  className="framer-text framer-styles-preset-1yvd34u"
+                  className="f-text f-styles-preset-1yvd34u"
                   data-styles-preset="GKtOymhXV"
                   dir="auto"
                   style={{
-                    "--framer-text-color":
+                    "--f-text-color":
                       "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
                   } as React.CSSProperties}
                 >
@@ -299,14 +299,14 @@ export default function FeaturesSection() {
 
         {/* Desktop feature items */}
         <div className="ssr-variant hidden-f3lv8x hidden-tsn51j">
-          <div className="framer-1hh6mhy-container">
+          <div className="f-1hh6mhy-container">
             <div
-              className="framer-hxVQG framer-x5wmst framer-v-x5wmst"
-              data-framer-name="Desktop "
+              className="f-hxVQG f-x5wmst f-v-x5wmst"
+              data-f-name="Desktop "
               style={{ width: "100%", opacity: 1 }}
             >
               <div
-                className="framer-o8ohx9-container"
+                className="f-o8ohx9-container"
                 style={{ transform: "translateX(-50%)", opacity: 1 }}
               >
                 <div />
@@ -326,14 +326,14 @@ export default function FeaturesSection() {
         </div>
 
         {/* Bottom section with download button */}
-        <div className="framer-1lbrd8x" data-framer-name="Bottom">
-          <div className="framer-1ykazkz hidden-f3lv8x" data-framer-name="Filler" />
-          <div className="framer-o105nz" data-framer-name="Container">
+        <div className="f-1lbrd8x" data-f-name="Bottom">
+          <div className="f-1ykazkz hidden-f3lv8x" data-f-name="Filler" />
+          <div className="f-o105nz" data-f-name="Container">
             <div className="ssr-variant hidden-f3lv8x">
-              <div className="framer-r9wof4-container">
+              <div className="f-r9wof4-container">
                 <motion.a
-                  className={`framer-vJRT3 framer-rbw179 framer-v-rbw179 framer-1qniyoc${isDownloadHovered ? " hover" : ""}`}
-                  data-framer-name="Default"
+                  className={`f-vJRT3 f-rbw179 f-v-rbw179 f-1qniyoc${isDownloadHovered ? " hover" : ""}`}
+                  data-f-name="Default"
                   data-reset="button"
                   href="/#getapp"
                   onHoverStart={() => setIsDownloadHovered(true)}
@@ -354,9 +354,9 @@ export default function FeaturesSection() {
                   }}
                 >
                   <motion.div
-                    className="framer-1mhfyus"
-                    data-framer-name="Submit 1"
-                    data-framer-component-type="RichTextContainer"
+                    className="f-1mhfyus"
+                    data-f-name="Submit 1"
+                    data-f-component-type="RichTextContainer"
                     layout
                     animate={{
                       opacity: isDownloadHovered ? 1 : 0,
@@ -366,8 +366,8 @@ export default function FeaturesSection() {
                     transition={DOWNLOAD_BUTTON_TRANSITION}
                     style={{
                       "--extracted-r6o4lv": "var(--variable-reference-iyuXB1N8q-eDUVCTTXq)",
-                      "--framer-link-text-color": "rgb(0, 153, 255)",
-                      "--framer-link-text-decoration": "underline",
+                      "--f-link-text-color": "rgb(0, 153, 255)",
+                      "--f-link-text-decoration": "underline",
                       "--variable-reference-iyuXB1N8q-eDUVCTTXq":
                         "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                       "--variable-reference-R8iwJ2h7U-eDUVCTTXq":
@@ -376,14 +376,14 @@ export default function FeaturesSection() {
                     } as React.CSSProperties}
                   >
                     <p
-                      className="framer-text"
+                      className="f-text"
                       style={{
                         "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                        "--framer-font-family": '"Inter", "Inter Placeholder", sans-serif',
-                        "--framer-font-size": "18px",
-                        "--framer-font-weight": "600",
-                        "--framer-letter-spacing": "-0.04em",
-                        "--framer-text-color":
+                        "--f-font-family": '"Inter", "Inter Placeholder", sans-serif',
+                        "--f-font-size": "18px",
+                        "--f-font-weight": "600",
+                        "--f-letter-spacing": "-0.04em",
+                        "--f-text-color":
                           isDownloadHovered
                             ? "var(--extracted-r6o4lv, var(--variable-reference-R8iwJ2h7U-eDUVCTTXq))"
                             : "var(--extracted-r6o4lv, var(--variable-reference-iyuXB1N8q-eDUVCTTXq))",
@@ -393,9 +393,9 @@ export default function FeaturesSection() {
                     </p>
                   </motion.div>
                   <motion.div
-                    className="framer-meoha7"
-                    data-framer-name="Submit 2"
-                    data-framer-component-type="RichTextContainer"
+                    className="f-meoha7"
+                    data-f-name="Submit 2"
+                    data-f-component-type="RichTextContainer"
                     layout
                     animate={{
                       opacity: isDownloadHovered ? 0 : 1,
@@ -405,8 +405,8 @@ export default function FeaturesSection() {
                     transition={DOWNLOAD_BUTTON_TRANSITION}
                     style={{
                       "--extracted-r6o4lv": "var(--variable-reference-iyuXB1N8q-eDUVCTTXq)",
-                      "--framer-link-text-color": "rgb(0, 153, 255)",
-                      "--framer-link-text-decoration": "underline",
+                      "--f-link-text-color": "rgb(0, 153, 255)",
+                      "--f-link-text-decoration": "underline",
                       "--variable-reference-iyuXB1N8q-eDUVCTTXq":
                         "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                       "--variable-reference-R8iwJ2h7U-eDUVCTTXq":
@@ -415,14 +415,14 @@ export default function FeaturesSection() {
                     } as React.CSSProperties}
                   >
                     <p
-                      className="framer-text"
+                      className="f-text"
                       style={{
                         "--font-selector": "SW50ZXItU2VtaUJvbGQ=",
-                        "--framer-font-family": '"Inter", "Inter Placeholder", sans-serif',
-                        "--framer-font-size": "18px",
-                        "--framer-font-weight": "600",
-                        "--framer-letter-spacing": "-0.04em",
-                        "--framer-text-color":
+                        "--f-font-family": '"Inter", "Inter Placeholder", sans-serif',
+                        "--f-font-size": "18px",
+                        "--f-font-weight": "600",
+                        "--f-letter-spacing": "-0.04em",
+                        "--f-text-color":
                           isDownloadHovered
                             ? "var(--extracted-r6o4lv, var(--variable-reference-R8iwJ2h7U-eDUVCTTXq))"
                             : "var(--extracted-r6o4lv, var(--variable-reference-iyuXB1N8q-eDUVCTTXq))",
@@ -438,7 +438,7 @@ export default function FeaturesSection() {
         </div>
       </div>
 
-      <div className="framer-1varat1" data-framer-name="background" />
+      <div className="f-1varat1" data-f-name="background" />
     </section>
   );
 }

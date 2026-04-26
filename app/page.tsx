@@ -12,26 +12,26 @@ export default function Home() {
   return (
     <div id="main">
       <div
-        className="framer-D2wOp framer-128kipa"
+        className="f-D2wOp f-128kipa"
         data-layout-template="true"
         data-selection="true"
         style={{ minHeight: "100vh", width: "auto" }}
       >
         <div
-          className="framer-gdzxqr-container"
-          data-framer-layout-hint-center-x="true"
+          className="f-gdzxqr-container"
+          data-f-layout-hint-center-x="true"
         >
           <div className="ssr-variant hidden-1l0aw67 hidden-xwr0r7">
             <Header />
           </div>
         </div>
         <div
-          data-framer-root=""
-          className="framer-CG7Jx framer-RKppn framer-tOAQB framer-loOMQ framer-PU6Rs framer-ofTFr framer-ZkB8p framer-Xxt6K framer-Pv7XK framer-m9VkI framer-0CPYn framer-EP1im framer-72rtr7"
+          data-f-root=""
+          className="f-CG7Jx f-RKppn f-tOAQB f-loOMQ f-PU6Rs f-ofTFr f-ZkB8p f-Xxt6K f-Pv7XK f-m9VkI f-0CPYn f-EP1im f-72rtr7"
           style={{ minHeight: "100vh", width: "auto", display: "contents" }}
         >
           <PreLoader />
-          <main className="framer-jpdxmw" data-framer-name="Main">
+          <main className="f-jpdxmw" data-f-name="Main">
             <ScrollReveal y={300} duration={1} delay={0.3}>
               <HeroSection />
             </ScrollReveal>
