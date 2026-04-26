@@ -1,9 +1,126 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 export default function StatsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [countValue, setCountValue] = useState(0);
+  const TARGET = 12;
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    // 1. Intro heading — fade + slide up
+    const heading = section.querySelector(
+      '[data-f-name="Intro"]',
+    ) as HTMLElement | null;
+    if (heading) {
+      heading.style.opacity = "0";
+      heading.style.transform = "translateY(30px)";
+    }
+
+    // 2. Word spans in the description paragraph
+    const wordContainer = section.querySelector(
+      '[data-stats-animate="word-reveal"]',
+    );
+    const wordSpans = wordContainer
+      ? (
+          Array.from(
+            wordContainer.querySelectorAll('span[style*="inline-block"]'),
+          ) as HTMLSpanElement[]
+        ).filter((s) => s.textContent?.trim())
+      : [];
+    wordSpans.forEach((span) => {
+      span.style.opacity = "0";
+      span.style.transform = "translateY(10px)";
+    });
+
+    // 3. Cards
+    const cards = Array.from(
+      section.querySelectorAll('[data-stats-animate="card"]'),
+    ) as HTMLElement[];
+    cards.forEach((card) => {
+      card.style.opacity = "0";
+      card.style.transform = "translateY(40px)";
+    });
+
+    // 4. Bar columns
+    const bars = Array.from(
+      section.querySelectorAll('[data-stats-animate="bar"]'),
+    ) as HTMLElement[];
+    bars.forEach((bar) => {
+      bar.style.transform = "scaleY(0)";
+      bar.style.transformOrigin = "bottom";
+    });
+
+    const ease = "cubic-bezier(0.25, 0.1, 0.25, 1)";
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        // Heading
+        if (heading) {
+          heading.style.transition = `opacity 0.7s ${ease}, transform 0.7s ${ease}`;
+          heading.style.opacity = "1";
+          heading.style.transform = "translateY(0)";
+        }
+
+        // Word-by-word stagger (start after heading begins)
+        wordSpans.forEach((span, i) => {
+          const delay = 0.15 + i * 0.03;
+          span.style.transition = `opacity 0.35s ease ${delay}s, transform 0.35s ease ${delay}s`;
+          span.style.opacity = "1";
+          span.style.transform = "translateY(0)";
+        });
+
+        // Cards with stagger
+        cards.forEach((card, i) => {
+          const delay = 0.1 + i * 0.12;
+          card.style.transition = `opacity 0.7s ${ease} ${delay}s, transform 0.7s ${ease} ${delay}s`;
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+        });
+
+        // Bar columns with stagger (after cards start)
+        bars.forEach((bar, i) => {
+          const delay = 0.5 + i * 0.07;
+          bar.style.transition = `transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}s`;
+          bar.style.transform = "scaleY(1)";
+        });
+
+        // Animated counter
+        const duration = 1200;
+        const start = performance.now();
+        const step = (now: number) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setCountValue(Math.round(eased * TARGET));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+
+        observer.unobserve(section);
+      },
+      { rootMargin: "-80px" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="f-15o920v" data-f-name="Stats" id="stats">
+    <section
+      ref={sectionRef}
+      className="f-15o920v"
+      data-f-name="Stats"
+      id="stats"
+    >
       <section className="f-15uz38f" data-f-name="More info">
         <div className="f-sl8twl" data-f-name="Container">
-          <div className="f-1lmgcpb" data-f-name="2">
+          <div className="f-1lmgcpb" data-f-name="2" style={{ alignItems: "flex-end" }}>
             <div className="f-15zrzua" data-f-name="Intro">
               <div
                 className="f-18jo1an"
@@ -19,8 +136,12 @@ export default function StatsSection() {
                 </h2>
               </div>
             </div>
-            <div className="f-1f1bftd" data-f-name="Container">
-              <div className="f-3wctl5" data-f-name="Text">
+            <div className="f-1f1bftd stats-text-container" data-f-name="Container">
+              <div
+                className="f-3wctl5"
+                data-f-name="Text"
+                data-stats-animate="word-reveal"
+              >
                 <div className="ssr-variant hidden-f3lv8x">
                   <div
                     className="f-1vd8r3h"
@@ -40,61 +161,66 @@ export default function StatsSection() {
                         }
                         className="f-text"
                       >
-                        <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
+                        <span
+                          style={{
+                            display: "inline-block",
+                            opacity: 1,
+                            transform: "none",
+                          }}
+                        >
                           See
                         </span>{" "}
-                        <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                          exactly
-                        </span>{" "}
-                        <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
+                        <span
+                          style={{
+                            display: "inline-block",
+                            opacity: 1,
+                            transform: "none",
+                          }}
+                        >
                           how
                         </span>{" "}
-                        <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
+                        <span
+                          style={{
+                            display: "inline-block",
+                            opacity: 1,
+                            transform: "none",
+                          }}
+                        >
                           your
                         </span>{" "}
-                        <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
+                        <span
+                          style={{
+                            display: "inline-block",
+                            opacity: 1,
+                            transform: "none",
+                          }}
+                        >
                           event
                         </span>{" "}
-                        <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                          is
-                        </span>{" "}
-                        <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                          performing:
+                        <span
+                          style={{
+                            display: "inline-block",
+                            opacity: 1,
+                            transform: "none",
+                          }}
+                        >
+                          performs.
                         </span>
                       </span>
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }} />{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }} />
-                      <br />
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        Track
-                      </span>{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        ticket
-                      </span>{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        sales,
-                      </span>{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        revenue,
-                      </span>{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        and
-                      </span>{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        audience
-                      </span>{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        engagement
-                      </span>{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        in
-                      </span>{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        real
-                      </span>{" "}
-                      <span style={{ display: "inline-block", opacity: 1, transform: "none" }}>
-                        time.
-                      </span>
+                      <span
+                        style={{
+                          display: "inline-block",
+                          opacity: 1,
+                          transform: "none",
+                        }}
+                      />{" "}
+                      <span
+                        style={{
+                          display: "inline-block",
+                          opacity: 1,
+                          transform: "none",
+                        }}
+                      />
                     </p>
                   </div>
                 </div>
@@ -110,7 +236,8 @@ export default function StatsSection() {
         <div
           className="f-9vdeef"
           data-f-name="1"
-          style={{ opacity: 1, transform: "none" }}
+          data-stats-animate="card"
+          style={{ opacity: 1, transform: "none", overflowY: "hidden", overflowX: "visible" }}
         >
           <div className="f-1vubmvd" data-f-name="Top">
             <div className="f-qxd9hc" data-f-name="Top">
@@ -126,6 +253,7 @@ export default function StatsSection() {
                     {
                       "--f-text-color":
                         "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
+                      fontSize: "28px",
                     } as React.CSSProperties
                   }
                 >
@@ -147,7 +275,6 @@ export default function StatsSection() {
                     } as React.CSSProperties
                   }
                 >
-                  UX/UI Redesign, Frontend Optimization.
                 </p>
               </div>
             </div>
@@ -161,7 +288,10 @@ export default function StatsSection() {
                   <div
                     className="f-2rakpf"
                     data-f-name="V"
-                    style={{ backgroundColor: "rgb(255, 255, 255)", opacity: 1 }}
+                    style={{
+                      backgroundColor: "rgb(255, 255, 255)",
+                      opacity: 1,
+                    }}
                   />
                   <div
                     className="f-48ytin"
@@ -177,134 +307,225 @@ export default function StatsSection() {
             </div>
           </div>
 
-          <div className="f-93takc" data-f-name="Bottom">
-            <div className="ssr-variant hidden-f3lv8x">
-              <div className="f-15l45ch-container">
-                <a
-                  className="f-2efz1 f-RKppn f-ofTFr f-afx6zd f-v-19pclpi f-1fiqcwx"
-                  data-f-name="Desktop light small"
-                  href="https://templifica.com/"
-                  target="_blank"
-                  rel="noopener"
-                  style={{ opacity: 1 }}
+          <div className="f-93takc" data-f-name="Bottom" />
+
+          {/* Event success chart — left of portrait */}
+          <div
+            style={{
+              position: "absolute",
+              top: 190,
+              left: 40,
+              zIndex: 2,
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
+              padding: 0,
+              width: 320,
+            }}
+          >
+            {/* Header row */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+              <span
+                style={{
+                  fontFamily: '"Inter", sans-serif',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  letterSpacing: "-0.02em",
+                  color: "rgba(255, 255, 255, 0.5)",
+                  textTransform: "uppercase",
+                }}
+              >
+                Revenue
+              </span>
+              <span
+                style={{
+                  fontFamily: '"Inter", sans-serif',
+                  fontSize: 11,
+                  fontWeight: 500,
+                  color: "rgba(255, 255, 255, 0.3)",
+                }}
+              >
+                Last 30 days
+              </span>
+            </div>
+
+            {/* Total + growth */}
+            <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+              <span
+                style={{
+                  fontFamily: '"Inter", sans-serif',
+                  fontSize: 28,
+                  fontWeight: 700,
+                  letterSpacing: "-0.04em",
+                  color: "rgb(255, 255, 255)",
+                }}
+              >
+                $48.2k
+              </span>
+              <span
+                style={{
+                  fontFamily: '"Inter", sans-serif',
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: "rgb(52, 211, 153)",
+                }}
+              >
+                +127%
+              </span>
+            </div>
+
+            {/* Area chart SVG */}
+            <svg viewBox="0 0 456 106" style={{ width: "100%", height: 100, overflow: "visible" }}>
+              <defs>
+                <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.15)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                </linearGradient>
+              </defs>
+              {/* Grid lines */}
+              {[25, 50, 75].map((y) => (
+                <line
+                  key={y}
+                  x1={0}
+                  y1={y}
+                  x2={450}
+                  y2={y}
+                  stroke="rgba(255,255,255,0.06)"
+                  strokeWidth={1}
+                />
+              ))}
+              {/* Area fill */}
+              <path
+                d="M0,85 L37,80 L75,75 L112,68 L150,58 L187,52 L225,42 L262,35 L300,28 L337,30 L375,20 L412,12 L450,6 L450,100 L0,100 Z"
+                fill="url(#chartGrad)"
+              />
+              {/* Line */}
+              <path
+                d="M0,85 L37,80 L75,75 L112,68 L150,58 L187,52 L225,42 L262,35 L300,28 L337,30 L375,20 L412,12 L450,6"
+                fill="none"
+                stroke="rgb(255, 255, 255)"
+                strokeWidth={1.5}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* End dot */}
+              <circle cx={450} cy={6} r={3} fill="rgb(255, 255, 255)" />
+            </svg>
+
+            {/* Event breakdown */}
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              {[
+                { name: "Event 1", tickets: "1,200", pct: "100%" },
+                { name: "Event 2", tickets: "1,850", pct: "100%" },
+                { name: "Event 3", tickets: "2,400", pct: "100%" },
+              ].map((e) => (
+                <div
+                  key={e.name}
+                  style={{ display: "flex", flexDirection: "column", gap: 2 }}
                 >
-                  <div
-                    className="f-1r4klrj"
-                    data-f-name="Container"
-                    style={{ opacity: 1 }}
+                  <span
+                    style={{
+                      fontFamily: '"Inter", sans-serif',
+                      fontSize: 9,
+                      fontWeight: 500,
+                      color: "rgba(255, 255, 255, 0.35)",
+                      textTransform: "uppercase",
+                    }}
                   >
-                    <div
-                      className="f-fxpu9w"
-                      data-f-component-type="RichTextContainer"
-                      style={
-                        {
-                          "--extracted-r6o4lv":
-                            "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
-                          "--f-paragraph-spacing": "0px",
-                          transform: "none",
-                          opacity: 1,
-                        } as React.CSSProperties
-                      }
-                    >
-                      <p
-                        className="f-text f-styles-preset-2s58fc"
-                        data-styles-preset="svYtzYwMA"
-                        style={
-                          {
-                            "--f-text-color":
-                              "var(--extracted-r6o4lv, var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255)))",
-                          } as React.CSSProperties
-                        }
-                      >
-                        Live website
-                      </p>
-                    </div>
-                    <div className="f-70k9fe" data-f-name="Arrow" style={{ opacity: 1 }}>
-                      <div className="f-fp9yoz" data-f-name="1" style={{ opacity: 1 }}>
-                        <div
-                          data-f-component-type="SVG"
-                          data-f-name="Vector"
-                          className="f-hms4jt"
-                          aria-hidden="true"
-                          style={{
-                            imageRendering: "pixelated",
-                            flexShrink: 0,
-                            backgroundSize: "100% 100%",
-                            backgroundImage:
-                              'url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 viewBox=%220 0 10 11%22%3E%3Cpath d=%22M 1.498 0.795 L 1.498 1.445 C 1.498 1.523 1.53 1.598 1.585 1.654 C 1.64 1.709 1.715 1.74 1.794 1.74 L 7.883 1.74 L 0.086 9.537 C 0.031 9.592 0 9.667 0 9.745 C 0 9.824 0.031 9.899 0.087 9.954 L 0.546 10.414 C 0.661 10.529 0.848 10.529 0.964 10.414 L 8.76 2.617 L 8.76 8.707 C 8.76 8.785 8.791 8.86 8.846 8.915 C 8.902 8.971 8.977 9.002 9.055 9.002 L 9.705 9.002 C 9.783 9.002 9.858 8.971 9.913 8.915 C 9.969 8.86 10 8.785 10 8.707 L 10 0.795 C 10 0.717 9.969 0.642 9.913 0.587 C 9.858 0.531 9.783 0.5 9.705 0.5 L 1.793 0.5 C 1.715 0.5 1.64 0.531 1.585 0.587 C 1.529 0.642 1.498 0.717 1.498 0.795 Z%22 fill=%22rgb(10,10,10)%22 opacity=%220.3%22%3E%3C/path%3E%3C/svg%3E")',
-                            opacity: 1,
-                          }}
-                        />
-                      </div>
-                      <div className="f-hhjdwv" data-f-name="2" style={{ opacity: 1 }}>
-                        <div
-                          data-f-component-type="SVG"
-                          data-f-name="Vector"
-                          className="f-fpn24s"
-                          aria-hidden="true"
-                          style={{
-                            imageRendering: "pixelated",
-                            flexShrink: 0,
-                            opacity: 1,
-                          }}
-                        >
-                          <div
-                            className="svgContainer"
-                            style={{ width: "100%", height: "100%", aspectRatio: "inherit" }}
-                          >
-                            <svg style={{ width: "100%", height: "100%" }}>
-                              <use href="#svg8926197795" />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                    {e.name}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: '"Inter", sans-serif',
+                      fontSize: 14,
+                      fontWeight: 600,
+                      letterSpacing: "-0.03em",
+                      color: "rgb(255, 255, 255)",
+                    }}
+                  >
+                    {e.tickets}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: '"Inter", sans-serif',
+                      fontSize: 10,
+                      fontWeight: 500,
+                      color: "rgb(52, 211, 153)",
+                    }}
+                  >
+                    {e.pct} sold
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: 1, backgroundColor: "rgba(255, 255, 255, 0.08)", marginTop: 6 }} />
+
+            {/* Sell-through rate */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+                <span
+                  style={{
+                    fontFamily: '"Inter", sans-serif',
+                    fontSize: 11,
+                    fontWeight: 500,
+                    color: "rgba(255, 255, 255, 0.4)",
+                  }}
+                >
+                  Sell-through rate
+                </span>
+                <span
+                  style={{
+                    fontFamily: '"Inter", sans-serif',
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "rgb(255, 255, 255)",
+                  }}
+                >
+                  100%
+                </span>
+              </div>
+              <div style={{ height: 4, borderRadius: 2, backgroundColor: "rgba(255, 255, 255, 0.1)" }}>
+                <div style={{ height: "100%", width: "100%", borderRadius: 2, backgroundColor: "rgb(52, 211, 153)" }} />
               </div>
             </div>
 
-            <div className="f-s1piw9" data-f-name="Text">
-              <div className="ssr-variant hidden-f3lv8x">
+            {/* Key metrics row */}
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop: 4 }}>
+              {[
+                { label: "Avg. ticket price", value: "$8.80" },
+                { label: "Check-ins", value: "5,210" },
+                { label: "Repeat buyers", value: "38%" },
+              ].map((m) => (
                 <div
-                  className="f-vjmar9"
-                  data-f-name="Description"
-                  data-f-component-type="RichTextContainer"
-                  style={{ transform: "none" }}
+                  key={m.label}
+                  style={{ display: "flex", flexDirection: "column", gap: 2 }}
                 >
-                  <p
-                    className="f-text f-styles-preset-1oueo73"
-                    data-styles-preset="HLpRTFhim"
-                    style={
-                      { "--f-text-alignment": "right" } as React.CSSProperties
-                    }
+                  <span
+                    style={{
+                      fontFamily: '"Inter", sans-serif',
+                      fontSize: 9,
+                      fontWeight: 500,
+                      color: "rgba(255, 255, 255, 0.3)",
+                      textTransform: "uppercase",
+                    }}
                   >
-                    From branding to web development and marketing
-                  </p>
-                </div>
-              </div>
-              <div className="ssr-variant hidden-f3lv8x">
-                <div
-                  className="f-1c8bw98"
-                  data-f-name="Tagline"
-                  data-f-component-type="RichTextContainer"
-                  style={{ transform: "none" }}
-                >
-                  <p
-                    className="f-text f-styles-preset-txwsq6"
-                    data-styles-preset="fDRzSjw63"
-                    style={
-                      {
-                        "--f-text-alignment": "right",
-                        "--f-text-color":
-                          "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
-                      } as React.CSSProperties
-                    }
+                    {m.label}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: '"Inter", sans-serif',
+                      fontSize: 16,
+                      fontWeight: 600,
+                      letterSpacing: "-0.03em",
+                      color: "rgb(255, 255, 255)",
+                    }}
                   >
-                    We do it all.
-                  </p>
+                    {m.value}
+                  </span>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -313,7 +534,7 @@ export default function StatsSection() {
             <div
               className="f-6ptzzp"
               data-f-name="Portrait"
-              style={{ opacity: 1, transform: "none" }}
+              style={{ opacity: 1, transform: "none", width: 380, aspectRatio: "0.707 / 1", right: 0 }}
             >
               <div
                 style={{
@@ -330,7 +551,7 @@ export default function StatsSection() {
                   decoding="auto"
                   width={419}
                   height={938}
-                  src="/assets/images/cdqD6KSTRjtNlPeyRNdUOsKnU_309c5f90.png"
+                  src="/assets/images/case-study-portrait.png"
                   alt=""
                   style={{
                     display: "block",
@@ -345,39 +566,19 @@ export default function StatsSection() {
             </div>
           </div>
 
-          {/* Background image */}
+          {/* Background — solid black */}
           <div className="f-tkpp4e" data-f-name="BG">
-            <div className="ssr-variant hidden-f3lv8x">
-              <div className="f-pxhkb5" data-f-name="Image">
-                <div
-                  style={{
-                    position: "absolute",
-                    borderRadius: "inherit",
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    left: 0,
-                  }}
-                  data-f-background-image-wrapper="true"
-                >
-                  <img
-                    decoding="auto"
-                    width={1912}
-                    height={1402}
-                    src="/assets/images/vrhxHFTuxnCduP4nljUulqZcuQ_4a4218aa.jpg"
-                    alt="Dark gradiend background"
-                    style={{
-                      display: "block",
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: "inherit",
-                      objectPosition: "center",
-                      objectFit: "fill",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
+            <div
+              style={{
+                position: "absolute",
+                borderRadius: "inherit",
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                backgroundColor: "rgb(0, 0, 0)",
+              }}
+            />
           </div>
         </div>
 
@@ -387,6 +588,7 @@ export default function StatsSection() {
           <div
             className="f-1ob8ifv"
             data-f-name="1"
+            data-stats-animate="card"
             style={{ opacity: 1, transform: "none" }}
           >
             <div className="f-lcst9n" data-f-name="Top">
@@ -406,7 +608,7 @@ export default function StatsSection() {
                       } as React.CSSProperties
                     }
                   >
-                    Performance Boost:{" "}
+                    Live Analytics:{" "}
                   </p>
                 </div>
                 <div
@@ -418,13 +620,7 @@ export default function StatsSection() {
                     className="f-text f-styles-preset-xgn84q"
                     data-styles-preset="LyKOtaXoC"
                   >
-                    Page speed +48%,
-                  </p>
-                  <p
-                    className="f-text f-styles-preset-xgn84q"
-                    data-styles-preset="LyKOtaXoC"
-                  >
-                    Bounce rate -23%
+                    Track ticket sales, revenue, and engagement in real time.
                   </p>
                 </div>
               </div>
@@ -444,7 +640,7 @@ export default function StatsSection() {
                       } as React.CSSProperties
                     }
                   >
-                    Conversion Rate Improvement:
+                    Audience Growth:
                   </p>
                 </div>
                 <div
@@ -456,7 +652,7 @@ export default function StatsSection() {
                     className="f-text f-styles-preset-xgn84q"
                     data-styles-preset="LyKOtaXoC"
                   >
-                    4.2% → 5.9%
+                    +37% repeat attendees
                   </p>
                 </div>
               </div>
@@ -505,7 +701,7 @@ export default function StatsSection() {
                     }
                   >
                     {
-                      "\u201CThanks to the redesign, we\u2019ve seen a steady 60% increase in leads.\u201D"
+                      "\u201CVipass gave us the real-time data we needed to sell out three events in a row.\u201D"
                     }
                   </p>
                 </div>
@@ -531,7 +727,7 @@ export default function StatsSection() {
                         loading="lazy"
                         width={48}
                         height={48}
-                        src="/assets/images/mARXSQIQaDhUf6ZRpDnRzU235g_4cc285ec.jpg"
+                        src="/assets/images/priya-menon.png"
                         alt=""
                         style={{
                           display: "block",
@@ -562,7 +758,7 @@ export default function StatsSection() {
                     }}
                     className="f-text"
                   >
-                    Angela Smith
+                    Erik Holstad
                   </p>
                 </div>
               </div>
@@ -583,7 +779,11 @@ export default function StatsSection() {
             >
               <div
                 className="svgContainer"
-                style={{ width: "100%", height: "100%", aspectRatio: "inherit" }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  aspectRatio: "inherit",
+                }}
               >
                 <svg
                   style={{ width: "100%", height: "100%" }}
@@ -603,10 +803,36 @@ export default function StatsSection() {
             <div
               className="f-1quoedf"
               data-f-name="1"
+              data-stats-animate="card"
               style={{ opacity: 1, transform: "none" }}
             >
               {/* Pagespeed score */}
               <div className="f-lwzawp" data-border="true" data-f-name="Score">
+                {/* Donut chart SVG — 98% fill */}
+                <svg
+                  viewBox="0 0 123 123"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    transform: "rotate(-90deg)",
+                    pointerEvents: "none",
+                    zIndex: 1,
+                  }}
+                >
+                  <circle
+                    cx="61.5"
+                    cy="61.5"
+                    r="53.5"
+                    fill="none"
+                    stroke="rgb(10, 10, 10)"
+                    strokeWidth="14"
+                    strokeDasharray={`${0.95 * 2 * Math.PI * 53.5} ${2 * Math.PI * 53.5}`}
+                    strokeLinecap="round"
+                  />
+                </svg>
                 <div
                   className="f-tnf03y"
                   data-f-component-type="RichTextContainer"
@@ -623,7 +849,7 @@ export default function StatsSection() {
                     }}
                     className="f-text"
                   >
-                    100
+                    98%
                   </p>
                 </div>
               </div>
@@ -646,7 +872,7 @@ export default function StatsSection() {
                     }}
                     className="f-text"
                   >
-                    Pagespeed score
+                    Satisfaction score
                   </p>
                 </div>
                 <div
@@ -666,7 +892,8 @@ export default function StatsSection() {
                       } as React.CSSProperties
                     }
                   >
-                    We prioritize performance without sacrificing visual appeal or functionality.
+                    Attendees rate their experience across check-in, venue, and
+                    overall event quality.
                   </p>
                 </div>
               </div>
@@ -676,6 +903,7 @@ export default function StatsSection() {
             <div
               className="f-ugwdk1"
               data-f-name="2"
+              data-stats-animate="card"
               style={{ opacity: 1, transform: "none" }}
             >
               {/* Quarterly visits header */}
@@ -689,13 +917,15 @@ export default function StatsSection() {
                           gap: "0px",
                           alignItems: "center",
                           fontSize: "38px",
-                          fontFamily: '"Inter", "Inter Placeholder", sans-serif',
+                          fontFamily:
+                            '"Inter", "Inter Placeholder", sans-serif',
                           fontWeight: 600,
-                          color: "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
+                          color:
+                            "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
                           letterSpacing: "-0.07em",
                         }}
                       >
-                        <span>0</span>
+                        <span>{countValue}</span>
                         <span
                           style={{
                             color:
@@ -717,7 +947,8 @@ export default function StatsSection() {
                       >
                         <p
                           style={{
-                            fontFamily: '"Inter", "Inter Placeholder", sans-serif',
+                            fontFamily:
+                              '"Inter", "Inter Placeholder", sans-serif',
                             fontSize: "10px",
                             fontWeight: 600,
                             letterSpacing: "-0.04em",
@@ -741,53 +972,83 @@ export default function StatsSection() {
                     className="f-text f-styles-preset-2s58fc"
                     data-styles-preset="svYtzYwMA"
                   >
-                    Quarterly visits
+                    Tickets sold
                   </p>
                 </div>
               </div>
 
               {/* Graph bars */}
               <div className="f-oooxhu" data-f-name="Graph">
-                {/* Bar: Dec +1k */}
+                {/* Bar: Oct +0.8k */}
                 <div className="ssr-variant">
-                  <div className="f-96diir-container">
-                    <BarColumn value="+1k" month="Dec" padding="12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
-                  </div>
-                </div>
-
-                {/* Bar: Jan +1.3k */}
-                <div className="ssr-variant">
-                  <div className="f-kymsxw-container">
-                    <BarColumn value="+1.3k" month="Jan" padding="12px 12px 18px 12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
-                  </div>
-                </div>
-
-                {/* Bar: Feb +1.1k */}
-                <div className="ssr-variant">
-                  <div className="f-yio7w0-container">
-                    <BarColumn value="+1.1k" month="Feb" padding="12px 12px 15px 12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
-                  </div>
-                </div>
-
-                {/* Bar: Feb +1.5k */}
-                <div className="ssr-variant">
-                  <div className="f-1r9aqvp-container">
-                    <BarColumn value="+1.5k" month="Feb" padding="12px 12px 17px 12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
-                  </div>
-                </div>
-
-                {/* Bar: Feb +2.3k */}
-                <div className="ssr-variant">
-                  <div className="f-gdetl6-container">
-                    <BarColumn value="+2.3k" month="Feb" padding="12px 12px 19px 12px" bgColor="rgb(245, 245, 245)" textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))" />
-                  </div>
-                </div>
-
-                {/* Bar: Mar +5.9k (dark/highlighted) */}
-                <div className="ssr-variant">
-                  <div className="f-1urc8g4-container">
+                  <div className="f-96diir-container" data-stats-animate="bar">
                     <BarColumn
-                      value="+5.9k"
+                      value="+0.8k"
+                      month="Oct"
+                      padding="12px"
+                      bgColor="rgb(245, 245, 245)"
+                      textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))"
+                    />
+                  </div>
+                </div>
+
+                {/* Bar: Nov +1.2k */}
+                <div className="ssr-variant">
+                  <div className="f-kymsxw-container" data-stats-animate="bar">
+                    <BarColumn
+                      value="+1.2k"
+                      month="Nov"
+                      padding="12px 12px 18px 12px"
+                      bgColor="rgb(245, 245, 245)"
+                      textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))"
+                    />
+                  </div>
+                </div>
+
+                {/* Bar: Dec +1.4k */}
+                <div className="ssr-variant">
+                  <div className="f-yio7w0-container" data-stats-animate="bar">
+                    <BarColumn
+                      value="+1.4k"
+                      month="Dec"
+                      padding="12px 12px 15px 12px"
+                      bgColor="rgb(245, 245, 245)"
+                      textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))"
+                    />
+                  </div>
+                </div>
+
+                {/* Bar: Jan +2.1k */}
+                <div className="ssr-variant">
+                  <div className="f-1r9aqvp-container" data-stats-animate="bar">
+                    <BarColumn
+                      value="+2.1k"
+                      month="Jan"
+                      padding="12px 12px 17px 12px"
+                      bgColor="rgb(245, 245, 245)"
+                      textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))"
+                    />
+                  </div>
+                </div>
+
+                {/* Bar: Feb +2.8k */}
+                <div className="ssr-variant">
+                  <div className="f-gdetl6-container" data-stats-animate="bar">
+                    <BarColumn
+                      value="+2.8k"
+                      month="Feb"
+                      padding="12px 12px 19px 12px"
+                      bgColor="rgb(245, 245, 245)"
+                      textColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))"
+                    />
+                  </div>
+                </div>
+
+                {/* Bar: Mar +3.7k (dark/highlighted) */}
+                <div className="ssr-variant">
+                  <div className="f-1urc8g4-container" data-stats-animate="bar">
+                    <BarColumn
+                      value="+3.7k"
                       month="Mar"
                       padding="12px 12px 19px 12px"
                       bgColor="var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))"

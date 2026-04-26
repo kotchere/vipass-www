@@ -7,8 +7,13 @@ import StatsSection from "@/components/sections/StatsSection";
 import FaqSection from "@/components/sections/FaqSection";
 import GetAppSection from "@/components/sections/GetAppSection";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { getExperienceEvents } from "@/lib/events";
 
-export default function Home() {
+export const revalidate = 60;
+
+export default async function Home() {
+  const events = await getExperienceEvents();
+
   return (
     <div id="main">
       <div
@@ -35,15 +40,15 @@ export default function Home() {
             <ScrollReveal y={300} duration={1} delay={0.3}>
               <HeroSection />
             </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <ExperiencesSection />
-            </ScrollReveal>
+            {events.length > 0 && (
+              <ScrollReveal delay={0.1}>
+                <ExperiencesSection events={events} />
+              </ScrollReveal>
+            )}
             <ScrollReveal delay={0.1}>
               <FeaturesSection />
             </ScrollReveal>
-            <ScrollReveal delay={0.1}>
-              <StatsSection />
-            </ScrollReveal>
+            <StatsSection />
             <ScrollReveal delay={0.1}>
               <FaqSection />
             </ScrollReveal>

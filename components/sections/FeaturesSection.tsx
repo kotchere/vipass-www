@@ -12,11 +12,7 @@ const features = [
     title: "Live Event Pulse",
     description:
       "Follow along with real-time updates as the event unfolds. Know when doors open, when your favorite act hits the stage, and never miss a beat even if you\u2019re running late.",
-    images: [
-      "/assets/images/vGSJoy0fkCYvuK5CETUzS64NNo_ef54ed9e.jpg",
-      "/assets/images/6xxZ3D6rnu26P86nUVvj2eanCY_ef1bbb6e.jpg",
-      "/assets/images/6girwIRKdg1doDEWAHr4oDIbroU_47c04159.jpg",
-    ],
+    image: "/assets/images/feature-livepulse-2.png",
     containerClass: "f-1rzj7xg-container",
   },
   {
@@ -24,11 +20,7 @@ const features = [
     title: "Your Entire Night in One Place",
     description:
       "Tickets, lineups, venue details, and live updates all under one roof. No switching between apps or hunting for info the night of.",
-    images: [
-      "/assets/images/9hTP0obDSaEcVCyC5kaHbx7FfI_80d92213.jpg",
-      "/assets/images/PTZo29JDyFUqhP5lmoOwf726M_a226a504.jpg",
-      "/assets/images/OvxlgM3dgsl1n9Hl1FAnutk3YQ_25760d5b.jpg",
-    ],
+    image: "/assets/images/feature-tickets-2.png",
     containerClass: "f-1bfpaot-container",
   },
   {
@@ -36,11 +28,7 @@ const features = [
     title: "Built for Creators, Not Just Attendees",
     description:
       "Launch an event, manage tickets, and track sales right from your phone. No desktop needed, no third-party tools, no friction.",
-    images: [
-      "/assets/images/DsMKi7qE5JNWO5UQxmeqZGDSOI_03f735a1.jpg",
-      "/assets/images/2BxeG0o2qWf8AOHmXP5mvB7fXo_398b9d36.jpg",
-      "/assets/images/PzUf5VcgXOfitprgtvScN6spik_bf934ca8.jpg",
-    ],
+    image: "/assets/images/feature-launch-1.png",
     containerClass: "f-1sy2cyp-container",
   },
   {
@@ -48,11 +36,7 @@ const features = [
     title: "Smart Event Discovery",
     description:
       "Surface events you\u2019ll actually care about based on what\u2019s happening around you, not just what\u2019s being promoted the hardest.",
-    images: [
-      "/assets/images/zhgLgjCtsbVWTYRQuFeBf3XoW6c_ea29d825.jpg",
-      "/assets/images/qQlR5lTiRYzT2lPzSWLLVkcgH6Y_9ec6cd36.jpg",
-      "/assets/images/7HAgaIAjq6jlYJoi8ME87oXs6w_78d15953.jpg",
-    ],
+    image: "/assets/images/feature-surface-2.png",
     containerClass: "f-1sy2cyp-container",
   },
 ];
@@ -91,7 +75,7 @@ function FeatureItem({
   number,
   title,
   description,
-  images,
+  image,
   containerClass,
   defaultOpen,
 }: (typeof features)[number] & { defaultOpen?: boolean }) {
@@ -150,7 +134,7 @@ function FeatureItem({
           </motion.div>
         </div>
 
-        {/* Content area — CSS variant class handles layout, borders via inline vars */}
+        {/* Content area */}
         <motion.div
           className="f-1ox4qjh"
           data-f-name="2"
@@ -171,7 +155,7 @@ function FeatureItem({
             opacity: 1,
           } as React.CSSProperties}
         >
-          {/* Expanded content (images + description) — CSS positions it */}
+          {/* Expanded content (images + description) */}
           <motion.div
             className="f-174h6l6"
             data-f-name="Text"
@@ -181,21 +165,9 @@ function FeatureItem({
             style={{ opacity: 1 }}
           >
             <div className="f-1qdqpra" data-f-name="1" style={{ opacity: 1 }}>
-              <div className="f-1t0yt9s" data-f-name="Images" style={{ opacity: 1 }}>
-                <div className="f-knkn1" data-f-name="Image" style={{ borderRadius: 12, opacity: 1 }}>
-                  <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-f-background-image-wrapper="true">
-                    <img loading="lazy" width={140} height={140} src={images[0]} alt="" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", objectPosition: "center", objectFit: "cover" }} />
-                  </div>
-                </div>
-                <div className="f-rbfec2" data-f-name="Image-1" style={{ borderRadius: 14, boxShadow: IMAGE_BOX_SHADOW, opacity: 1 }}>
-                  <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-f-background-image-wrapper="true">
-                    <img loading="lazy" width={140} height={140} src={images[1]} alt="" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", objectPosition: "center", objectFit: "cover" }} />
-                  </div>
-                </div>
-                <div className="f-38v78q" data-f-name="Image-2" style={{ borderRadius: 14, boxShadow: IMAGE_BOX_SHADOW, opacity: 1 }}>
-                  <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-f-background-image-wrapper="true">
-                    <img loading="lazy" width={140} height={140} src={images[2]} alt="" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", objectPosition: "center", objectFit: "cover" }} />
-                  </div>
+              <div className="f-knkn1" data-f-name="Image" style={{ borderRadius: 12, opacity: 1 }}>
+                <div style={{ position: "absolute", borderRadius: "inherit", top: 0, right: 0, bottom: 0, left: 0 }} data-f-background-image-wrapper="true">
+                  <img loading="lazy" width={140} height={140} src={image} alt="" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", objectPosition: "center", objectFit: "cover" }} />
                 </div>
               </div>
               <div className="f-14ruax2" data-f-name="Service Info" style={{ opacity: 1 }}>

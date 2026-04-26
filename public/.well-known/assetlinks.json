@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.merchant.vipass",
+      "sha256_cert_fingerprints": [
+        "3D:8C:8A:02:AB:45:2E:D6:68:95:D6:FF:E8:73:C3:B2:0C:69:DA:1D:D4:A8:B2:3F:B4:64:EF:8F:3B:21:7D:BC"
+      ]
+    }
+  }
+]

@@ -24,3 +24,180 @@ html {
   --f-link-hover-text-color: #ff0000 !important;
   color: #ff0000 !important;
 }
+
+.hero-download-btn {
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.hero-download-btn:hover {
+  background-color: rgb(10, 10, 10) !important;
+}
+.hero-download-btn:hover .f-text {
+  --f-text-color: rgb(255, 255, 255) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Stats text alignment — desktop only */
+@media (min-width: 810px) {
+  .stats-text-container {
+    position: relative;
+    top: -5px;
+  }
+}
+
+/* iPad breakpoint — Get App section */
+@media (min-width: 810px) and (max-width: 1199px) {
+  .f-CG7Jx .f-1ozc41g {
+    gap: 20px !important;
+  }
+  .f-CG7Jx .f-nkouq {
+    width: 50% !important;
+  }
+  .f-CG7Jx .f-eu98t {
+    width: 50% !important;
+  }
+  .f-CG7Jx .f-nkouq .f-bcl97z img {
+    height: 48px !important;
+  }
+}
+
+/* Mobile breakpoint — Header: hide desktop nav links, show only logo + hamburger */
+@media (max-width: 809px) {
+  .f-e3FRw .f-1ubnatg-container,
+  .f-e3FRw .f-1phpovz-container,
+  .f-e3FRw .f-1q78hcd-container,
+  .f-e3FRw .f-nsvb3w-container,
+  .f-e3FRw .f-1l9rbhf-container {
+    display: none !important;
+  }
+}
+
+/* Mobile breakpoint — Hero section */
+@media (max-width: 809px) {
+  .f-CG7Jx .f-1spzsp8 {
+    width: 60% !important;
+    padding: 0 !important;
+  }
+  .f-CG7Jx .f-al5dzj {
+    padding-top: 40px !important;
+  }
+  .f-CG7Jx .f-al5dzj .f-text {
+    --f-font-size: 53px !important;
+  }
+  .f-CG7Jx .f-1h9hge5 {
+    text-align: center !important;
+  }
+  .f-CG7Jx .f-1h9hge5 .f-styles-preset-1oueo73 {
+    --f-text-alignment: center !important;
+    text-align: center !important;
+  }
+  .f-CG7Jx .f-hsxobt {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 24px !important;
+  }
+  .f-CG7Jx .f-qj2zoe {
+    order: 0 !important;
+  }
+  .f-CG7Jx .f-r9wof4-container {
+    order: 1 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
+
+
+/* Mobile breakpoint — Features: match static site layout */
+@media (max-width: 809px) {
+  .f-ssEy5.f-1nd063s {
+    display: flex !important;
+    flex-flow: row !important;
+    height: auto !important;
+    width: 100% !important;
+    padding: 16px 0 0 !important;
+  }
+  .f-ssEy5 .f-wos98z {
+    width: min-content !important;
+    height: auto !important;
+    padding: 11px 24px 0 0 !important;
+    place-self: auto !important;
+  }
+  .f-ssEy5 .f-1ox4qjh {
+    flex: 1 1 auto !important;
+    width: 1px !important;
+    place-self: auto !important;
+  }
+  .f-ssEy5 .f-1qdqpra {
+    flex-direction: column !important;
+  }
+  .f-ssEy5 .f-14ruax2 {
+    width: 100% !important;
+  }
+  .f-ssEy5 .f-1xsxun7 {
+    max-width: 100% !important;
+  }
+  /* Features download button — visible and centered */
+  .f-CG7Jx .f-1lbrd8x {
+    justify-content: center !important;
+  }
+  .f-CG7Jx .f-1ykazkz {
+    display: none !important;
+  }
+  .f-CG7Jx .f-o105nz {
+    overflow: visible !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+  }
+}
+
+/* Mobile breakpoint — Get App section */
+@media (max-width: 809px) {
+  .f-CG7Jx .f-nkouq {
+    align-items: center !important;
+    gap: 16px !important;
+  }
+  .f-CG7Jx .f-nkouq .f-1n4c633 {
+    text-align: center;
+    width: 100%;
+    padding-top: 20px;
+  }
+  .f-CG7Jx .f-nkouq .f-1n4c633 .f-styles-preset-1yvd34u {
+    --f-text-alignment: center !important;
+    text-align: center !important;
+  }
+  .getapp-heading {
+    font-size: 50px !important;
+  }
+  .getapp-br {
+    display: none;
+  }
+  /* Hide case study card on mobile */
+  .f-CG7Jx .f-9vdeef {
+    display: none !important;
+  }
+  .f-CG7Jx .f-nkouq .f-1ds7la7 {
+    gap: 16px !important;
+  }
+  .f-CG7Jx .f-nkouq .f-bcl97z {
+    align-items: center !important;
+    gap: 16px !important;
+  }
+  .f-CG7Jx .f-nkouq .f-bcl97z > div[style] {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  /* Footer: stack links above copyright */
+  .f-CG7Jx .f-ky49qn {
+    flex-direction: column-reverse !important;
+    height: auto !important;
+    gap: 12px !important;
+    padding: 20px 0 !important;
+    align-items: center !important;
+  }
+  .f-CG7Jx .f-d1p2d9 {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "f-motion";
 import Image from "next/image";
+import EventDate from "@/components/ui/EventDate";
 
 const HOVER_TRANSITION = {
   delay: 0,
@@ -12,42 +13,35 @@ const HOVER_TRANSITION = {
 };
 
 interface ExperienceCardProps {
-  href: string;
-  logoSrc: string;
-  logoWidth: number;
-  logoHeight: number;
-  imageSrc: string;
+  title: string;
+  description: string | null;
+  coverImageUrl: string;
+  startsAt: string | null;
 }
 
 export default function ExperienceCard({
-  href,
-  logoSrc,
-  logoWidth,
-  logoHeight,
-  imageSrc,
+  title,
+  description,
+  coverImageUrl,
+  startsAt,
 }: ExperienceCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className="ssr-variant hidden-f3lv8x">
       <div className="f-g46orm-container">
-        <motion.a
+        <motion.div
           className={`f-tEL27 f-1of3use f-v-1of3use f-1pxbyww${isHovered ? " hover" : ""}`}
           data-f-name="Desktop"
-          href={href}
-          onBlur={() => setIsHovered(false)}
-          onFocus={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
           onHoverStart={() => setIsHovered(true)}
           style={{
             width: "100%",
             willChange: "transform",
-            borderBottomLeftRadius: 18,
-            borderBottomRightRadius: 18,
-            borderTopLeftRadius: 18,
-            borderTopRightRadius: 18,
+            borderRadius: 18,
             opacity: 1,
             transform: "none",
+            cursor: "default",
           }}
         >
           <div
@@ -60,43 +54,89 @@ export default function ExperienceCard({
               opacity: 1,
             }}
           >
+            {/* Text overlay — centered like the original logo */}
             <motion.div
-              className="f-jem6dr"
-              data-f-name="Logo"
-              animate={{ scale: isHovered ? 0.8 : 1 }}
-              initial={false}
-              transition={HOVER_TRANSITION}
-              style={{ opacity: 1 }}
+              style={{
+                zIndex: 2,
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "6px",
+                padding: "24px",
+                textAlign: "center",
+                pointerEvents: "none",
+                maxWidth: "85%",
+              }}
             >
-              <div
+              {/* Title — always visible, animates up on hover */}
+              <motion.h3
+                animate={{ y: isHovered ? -8 : 0 }}
+                initial={false}
+                transition={HOVER_TRANSITION}
                 style={{
-                  position: "absolute",
-                  borderRadius: "inherit",
-                  top: 0,
-                  right: 0,
-                  bottom: 0,
-                  left: 0,
+                  color: "#fff",
+                  fontSize: "30px",
+                  fontWeight: 600,
+                  lineHeight: 1.3,
+                  margin: 0,
+                  textShadow: "0 1px 4px rgba(0,0,0,0.6)",
                 }}
-                data-f-background-image-wrapper="true"
               >
-                <Image
-                  decoding="auto"
-                  loading="lazy"
-                  width={logoWidth}
-                  height={logoHeight}
-                  src={logoSrc}
-                  alt=""
-                  style={{
-                    display: "block",
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: "inherit",
-                    objectPosition: "center",
-                    objectFit: "contain",
-                  }}
-                />
-              </div>
+                {title}
+              </motion.h3>
+
+              {/* Date + Description — revealed on hover */}
+              <motion.div
+                animate={{
+                  opacity: isHovered ? 1 : 0,
+                  y: isHovered ? 0 : 8,
+                }}
+                initial={false}
+                transition={HOVER_TRANSITION}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "4px",
+                  overflow: "hidden",
+                }}
+              >
+                {startsAt && (
+                  <p
+                    style={{
+                      color: "#fff",
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      margin: 0,
+                      textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    <EventDate iso={startsAt} />
+                  </p>
+                )}
+                {description && (
+                  <p
+                    style={{
+                      color: "#fff",
+                      fontSize: "16px",
+                      fontWeight: 400,
+                      lineHeight: 1.4,
+                      margin: "0 50px",
+                      textShadow: "0 1px 3px rgba(0,0,0,0.5)",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical" as const,
+                      overflow: "hidden",
+                    }}
+                  >
+                    {description}
+                  </p>
+                )}
+              </motion.div>
             </motion.div>
+
+            {/* Image container — same hover animation as before */}
             <motion.div
               className="f-ybsvxe"
               data-f-name="Image container"
@@ -108,23 +148,24 @@ export default function ExperienceCard({
               <motion.div
                 className="f-16bbbzt"
                 data-f-name="blackout"
-                animate={{ opacity: isHovered ? 0.2 : 0.15 }}
+                animate={{ opacity: isHovered ? 0.35 : 0.2 }}
                 initial={false}
                 transition={HOVER_TRANSITION}
                 style={{
-                  backgroundColor:
-                    "var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, rgb(10, 10, 10))",
-                  opacity: 0.15,
+                  backgroundColor: "rgb(10, 10, 10)",
+                  opacity: 0.2,
                 }}
               />
               <motion.div
                 className="f-jh1lcx"
                 data-f-name="Image"
-                animate={{
-                  filter: isHovered ? "blur(7px)" : "none",
-                  scale: isHovered ? 1.13 : 1,
-                  WebkitFilter: isHovered ? "blur(7px)" : "none",
-                } as Record<string, string | number>}
+                animate={
+                  {
+                    filter: isHovered ? "blur(7px)" : "none",
+                    scale: isHovered ? 1.13 : 1,
+                    WebkitFilter: isHovered ? "blur(7px)" : "none",
+                  } as Record<string, string | number>
+                }
                 initial={false}
                 transition={HOVER_TRANSITION}
                 style={{ filter: "none", opacity: 1, WebkitFilter: "none" }}
@@ -142,10 +183,10 @@ export default function ExperienceCard({
                 >
                   <Image
                     decoding="auto"
-                    width={750}
-                    height={540}
-                    src={imageSrc}
-                    alt=""
+                    fill
+                    unoptimized
+                    src={coverImageUrl}
+                    alt={title}
                     style={{
                       display: "block",
                       width: "100%",
@@ -159,7 +200,7 @@ export default function ExperienceCard({
               </motion.div>
             </motion.div>
           </div>
-        </motion.a>
+        </motion.div>
       </div>
     </div>
   );

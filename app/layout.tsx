@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     images: ["/assets/images/meG1yXz9jqwhzC1XCm7WP0Ae9Zc.jpg"],
   },
   icons: {
-    icon: "/assets/images/ugucZZ77cBC9cEIJsUKZuSdo0.png",
-    apple: "/assets/images/lK5HLMhktIkswR9YTsNjUQ8oEpk.png",
+    icon: "/assets/images/favicon.png",
+    apple: "/assets/images/favicon.png",
   },
 };
 
