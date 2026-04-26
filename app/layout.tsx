@@ -9,14 +9,14 @@ export const metadata: Metadata = {
     title: "Vipass - The best nights out start here",
     description:
       "Find events, get tickets, and stay in the loop without the hassle.",
-    images: ["/assets/images/meG1yXz9jqwhzC1XCm7WP0Ae9Zc.jpg"],
+    images: ["/assets/images/og-vipass.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Vipass - The best nights out start here",
     description:
       "Find events, get tickets, and stay in the loop without the hassle.",
-    images: ["/assets/images/meG1yXz9jqwhzC1XCm7WP0Ae9Zc.jpg"],
+    images: ["/assets/images/og-vipass.jpg"],
   },
   icons: {
     icon: "/assets/images/favicon.png",
