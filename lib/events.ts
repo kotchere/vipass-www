@@ -43,16 +43,16 @@ export async function getExperienceEvents(): Promise<Event[]> {
       .limit(MAX_EVENTS),
   ]);
 
-  const featuredEvents = featuredResult.data ?? [];
-  const allEvents = regularResult.data ?? [];
-  const pastEvents = pastResult.data ?? [];
+  const featuredEvents: Event[] = featuredResult.data ?? [];
+  const allEvents: Event[] = regularResult.data ?? [];
+  const pastEvents: Event[] = pastResult.data ?? [];
 
   // Merge: featured first, then non-featured upcoming, then past — deduped
-  const featuredIds = new Set(featuredEvents.map((e) => e.id));
-  const nonFeatured = allEvents.filter((e) => !featuredIds.has(e.id));
+  const featuredIds = new Set(featuredEvents.map((e: Event) => e.id));
+  const nonFeatured = allEvents.filter((e: Event) => !featuredIds.has(e.id));
   const upcoming = [...featuredEvents, ...nonFeatured];
-  const upcomingIds = new Set(upcoming.map((e) => e.id));
-  const uniquePast = pastEvents.filter((e) => !upcomingIds.has(e.id));
+  const upcomingIds = new Set(upcoming.map((e: Event) => e.id));
+  const uniquePast = pastEvents.filter((e: Event) => !upcomingIds.has(e.id));
 
   return [...upcoming, ...uniquePast].slice(0, MAX_EVENTS) as Event[];
 }
