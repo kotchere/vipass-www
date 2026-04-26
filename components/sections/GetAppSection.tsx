@@ -66,10 +66,9 @@ export default function GetAppSection() {
                 style={{ opacity: 1, transform: "none" }}
               >
                 <h2
-                  className="f-text f-styles-preset-1yvd34u"
+                  className="f-text f-styles-preset-1yvd34u getapp-heading"
                   data-styles-preset="GKtOymhXV"
                   dir="auto"
-                  className="f-text f-styles-preset-1yvd34u getapp-heading"
                   style={
                     {
                       "--f-text-color":
