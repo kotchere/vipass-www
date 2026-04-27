@@ -89,15 +89,14 @@ export default function GetAppSection() {
                   <div className="ssr-variant">
                     <div className="f-1jq32c0-container">
                       <div
-                        className="f-Sd69O f-1usovu f-v-1usovu"
+                        className="f-Sd69O f-1usovu f-v-1usovu f-v-1gi0f1v"
                         data-f-name="Start"
                         style={{ width: "100%", opacity: 1 }}
                       >
                         <div
                           className="f-14cnlj3"
                           style={{
-                            backgroundColor:
-                              "var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, rgb(255, 255, 255))",
+                            backgroundColor: "transparent",
                             opacity: 1,
                           }}
                         ></div>
