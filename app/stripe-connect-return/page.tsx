@@ -24,7 +24,7 @@ export default function StripeConnectReturnPage() {
         textAlign: "center",
       }}
     >
-      <h1 style={{ fontSize: 22, fontWeight: 600, margin: 0 }}>
+      <h1 style={{ fontSize: 22, fontWeight: 600, margin: 0, color: "#fff" }}>
         Returning to Vipass…
       </h1>
       <p style={{ color: "#666", maxWidth: 360 }}>
