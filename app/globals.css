@@ -1,5 +1,520 @@
 @import url("./styles.css");
 
+/* =============================================================================
+   Vipass web-app primitives (`vp-*`)
+   -----------------------------------------------------------------------------
+   Plain CSS building blocks for the non-Framer pages (login, events, checkout,
+   tickets). They sit on the same dark ground as the Framer export
+   (`.f-D2wOp.f-128kipa` → rgb(18,18,18)), use its Inter font stack and colour
+   tokens, and the 18px radius of `ExperienceCard`.
+
+   Layout
+     .vp-page            centered column, clears the fixed header; max 1120px
+     .vp-page--narrow    440px variant (auth / confirmation cards)
+     .vp-stack           vertical flex, 24px gap   (.vp-stack--tight → 12px)
+     .vp-row             horizontal flex, 12px gap (.vp-row--between)
+     .vp-center          center-align a stack's contents
+   Surfaces
+     .vp-card            dark surface, 1px border, 18px radius, 28px padding
+     .vp-divider         "— or —" separator
+   Controls
+     .vp-btn             base pill button (48px tall)  + .vp-btn--block
+     .vp-btn-primary     white on black text (hero download button)
+     .vp-btn-secondary   outlined, white text
+     .vp-input           text field (16px so iOS doesn't zoom) + .vp-input--code
+     .vp-label           field label
+     .vp-link            inline text button
+   Text
+     .vp-title           page/card heading
+     .vp-muted           secondary text     .vp-small   13px
+     .vp-error           inline validation / request error
+     .vp-chip            small status pill  (.vp-chip--success, .vp-chip--danger)
+   Header hooks
+     .vp-nav-auth        desktop sign-in / my-tickets slot (hidden ≤809px)
+     .vp-nav-signout     button reset so the sign-out form matches nav links
+   Event page
+     .vp-event           two-column grid (hero | details), stacks ≤809px
+     .vp-event-hero      rounded flyer frame (aspect-ratio set inline)
+     .vp-event-meta      date / location / price rows under the title
+     .vp-event-cta       the buy / RSVP / state block
+     .vp-prose           description with preserved line breaks
+     .vp-avatar          32px round creator avatar (+ --fallback initial)
+     .vp-open-in-app     phone-only "Open in app" strip (OpenInAppBanner)
+     .vp-experience-*    link wrapper + state chip on the home-page cards
+   ========================================================================== */
+
+:root {
+  --vp-bg: rgb(18, 18, 18);
+  --vp-surface: rgb(26, 26, 26);
+  --vp-surface-2: rgb(36, 36, 36);
+  --vp-border: rgba(255, 255, 255, 0.1);
+  --vp-border-strong: rgba(255, 255, 255, 0.28);
+  --vp-text: var(--token-90ab9b9d-c64e-4230-9e06-707b75634f37, #fff);
+  --vp-text-muted: rgba(255, 255, 255, 0.62);
+  --vp-ink: var(--token-88d5059b-bc5d-4e0a-ad79-b21e9a2c4948, #0a0a0a);
+  --vp-paper: var(--token-eea70a16-506d-4b3b-87b7-e85e653a6e7c, #f5f5f5);
+  --vp-accent: #ff0000;
+  --vp-success: rgb(52, 211, 153);
+  --vp-danger: #ff5c5c;
+  --vp-font: "Inter", "Inter Placeholder", sans-serif;
+  --vp-radius: 18px;
+  --vp-radius-sm: 12px;
+  --vp-header-offset: clamp(96px, 11vw, 140px);
+}
+
+.vp-page {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: calc(var(--vp-header-offset) + 24px) 24px 96px;
+  color: var(--vp-text);
+  font-family: var(--vp-font);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.vp-page--narrow {
+  max-width: 440px;
+}
+
+.vp-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.vp-stack--tight {
+  gap: 12px;
+}
+.vp-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.vp-row--between {
+  justify-content: space-between;
+}
+.vp-center {
+  align-items: center;
+  text-align: center;
+}
+
+.vp-card {
+  box-sizing: border-box;
+  background: var(--vp-surface);
+  border: 1px solid var(--vp-border);
+  border-radius: var(--vp-radius);
+  padding: 28px;
+}
+@media (max-width: 809px) {
+  .vp-card {
+    padding: 22px;
+  }
+}
+
+.vp-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--vp-text-muted);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.vp-divider::before,
+.vp-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--vp-border);
+}
+
+.vp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  font-family: var(--vp-font);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease, opacity 160ms ease;
+}
+.vp-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+.vp-btn:focus-visible,
+.vp-input:focus-visible,
+.vp-link:focus-visible {
+  outline: 2px solid var(--vp-border-strong);
+  outline-offset: 2px;
+}
+.vp-btn--block {
+  width: 100%;
+}
+.vp-btn-primary {
+  background: var(--vp-text);
+  color: var(--vp-ink);
+}
+.vp-btn-primary:not(:disabled):hover {
+  background: var(--vp-paper);
+  transform: translateY(-1px);
+}
+.vp-btn-secondary {
+  background: transparent;
+  color: var(--vp-text);
+  border-color: var(--vp-border-strong);
+}
+.vp-btn-secondary:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.vp-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vp-text);
+}
+.vp-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: var(--vp-radius-sm);
+  border: 1px solid var(--vp-border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--vp-text);
+  font-family: var(--vp-font);
+  font-size: 16px;
+  line-height: 1.2;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+.vp-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.vp-input:focus {
+  outline: none;
+  border-color: var(--vp-border-strong);
+  background: rgba(255, 255, 255, 0.08);
+}
+.vp-input:disabled {
+  opacity: 0.6;
+}
+.vp-input[aria-invalid="true"] {
+  border-color: var(--vp-danger);
+}
+.vp-input--code {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-align: center;
+  min-height: 56px;
+}
+
+.vp-link {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-family: var(--vp-font);
+  font-size: 14px;
+  color: var(--vp-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+.vp-link:not(:disabled):hover {
+  color: var(--vp-text);
+}
+.vp-link:disabled {
+  cursor: default;
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+.vp-title {
+  margin: 0;
+  font-family: var(--vp-font);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--vp-text);
+}
+.vp-muted {
+  margin: 0;
+  color: var(--vp-text-muted);
+}
+.vp-small {
+  font-size: 13px;
+}
+.vp-error {
+  margin: 0;
+  color: var(--vp-danger);
+  font-size: 14px;
+}
+.vp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--vp-text);
+  font-family: var(--vp-font);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.vp-chip--success {
+  background: rgba(52, 211, 153, 0.16);
+  color: var(--vp-success);
+}
+.vp-chip--danger {
+  background: rgba(255, 92, 92, 0.16);
+  color: var(--vp-danger);
+}
+
+/* Header: auth slot */
+.vp-nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex: 0 0 auto;
+}
+/* The Framer header lays items out with flex `order` (logo 0, links 1-6,
+   hamburger 7); without one the auth slot defaults to 0 and lands after the
+   logo. Slot it after Download so "My tickets" / "Sign out" are the last links. */
+.f-e3FRw.f-v-v89dtt .vp-nav-auth {
+  order: 7;
+}
+.f-e3FRw.f-v-v89dtt .f-ednsow {
+  order: 8;
+}
+.vp-nav-signout-form {
+  margin: 0;
+}
+.vp-nav-signout {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+/* Sign out is the last nav item and reads red at rest so it stands out;
+   the shared nav hover rule below still deepens it on hover. */
+.vp-nav-signout,
+.vp-nav-signout .f-text {
+  --f-text-color: var(--vp-danger) !important;
+  color: var(--vp-danger) !important;
+}
+@media (max-width: 809px) {
+  .f-e3FRw .vp-nav-auth {
+    display: none !important;
+  }
+}
+
+/* Event page */
+.vp-event-page {
+  padding-top: calc(var(--vp-header-offset) + 12px);
+}
+.vp-event {
+  display: grid;
+  grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+@media (max-width: 809px) {
+  .vp-event {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+.vp-event-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--vp-radius);
+  background: var(--vp-surface);
+  border: 1px solid var(--vp-border);
+}
+.vp-event-hero__empty {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, var(--vp-surface-2), var(--vp-surface));
+}
+.vp-event-details {
+  min-width: 0;
+}
+.vp-event-title {
+  font-size: clamp(30px, 4vw, 44px);
+  overflow-wrap: anywhere;
+}
+.vp-event-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.vp-event-meta__row {
+  margin: 0;
+  font-size: 16px;
+}
+.vp-event-meta__row:empty {
+  display: none;
+}
+.vp-event-price {
+  font-weight: 600;
+}
+.vp-event-creator {
+  gap: 10px;
+}
+.vp-event-creator__handle {
+  color: var(--vp-text);
+  font-weight: 600;
+}
+.vp-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  object-fit: cover;
+  background: var(--vp-surface-2);
+  flex: 0 0 auto;
+}
+.vp-avatar--fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vp-text);
+}
+.vp-event-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.vp-event-cta > .vp-chip {
+  align-self: flex-start;
+  font-size: 13px;
+  padding: 8px 14px;
+}
+.vp-event-cta__lead {
+  margin: 0;
+}
+/* Shared by the event page ("About") and My tickets ("Upcoming" / "Past") */
+.vp-event-section-title,
+.vp-section-title {
+  margin: 0;
+  font-family: var(--vp-font);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vp-text-muted);
+}
+.vp-prose {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--vp-text);
+}
+
+/* Open-in-app banner (phones only; the component gates rendering) */
+.vp-open-in-app {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 20px;
+  padding: 10px 10px 10px 12px;
+  border-radius: var(--vp-radius-sm);
+  background: var(--vp-surface);
+  border: 1px solid var(--vp-border);
+  font-family: var(--vp-font);
+}
+.vp-open-in-app__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  flex: 0 0 auto;
+}
+.vp-open-in-app__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.vp-open-in-app__title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--vp-text);
+}
+.vp-open-in-app__subtitle {
+  font-size: 13px;
+  color: var(--vp-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vp-open-in-app__open {
+  min-height: 38px;
+  padding: 0 16px;
+  font-size: 14px;
+  flex: 0 0 auto;
+}
+.vp-open-in-app__close {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0 4px;
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--vp-text-muted);
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.vp-open-in-app__close:hover {
+  color: var(--vp-text);
+}
+
+/* Home-page Experiences cards */
+.vp-experience-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.vp-experience-chip {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -200,4 +715,407 @@ html {
     align-items: center !important;
     gap: 12px !important;
   }
+}
+
+/* ── My tickets (/tickets, /tickets/[id]) ─────────────────────────────── */
+.vp-page--tickets {
+  max-width: 720px;
+}
+.vp-title--sm {
+  font-size: 24px;
+}
+.vp-center-text {
+  text-align: center;
+}
+.vp-ticket-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.vp-ticket-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  background: var(--vp-surface);
+  border: 1px solid var(--vp-border);
+  border-radius: var(--vp-radius);
+  color: var(--vp-text);
+  text-decoration: none;
+  font-family: var(--vp-font);
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+.vp-ticket-card:hover {
+  border-color: var(--vp-border-strong);
+  background: var(--vp-surface-2);
+}
+.vp-ticket-thumb {
+  position: relative;
+  flex: 0 0 auto;
+  width: 72px;
+  height: 96px;
+  border-radius: var(--vp-radius-sm);
+  overflow: hidden;
+  background: var(--vp-surface-2);
+}
+.vp-ticket-thumb__empty {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+}
+.vp-ticket-card__body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.vp-ticket-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.vp-ticket-card__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.vp-ticket-card__chevron {
+  flex: 0 0 auto;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--vp-text-muted);
+}
+
+.vp-ticket {
+  overflow: hidden;
+}
+.vp-ticket-cover {
+  position: relative;
+  width: calc(100% + 56px);
+  margin: -28px -28px 0;
+  aspect-ratio: 16 / 9;
+  background: var(--vp-surface-2);
+}
+@media (max-width: 500px) {
+  .vp-ticket-cover {
+    width: calc(100% + 44px);
+    margin: -22px -22px 0;
+  }
+}
+.vp-ticket-seat {
+  margin: 0;
+  font-weight: 600;
+}
+.vp-ticket-tear {
+  height: 0;
+  border-top: 1px dashed var(--vp-border-strong);
+}
+
+/* QR: always white-on-white so phone scanners read it in the dark theme */
+.vp-qr-frame {
+  position: relative;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: var(--vp-radius);
+  box-sizing: border-box;
+}
+.vp-qr-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.vp-qr-svg--dimmed {
+  opacity: 0.18;
+}
+.vp-qr-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  text-align: center;
+}
+.vp-qr-hint {
+  font-family: var(--vp-font);
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.vp-qr-hint--error {
+  color: #b00020;
+}
+.vp-qr-center .vp-link {
+  color: rgba(0, 0, 0, 0.6);
+}
+.vp-qr-center .vp-link:hover {
+  color: #000;
+}
+.vp-qr-spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.12);
+  border-top-color: rgba(0, 0, 0, 0.6);
+  animation: vp-spin 0.8s linear infinite;
+}
+@keyframes vp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.vp-qr-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: var(--vp-radius);
+  color: #000;
+  font-family: var(--vp-font);
+  text-align: center;
+}
+.vp-qr-overlay__title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.vp-qr-overlay__sub {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.65);
+}
+.vp-qr-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--vp-font);
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(176, 0, 32, 0.75);
+  transform: rotate(-22deg);
+  pointer-events: none;
+}
+.vp-qr-placeholder {
+  padding: 24px;
+  border: 1px dashed var(--vp-border-strong);
+  border-radius: var(--vp-radius);
+  text-align: center;
+}
+
+/* ── Checkout (components/checkout/*) ─────────────────────────────────── */
+.vp-checkout {
+  padding: 20px;
+}
+.vp-checkout__heading {
+  margin: 0;
+  font-family: var(--vp-font);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--vp-text);
+}
+.vp-ticket-select {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.vp-ticket-select__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--vp-border);
+}
+.vp-ticket-select__row:first-child {
+  padding-top: 0;
+}
+.vp-ticket-select__row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.vp-ticket-select__row--off .vp-ticket-select__info {
+  opacity: 0.55;
+}
+.vp-ticket-select__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  font-family: var(--vp-font);
+}
+.vp-ticket-select__name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--vp-text);
+  overflow-wrap: anywhere;
+}
+.vp-ticket-select__price {
+  margin: 0;
+  font-size: 15px;
+  color: var(--vp-text);
+}
+.vp-ticket-select__desc {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.vp-ticket-select__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.vp-ticket-select__meta:empty {
+  display: none;
+}
+.vp-chip--muted {
+  color: var(--vp-text-muted);
+}
+.vp-stepper {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  border: 1px solid var(--vp-border-strong);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.vp-stepper__btn {
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: var(--vp-text);
+  font-family: var(--vp-font);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.vp-stepper__btn:not(:disabled):hover {
+  background: var(--vp-surface-2);
+}
+.vp-stepper__btn:disabled {
+  color: var(--vp-text-muted);
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.vp-stepper__btn:focus-visible {
+  outline: 2px solid var(--vp-border-strong);
+  outline-offset: -2px;
+}
+.vp-stepper__value {
+  min-width: 32px;
+  text-align: center;
+  font-family: var(--vp-font);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  color: var(--vp-text);
+}
+.vp-refund-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--vp-border);
+  border-radius: var(--vp-radius-sm);
+  background: var(--vp-surface-2);
+  cursor: pointer;
+  font-family: var(--vp-font);
+  transition: border-color 120ms ease;
+}
+.vp-refund-toggle--on {
+  border-color: var(--vp-border-strong);
+}
+.vp-refund-toggle__input {
+  margin: 3px 0 0;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  accent-color: var(--vp-text);
+  cursor: pointer;
+}
+.vp-refund-toggle__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.vp-refund-toggle__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--vp-text);
+}
+.vp-checkout-summary {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--vp-border);
+  font-family: var(--vp-font);
+}
+.vp-checkout-summary__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--vp-text-muted);
+  font-size: 14px;
+}
+.vp-checkout-summary__row dt,
+.vp-checkout-summary__row dd {
+  margin: 0;
+}
+.vp-checkout-summary__row dd {
+  font-variant-numeric: tabular-nums;
+}
+.vp-checkout-summary__row--total {
+  color: var(--vp-text);
+  font-size: 16px;
+  font-weight: 600;
+}
+.vp-stripe {
+  min-height: 120px;
+}
+.vp-checkout-tickets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--vp-border);
+  border-radius: var(--vp-radius-sm);
+  overflow: hidden;
+  font-family: var(--vp-font);
+}
+.vp-checkout-tickets__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  color: var(--vp-text);
+  border-bottom: 1px solid var(--vp-border);
+}
+.vp-checkout-tickets__row:last-child {
+  border-bottom: 0;
 }

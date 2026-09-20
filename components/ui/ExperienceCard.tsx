@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "f-motion";
 import Image from "next/image";
+import Link from "next/link";
 import EventDate from "@/components/ui/EventDate";
 
 const HOVER_TRANSITION = {
@@ -13,23 +14,45 @@ const HOVER_TRANSITION = {
 };
 
 interface ExperienceCardProps {
+  id: string;
   title: string;
   description: string | null;
   coverImageUrl: string;
   startsAt: string | null;
+  endsAt: string | null;
+}
+
+type CardChip = "Get tickets" | "Ended";
+
+function chipFor(startsAt: string | null, endsAt: string | null): CardChip {
+  const endedAt = endsAt ?? startsAt;
+  const ms = endedAt ? Date.parse(endedAt) : Number.NaN;
+  return Number.isFinite(ms) && ms < Date.now() ? "Ended" : "Get tickets";
 }
 
 export default function ExperienceCard({
+  id,
   title,
   description,
   coverImageUrl,
   startsAt,
+  endsAt,
 }: ExperienceCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  // Computed after mount (like EventDate) so server and client HTML match.
+  const [chip, setChip] = useState<CardChip | null>(null);
+
+  useEffect(() => {
+    setChip(chipFor(startsAt, endsAt));
+  }, [startsAt, endsAt]);
 
   return (
     <div className="ssr-variant hidden-f3lv8x">
-      <div className="f-g46orm-container">
+      <Link
+        href={`/events/${id}`}
+        className="f-g46orm-container vp-experience-link"
+        aria-label={title}
+      >
         <motion.div
           className={`f-tEL27 f-1of3use f-v-1of3use f-1pxbyww${isHovered ? " hover" : ""}`}
           data-f-name="Desktop"
@@ -41,7 +64,7 @@ export default function ExperienceCard({
             borderRadius: 18,
             opacity: 1,
             transform: "none",
-            cursor: "default",
+            cursor: "pointer",
           }}
         >
           <div
@@ -54,6 +77,14 @@ export default function ExperienceCard({
               opacity: 1,
             }}
           >
+            {chip && (
+              <span
+                className={`vp-chip vp-experience-chip${chip === "Ended" ? "" : " vp-chip--success"}`}
+              >
+                {chip}
+              </span>
+            )}
+
             {/* Text overlay — centered like the original logo */}
             <motion.div
               style={{
@@ -201,7 +232,7 @@ export default function ExperienceCard({
             </motion.div>
           </div>
         </motion.div>
-      </div>
+      </Link>
     </div>
   );
 }

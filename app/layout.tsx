@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+
+import { getSiteUrl } from "@/lib/env";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: "Vipass - The best nights out start here",
   description:
     "Find events, get tickets, and stay in the loop without the hassle.",

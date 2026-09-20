@@ -1,4 +1,4 @@
-import Header from "@/components/layout/Header";
+import SiteHeader from "@/components/layout/SiteHeader";
 import "../legal-styles.css";
 
 export default function LegalLayout({
@@ -19,7 +19,7 @@ export default function LegalLayout({
           data-f-layout-hint-center-x="true"
         >
           <div className="ssr-variant hidden-1l0aw67 hidden-xwr0r7">
-            <Header />
+            <SiteHeader />
           </div>
         </div>
         <div

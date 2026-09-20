@@ -33,10 +33,12 @@ export default function ExperiencesSection({ events }: ExperiencesSectionProps) 
           {events.map((event, index) => (
             <ScrollReveal key={event.id} delay={index * 0.1} y={30}>
               <ExperienceCard
+                id={event.id}
                 title={event.title}
                 description={event.description}
                 coverImageUrl={event.cover_image_url}
                 startsAt={event.starts_at}
+                endsAt={event.ends_at}
               />
             </ScrollReveal>
           ))}

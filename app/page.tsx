@@ -1,4 +1,4 @@
-import Header from "@/components/layout/Header";
+import SiteHeader from "@/components/layout/SiteHeader";
 import PreLoader from "@/components/sections/PreLoader";
 import HeroSection from "@/components/sections/HeroSection";
 import ExperiencesSection from "@/components/sections/ExperiencesSection";
@@ -8,8 +8,6 @@ import FaqSection from "@/components/sections/FaqSection";
 import GetAppSection from "@/components/sections/GetAppSection";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { getExperienceEvents } from "@/lib/events";
-
-export const revalidate = 60;
 
 export default async function Home() {
   const events = await getExperienceEvents();
@@ -27,7 +25,7 @@ export default async function Home() {
           data-f-layout-hint-center-x="true"
         >
           <div className="ssr-variant hidden-1l0aw67 hidden-xwr0r7">
-            <Header />
+            <SiteHeader />
           </div>
         </div>
         <div

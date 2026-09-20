@@ -55,8 +55,25 @@ const headerTransition = { duration: 0.5, ease: headerEase };
 const springTransition = { type: "spring" as const, damping: 30, stiffness: 210, mass: 1 };
 const hamburgerSpring = { type: "spring" as const, bounce: 0.2, duration: 0.4 };
 
-export default function Header() {
+interface HeaderProps {
+  /** Resolved server-side by SiteHeader. Undefined is treated as signed out. */
+  signedIn?: boolean;
+}
+
+export default function Header({ signedIn = false }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const authLinks = signedIn
+    ? [{ label: "My tickets", href: "/tickets" }]
+    : [{ label: "Sign in", href: "/login" }];
+  const mobileLinks = [
+    ...mobileNavLinks,
+    ...authLinks.map((link) => ({
+      ...link,
+      containerClass: "f-11r3jwx-container",
+      wrapperClass: "f-16sohac",
+      isCurrent: false,
+    })),
+  ];
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
 
@@ -148,6 +165,40 @@ export default function Header() {
           </div>
         ))}
 
+        {/* Auth links (desktop only; hidden ≤809px via globals.css) */}
+        <div className="vp-nav-auth" style={{ opacity: 1 }}>
+          {authLinks.map((link) => (
+            <a
+              key={link.href}
+              className="f-pPkX6 f-7g0p1o f-v-7g0p1o f-1ljdjoh top-nav-link"
+              data-f-name="Default"
+              href={link.href}
+              style={{ opacity: 1 }}
+            >
+              <div
+                className="f-xu6ifz"
+                data-f-component-type="RichTextContainer"
+                style={{ "--extracted-r6o4lv": "rgb(9, 9, 9)", "--f-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
+              >
+                <p className="f-text" style={desktopLinkTextStyle}>{link.label}</p>
+              </div>
+            </a>
+          ))}
+          {signedIn && (
+            <form action="/auth/signout" method="post" className="vp-nav-signout-form">
+              <button type="submit" className="vp-nav-signout top-nav-link">
+                <div
+                  className="f-xu6ifz"
+                  data-f-component-type="RichTextContainer"
+                  style={{ "--extracted-r6o4lv": "rgb(9, 9, 9)", "--f-paragraph-spacing": "0px", transform: "none", opacity: 1 } as React.CSSProperties}
+                >
+                  <p className="f-text" style={desktopLinkTextStyle}>Sign out</p>
+                </div>
+              </button>
+            </form>
+          )}
+        </div>
+
         {/* Hamburger button */}
         <div
           className="f-ednsow"
@@ -229,14 +280,14 @@ export default function Header() {
           }}
         >
           <nav className="f-ugu5i9" data-f-name="Navigation" style={{ opacity: 1 }}>
-            {mobileNavLinks.map((link, index) => (
+            {mobileLinks.map((link, index) => (
               <motion.div
                 key={link.href}
                 className={link.wrapperClass}
                 data-f-name="Item container"
                 animate={isOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: -40 }}
                 initial={{ opacity: 0, y: -40 }}
-                transition={{ ...springTransition, delay: isOpen ? staggerDelays[index] : staggerDelays[index] }}
+                transition={{ ...springTransition, delay: staggerDelays[Math.min(index, staggerDelays.length - 1)] }}
               >
                 <div className={link.containerClass} style={{ opacity: 1 }}>
                   <a
@@ -291,6 +342,13 @@ export default function Header() {
                   </a>
                 </p>
               </div>
+              {signedIn && (
+                <form action="/auth/signout" method="post" className="vp-nav-signout-form">
+                  <button type="submit" className="vp-nav-signout f-text f-styles-preset-1wi7vce hamburger-menu-link" data-styles-preset="nCQNaN8LD">
+                    Sign out
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
