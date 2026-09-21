@@ -57,6 +57,15 @@ export default async function TicketDetailPage({ params }: { params: Promise<{ i
         data-selection="true"
         style={{ minHeight: "100vh", width: "auto" }}
       >
+        <OpenInAppBanner
+          deepLink={`vipass://ticket-detail?ticketId=${ticket.id}`}
+          branchData={{ contentType: "ticket_detail", ticketId: ticket.id }}
+          title="Open your ticket in Vipass"
+          subtitle={title}
+          canonicalUrl={ticketUrl}
+          desktopUrl={ticketUrl}
+          imageUrl={cover ?? undefined}
+        />
         <div className="f-gdzxqr-container" data-f-layout-hint-center-x="true">
           <div className="ssr-variant hidden-1l0aw67 hidden-xwr0r7">
             <SiteHeader />
@@ -64,15 +73,6 @@ export default async function TicketDetailPage({ params }: { params: Promise<{ i
         </div>
         <main className="vp-page vp-page--narrow">
           <div className="vp-stack">
-            <OpenInAppBanner
-              deepLink={`vipass://ticket-detail?ticketId=${ticket.id}`}
-              branchData={{ contentType: "ticket_detail", ticketId: ticket.id }}
-              title="Open your ticket in Vipass"
-              subtitle={title}
-              canonicalUrl={ticketUrl}
-              desktopUrl={ticketUrl}
-              imageUrl={cover ?? undefined}
-            />
             <a className="vp-link" href="/tickets">
               ← My tickets
             </a>

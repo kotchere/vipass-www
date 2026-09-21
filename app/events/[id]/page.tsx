@@ -69,20 +69,20 @@ export default async function EventPage({ params }: EventPageProps) {
         data-selection="true"
         style={{ minHeight: "100vh", width: "auto" }}
       >
+        <OpenInAppBanner
+          deepLink={`vipass://event?eventId=${event.id}`}
+          branchData={{ contentType: "event", eventId: event.id, flyer: cover }}
+          title={event.title}
+          canonicalUrl={`${site}/${event.id}`}
+          desktopUrl={`${site}/events/${event.id}`}
+          imageUrl={cover || undefined}
+        />
         <div className="f-gdzxqr-container" data-f-layout-hint-center-x="true">
           <div className="ssr-variant hidden-1l0aw67 hidden-xwr0r7">
             <SiteHeader />
           </div>
         </div>
         <main className="vp-page vp-event-page">
-          <OpenInAppBanner
-            deepLink={`vipass://event?eventId=${event.id}`}
-            branchData={{ contentType: "event", eventId: event.id, flyer: cover }}
-            title={event.title}
-            canonicalUrl={`${site}/${event.id}`}
-            desktopUrl={`${site}/events/${event.id}`}
-            imageUrl={cover || undefined}
-          />
           <div className="vp-event">
             <EventHero event={event} />
             <EventDetails event={event} ticketTypes={ticketTypes}>

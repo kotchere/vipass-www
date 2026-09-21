@@ -67,7 +67,7 @@
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-  padding: calc(var(--vp-header-offset) + 24px) 24px 96px;
+  padding: calc(var(--vp-header-offset) + var(--vp-app-banner-h, 0px) + 24px) 24px 96px;
   color: var(--vp-text);
   font-family: var(--vp-font);
   font-size: 16px;
@@ -334,7 +334,7 @@
 
 /* Event page */
 .vp-event-page {
-  padding-top: calc(var(--vp-header-offset) + 12px);
+  padding-top: calc(var(--vp-header-offset) + var(--vp-app-banner-h, 0px) + 12px);
 }
 .vp-event {
   display: grid;
@@ -438,18 +438,27 @@
 }
 
 /* Open-in-app banner (phones only; the component gates rendering) */
+/* Fixed strip pinned above the (fixed) site header. While mounted it sets
+   --vp-app-banner-h on <html>; the header offset and page padding read it. */
 .vp-open-in-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: 12px;
   box-sizing: border-box;
   width: 100%;
-  margin: 0 0 20px;
-  padding: 10px 10px 10px 12px;
-  border-radius: var(--vp-radius-sm);
+  margin: 0;
+  padding: calc(10px + env(safe-area-inset-top, 0px)) 10px 10px 12px;
   background: var(--vp-surface);
-  border: 1px solid var(--vp-border);
+  border-bottom: 1px solid var(--vp-border);
   font-family: var(--vp-font);
+}
+.f-D2wOp .f-gdzxqr-container {
+  top: var(--vp-app-banner-h, 0px);
 }
 .vp-open-in-app__icon {
   width: 44px;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/app-links";
 import { createBranchLink } from "@/lib/branch";
@@ -9,6 +9,8 @@ const APP_ICON_SRC = "/assets/images/favicon.png";
 const DISMISSED_KEY = "openInApp:dismissed";
 const PHONE_MEDIA_QUERY = "(max-width: 768px)";
 const STORE_FALLBACK_DELAY_MS = 1500;
+/** Set on <html> while the banner is shown so the fixed header and page padding shift down. */
+const BANNER_HEIGHT_VAR = "--vp-app-banner-h";
 
 export type OpenInAppBannerProps = {
   /** `vipass://…` URL used when Branch is unavailable. */
@@ -93,6 +95,7 @@ export default function OpenInAppBanner({
   const [platform, setPlatform] = useState<Platform | null>(null);
   const [visible, setVisible] = useState(false);
   const [opening, setOpening] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const detected = detectPlatform(navigator.userAgent);
@@ -106,6 +109,25 @@ export default function OpenInAppBanner({
     mql.addEventListener("change", sync);
     return () => mql.removeEventListener("change", sync);
   }, []);
+
+  // The banner is position: fixed above the (also fixed) site header, so it
+  // publishes its rendered height for the header offset and page padding.
+  useEffect(() => {
+    const root = document.documentElement;
+    const el = rootRef.current;
+    if (!visible || !el) {
+      root.style.removeProperty(BANNER_HEIGHT_VAR);
+      return;
+    }
+    const apply = () => root.style.setProperty(BANNER_HEIGHT_VAR, `${el.offsetHeight}px`);
+    apply();
+    const observer = new ResizeObserver(apply);
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      root.style.removeProperty(BANNER_HEIGHT_VAR);
+    };
+  }, [visible]);
 
   if (!platform || !visible) return null;
 
@@ -137,7 +159,7 @@ export default function OpenInAppBanner({
   };
 
   return (
-    <div className="vp-open-in-app" role="complementary" aria-label="Open in the Vipass app">
+    <div ref={rootRef} className="vp-open-in-app" role="complementary" aria-label="Open in the Vipass app">
       {/* eslint-disable-next-line @next/next/no-img-element -- local static asset, no optimisation needed */}
       <img className="vp-open-in-app__icon" src={APP_ICON_SRC} alt="" width={44} height={44} />
       <div className="vp-open-in-app__text">

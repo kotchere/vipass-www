@@ -69,6 +69,9 @@ export function priceLabel(
     const min = Math.min(...prices);
     const max = Math.max(...prices);
     const currency = ticketTypes[0].currency;
+    // A free tier alongside paid ones: the cheapest ticket is free, so say so
+    // rather than "From $0.00".
+    if (min === 0) return "Free";
     return min === max ? formatPrice(min, currency) : formatStartingPrice(min, currency);
   }
   if (event.cheapest_price_cents == null) return null;
