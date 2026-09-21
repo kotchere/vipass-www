@@ -1,5 +1,6 @@
 "use client";
 
+import { APP_STORE_URL, PLAY_STORE_URL } from "@/lib/app-links";
 import { getBranchKey } from "@/lib/env";
 
 /**
@@ -137,6 +138,15 @@ export function createBranchLink(input: CreateBranchLinkInput): Promise<string> 
             $og_title: input.title,
             ...(input.imageUrl ? { $og_image_url: input.imageUrl } : {}),
             $desktop_url: input.desktopUrl,
+            // The visitor is already on the web page, so "app not installed"
+            // must go straight to the store (the click is recorded, so the
+            // install still deferred-deep-links back to this content) rather
+            // than Branch's deepview interstitial or a loop back to the site.
+            $fallback_url: input.desktopUrl,
+            $ios_url: APP_STORE_URL,
+            $android_url: PLAY_STORE_URL,
+            $ios_deepview: "false",
+            $android_deepview: "false",
           },
         },
         (error, url) => {
